@@ -94,31 +94,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Python3基础之函数]]></title>
-    <url>%2Fpost%2F5e13db2f.html</url>
-    <content type="text"><![CDATA[Python3基础之函数 三元运算符补充 123456# 三元运算符(或者三目运算)# 格式# 结果 = 值1 if 条件 else 值2result = True if 1&gt;2 else False# 如果条件成立则返回'值1',否则返回'值2' 函数的定义 12345678910111213141516171819在开始之前我们先上一段代码:while True： if cpu利用率 &gt; 90%: # 发送邮件提醒 连接邮箱服务器 发送邮件 关闭连接 if 硬盘使用空间 &gt; 90%: # 发送邮件提醒 连接邮箱服务器 发送邮件 关闭连接 if 内存占用 &gt; 80%: # 发送邮件提醒 连接邮箱服务器 发送邮件 关闭连接 不知道大家是否注意到以上代码有很多重复的代码,要写出高质量的代码首先要解决的就是重复代码的问题。我们可以将上面的’发送邮件提醒’功能封装成一个函数,当满足条件时调用函数即可。所以某些具有特殊功能的代码块, 将这些特定的代码块给他分封装起来,这个封装起来的代码块就是函数。 1234567891011121314151617181920212223242526# 定义函数函数的定义主要有如下要点： 1.def：表示函数的关键字 2.函数名：函数的名称，日后根据函数名调用函数（函数的命名规则和变量的命名规则一致） 3.函数体：函数中进行一系列的逻辑计算，如：发送邮件 4.参数：为函数体提供数据 5.返回值：当函数执行完毕后，可以给调用者返回数据。下面我们重构一下上面发送邮件的代码：def send(): 发送邮件的代码... if success: #发送成功 return True else: return False while True: # 每次执行发送邮件函数，都会将返回值自动赋值给result # 之后，可以根据result来写日志，或重发等操作 # 在这儿根据函数名'send'来调用函数 result = send() if result == False: 记录日志，短信发送失败... 匿名函数 123456789对于简单的函数，也存在一种简便的表示方式，即：lambda表达式# 普通方式def sum(arg): return arg + 5print(sum(5))# 匿名函数lambda_sum = lambda x, y: x + yprint(lambda_sum(5, 5)) 函数的运用 1234567891011121314151617181920212223242526272829# 递归调用,遍历文件夹目录import osdef get_all_dir(path, str="|--"): """ 实现目录的遍历 :param path: 遍历目录的路径 :param str: 样式 :return: """ # 返回一个指定文件夹(目录)包含文件和文件夹(目录),并且返回一个列表,但是不包含.和..,他一般按照英文首字母排序 fill_all = os.listdir(path) # print(fillAll) for filename in fill_all: # 一定不能少了全路径的拼接 file_path = os.path.join(path, filename) # print(filePath) # 判断filePath是否是目录 if os.path.isdir(file_path): print(str + '文件夹' + filename) # filePath是目录 get_all_dir(file_path, "\t" + str) else: # filePath不是目录,即是文件 print(str + '文件:' + filename)get_all_dir('../gavinliu_study')]]></content>
-      <categories>
-        <category>Python基础</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>函数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Python3基础之分支结构和循环结构]]></title>
-    <url>%2Fpost%2F8b5ec2d0.html</url>
-    <content type="text"><![CDATA[在Python中，要构造分支结构可以使用if、elif和else关键字。所谓关键字就是有特殊含义的单词，像if和else就是专门用于构造分支结构的关键字，很显然你不能够使用它作为变量名（事实上，用作其他的标识符也是不可以） 在程序中我们需要重复的执行某条或某些指令，例如比如在我们的程序中要实现每隔1秒中在屏幕上打印一个”hello, world”这样的字符串并持续一个小时，我们肯定不能够将print(&#39;hello, world&#39;)这句代码写上3600遍。当然你可能已经注意到了，刚才的描述中其实是重复的动作 Python3基础之分支结构和循环结构 分支结构 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273第一种: if结构格式: if 表达式: 语句块执行流程:程序遇到if结构时,判断表达式的真假,如果为真,则执行语句块,否则结束if结构 表达式为假的情况: 0 '' None False [] () &#123;&#125;num1 = 78num2 = 45tmp = 0if num1 &gt; num2: tmp = num1 num1 = num2 num2 = tmp print(num1, num2)第二种: if-else结构格式: if 表达式: 语句块1 else: 语句块2执行流程:程序执行到if结构,判断表达式的真假,如果为真,则执行语句块1,如果为假,则执行else中的语句块的内容# 判断一个年份是否是闰年year = int(input('请输入你要输入的年份:'))if ((year % 4 == 0) and (year % 100 != 0)) or (year % 400 == 0): print('是润年')else: print('不是闰年')第三种: if-elif-else格式: if 表达式1: 语句块1 elif 表达式2: 语句块2 elif 表达式3: 语句块3 else: 语句块n执行流程:程序执行到if语句,判断表达式1的真假,如果为真,则执行语句1,否则判断表达式2的真假,如果为真,则执行表达式2,一次类推,直到最后一个表达式为假,就执行else里边的语句块nimport random# 产生一个1-6的随机数num = random.randint(1, 6)# print(num)if num == 1: print('这个随机数乘以1后是%d' % (num * 1))elif num == 2: print('这个随机数乘以2后是%d' % (num * 2))elif num == 3: print('这个随机数乘以3后是%d' % (num * 3))elif num == 4: print('这个随机数乘以4后是%d' % (num * 4))elif num == 5: print('这个随机数乘以5后是%d' % (num * 5))else: print('这个随机数乘以本身后是%d' % (num * num)) 第四种: 嵌套if 表达式1: if 表达式2: 语句块1 else: 语句块2else: 语句块3name = 'xiaoming'password = '123456'user = input('请输入用户名')pwd = input('请输入密码')if user == name: if pwd == password: print('恭喜你,登录成功') else: print('用户名或者密码错误2')else: print('用户名或者密码错误1') 循环结构 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#for-in循环#如果明确的知道循环执行的次数或者是要对一个容器进行迭代，使用for-in循环"""用for循环实现1~100求和"""sum = 0for x in range(101): sum += xprint(sum)"""输入两个正整数计算最大公约数和最小公倍数"""num1 = int(input("请输入第一个整数:"))num2 = int(input("请输入第二个整数:"))# actual = Noneactual = min(num1, num2) # 取最小的整数# commonDivisorVal = Nonefor i in range(1, actual + 1): if (num1 % i == 0) and (num2 % i == 0): commonDivisorVal = iprint("%d和%d的最大公约数是%d" % (num1, num2, commonDivisorVal))#while循环#如果要构造不知道具体循环次数的循环结构，推荐使用while循环，while循环通过一个能够产生或转换出bool值的表达式来控制循环，表达式的值为True循环继续，表达式的值为False循环结束。"""猜数字游戏计算机出一个1~100之间的随机数由人来猜计算机根据人猜的数字分别给出提示大一点/小一点/猜对了"""import randomanswer = random.randint(1, 100)counter = 0while True: counter += 1 number = int(input('请输入: ')) if number &lt; answer: print('大一点') elif number &gt; answer: print('小一点') else: print('恭喜你猜对了!') breakprint('你总共猜了%d次' % counter) 注意:上面的代码中使用了break关键字来提前终止循环，需要注意的是break只能终止它所在的那个循环，这一点在使用嵌套的循环结构需要注意。除了break之外，还有另一个是continue，它可以用来跳过本次循环直接进入下一轮循环。]]></content>
-      <categories>
-        <category>Python基础</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>分支结构</tag>
-        <tag>循环结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Hexo]]></title>
     <url>%2Fpost%2Fb132932.html</url>
     <content type="text"><![CDATA[使用hexo搭建一个博客，并托管在github pages上的简易教程。 什么是Hexo? Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 安装前提 安装 Hexo 相当简单。然而在安装前，您必须检查电脑中是否已安装下列应用程序： Node.js Git 如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。 1$ npm install -g hexo-cli 如果有环境问题,请参考Hexo文档 如何使用Hexo搭建Github Pages博客 创建仓库 首先我们需要在Github创建一个账号,然后我们登录进去创建仓库 仓库名称必须为 username.github.io (注：username为你在github的用户名) 如果报错就是仓库已经存在。 仓库创建成功后，github会给你该仓库的https和ssh地址，复制ssh地址作为备用 建站 上面的操作完成后,我们就可以进行建站操作了,可以参照Hexo建站文档,也可以运行下面的命令 123$ hexo init &lt;folder&gt;$ cd &lt;folder&gt;$ npm install 上面操作完成后我们建站就成功了,现在我们可以看看自己的博客是什么样子了。在命令行运行下面这条的命令： 1$ npm install hexo-server --save server安装成功后，启动server便可以把博客跑起来： 1$ hexo server 现在默认是在本地运行,运行hexo server成功后会出现一个http://localhost:4000/地址 部署 到现在我们自己的博客就已经搭建起来,现在我们修改项目的部署信息 在博客的根目录下可以找到_config.yml文件,在文件最后可以找到deploy信息,现做如下配置 1234deploy: type: git repository: git@github.com:&#123;username&#125;/&#123;username&#125;.github.io.git # 这个地址就是github创建仓库后的shh地址 branch: master 以上配置好后,我们再配置一下SSH key,关于SSH key的生成和配置，github有详细的帮助文档可以参考。这里做简单介绍： 完成以上操作就完成了SSH key的配置。 有了这些配置后便可以提交部署到Github Pages,执行下面的命令: 1$ hexo clean # 删除database和public文件夹,因为执行了hexo server 成功后再执行下面的命令 12$ hexo generate # 生成新的部署所需要的文件$ hexo deploy 在执行了hexo deploy命令后可能会出现报错ERROR Deployer not found : github,这个需要再安装hexo-deployer-git 1$ npm install hexo-deployer-git --save 完成后再次执行hexo deploy命令,待命令执行成功后我们就成功部署了自己的博客,直接访问https://your-github-username.github.io/这样就可以看到默认主题的博客了]]></content>
@@ -177,6 +152,31 @@
       <tags>
         <tag>Python</tag>
         <tag>进程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python3基础之函数]]></title>
+    <url>%2Fpost%2F5e13db2f.html</url>
+    <content type="text"><![CDATA[Python3基础之函数 三元运算符补充 123456# 三元运算符(或者三目运算)# 格式# 结果 = 值1 if 条件 else 值2result = True if 1&gt;2 else False# 如果条件成立则返回'值1',否则返回'值2' 函数的定义 12345678910111213141516171819在开始之前我们先上一段代码:while True： if cpu利用率 &gt; 90%: # 发送邮件提醒 连接邮箱服务器 发送邮件 关闭连接 if 硬盘使用空间 &gt; 90%: # 发送邮件提醒 连接邮箱服务器 发送邮件 关闭连接 if 内存占用 &gt; 80%: # 发送邮件提醒 连接邮箱服务器 发送邮件 关闭连接 不知道大家是否注意到以上代码有很多重复的代码,要写出高质量的代码首先要解决的就是重复代码的问题。我们可以将上面的’发送邮件提醒’功能封装成一个函数,当满足条件时调用函数即可。所以某些具有特殊功能的代码块, 将这些特定的代码块给他分封装起来,这个封装起来的代码块就是函数。 1234567891011121314151617181920212223242526# 定义函数函数的定义主要有如下要点： 1.def：表示函数的关键字 2.函数名：函数的名称，日后根据函数名调用函数（函数的命名规则和变量的命名规则一致） 3.函数体：函数中进行一系列的逻辑计算，如：发送邮件 4.参数：为函数体提供数据 5.返回值：当函数执行完毕后，可以给调用者返回数据。下面我们重构一下上面发送邮件的代码：def send(): 发送邮件的代码... if success: #发送成功 return True else: return False while True: # 每次执行发送邮件函数，都会将返回值自动赋值给result # 之后，可以根据result来写日志，或重发等操作 # 在这儿根据函数名'send'来调用函数 result = send() if result == False: 记录日志，短信发送失败... 匿名函数 123456789对于简单的函数，也存在一种简便的表示方式，即：lambda表达式# 普通方式def sum(arg): return arg + 5print(sum(5))# 匿名函数lambda_sum = lambda x, y: x + yprint(lambda_sum(5, 5)) 函数的运用 1234567891011121314151617181920212223242526272829# 递归调用,遍历文件夹目录import osdef get_all_dir(path, str="|--"): """ 实现目录的遍历 :param path: 遍历目录的路径 :param str: 样式 :return: """ # 返回一个指定文件夹(目录)包含文件和文件夹(目录),并且返回一个列表,但是不包含.和..,他一般按照英文首字母排序 fill_all = os.listdir(path) # print(fillAll) for filename in fill_all: # 一定不能少了全路径的拼接 file_path = os.path.join(path, filename) # print(filePath) # 判断filePath是否是目录 if os.path.isdir(file_path): print(str + '文件夹' + filename) # filePath是目录 get_all_dir(file_path, "\t" + str) else: # filePath不是目录,即是文件 print(str + '文件:' + filename)get_all_dir('../gavinliu_study')]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python3基础之分支结构和循环结构]]></title>
+    <url>%2Fpost%2F8b5ec2d0.html</url>
+    <content type="text"><![CDATA[在Python中，要构造分支结构可以使用if、elif和else关键字。所谓关键字就是有特殊含义的单词，像if和else就是专门用于构造分支结构的关键字，很显然你不能够使用它作为变量名（事实上，用作其他的标识符也是不可以） 在程序中我们需要重复的执行某条或某些指令，例如比如在我们的程序中要实现每隔1秒中在屏幕上打印一个”hello, world”这样的字符串并持续一个小时，我们肯定不能够将print(&#39;hello, world&#39;)这句代码写上3600遍。当然你可能已经注意到了，刚才的描述中其实是重复的动作 Python3基础之分支结构和循环结构 分支结构 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273第一种: if结构格式: if 表达式: 语句块执行流程:程序遇到if结构时,判断表达式的真假,如果为真,则执行语句块,否则结束if结构 表达式为假的情况: 0 '' None False [] () &#123;&#125;num1 = 78num2 = 45tmp = 0if num1 &gt; num2: tmp = num1 num1 = num2 num2 = tmp print(num1, num2)第二种: if-else结构格式: if 表达式: 语句块1 else: 语句块2执行流程:程序执行到if结构,判断表达式的真假,如果为真,则执行语句块1,如果为假,则执行else中的语句块的内容# 判断一个年份是否是闰年year = int(input('请输入你要输入的年份:'))if ((year % 4 == 0) and (year % 100 != 0)) or (year % 400 == 0): print('是润年')else: print('不是闰年')第三种: if-elif-else格式: if 表达式1: 语句块1 elif 表达式2: 语句块2 elif 表达式3: 语句块3 else: 语句块n执行流程:程序执行到if语句,判断表达式1的真假,如果为真,则执行语句1,否则判断表达式2的真假,如果为真,则执行表达式2,一次类推,直到最后一个表达式为假,就执行else里边的语句块nimport random# 产生一个1-6的随机数num = random.randint(1, 6)# print(num)if num == 1: print('这个随机数乘以1后是%d' % (num * 1))elif num == 2: print('这个随机数乘以2后是%d' % (num * 2))elif num == 3: print('这个随机数乘以3后是%d' % (num * 3))elif num == 4: print('这个随机数乘以4后是%d' % (num * 4))elif num == 5: print('这个随机数乘以5后是%d' % (num * 5))else: print('这个随机数乘以本身后是%d' % (num * num)) 第四种: 嵌套if 表达式1: if 表达式2: 语句块1 else: 语句块2else: 语句块3name = 'xiaoming'password = '123456'user = input('请输入用户名')pwd = input('请输入密码')if user == name: if pwd == password: print('恭喜你,登录成功') else: print('用户名或者密码错误2')else: print('用户名或者密码错误1') 循环结构 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#for-in循环#如果明确的知道循环执行的次数或者是要对一个容器进行迭代，使用for-in循环"""用for循环实现1~100求和"""sum = 0for x in range(101): sum += xprint(sum)"""输入两个正整数计算最大公约数和最小公倍数"""num1 = int(input("请输入第一个整数:"))num2 = int(input("请输入第二个整数:"))# actual = Noneactual = min(num1, num2) # 取最小的整数# commonDivisorVal = Nonefor i in range(1, actual + 1): if (num1 % i == 0) and (num2 % i == 0): commonDivisorVal = iprint("%d和%d的最大公约数是%d" % (num1, num2, commonDivisorVal))#while循环#如果要构造不知道具体循环次数的循环结构，推荐使用while循环，while循环通过一个能够产生或转换出bool值的表达式来控制循环，表达式的值为True循环继续，表达式的值为False循环结束。"""猜数字游戏计算机出一个1~100之间的随机数由人来猜计算机根据人猜的数字分别给出提示大一点/小一点/猜对了"""import randomanswer = random.randint(1, 100)counter = 0while True: counter += 1 number = int(input('请输入: ')) if number &lt; answer: print('大一点') elif number &gt; answer: print('小一点') else: print('恭喜你猜对了!') breakprint('你总共猜了%d次' % counter) 注意:上面的代码中使用了break关键字来提前终止循环，需要注意的是break只能终止它所在的那个循环，这一点在使用嵌套的循环结构需要注意。除了break之外，还有另一个是continue，它可以用来跳过本次循环直接进入下一轮循环。]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>分支结构</tag>
+        <tag>循环结构</tag>
       </tags>
   </entry>
   <entry>
