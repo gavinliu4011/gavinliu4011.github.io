@@ -143,68 +143,6 @@
 
     
   <url>
-    <loc>http://gavinliu4011.github.io/post/c8a586cb.html</loc>
-    <lastmod>2018-06-25T07:26:34.078Z</lastmod>
-    <data>
-        <display>
-        <title>Linux环境下安装Python3.X</title>
-        <pubTime>2018-06-25T06:05:37.179Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="http://gavinliu4011.github.io/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://gavinliu4011.github.io/post/9fdd7050.html</loc>
-    <lastmod>2018-06-25T07:26:24.089Z</lastmod>
-    <data>
-        <display>
-        <title>Linux环境下Git安装与使用</title>
-        <pubTime>2018-05-14T20:38:20.000Z</pubTime>
-        
-        <tag>Git</tag>
-         
-         
-           
-             
-              <breadCrumb title="Git" url="http://gavinliu4011.github.io/categories/Git/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://gavinliu4011.github.io/post/cdf8534a.html</loc>
-    <lastmod>2018-06-25T07:26:15.774Z</lastmod>
-    <data>
-        <display>
-        <title>Shell常用命令</title>
-        <pubTime>2018-05-15T08:43:10.000Z</pubTime>
-        
-        <tag>Shell</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://gavinliu4011.github.io/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://gavinliu4011.github.io/post/9f312a12.html</loc>
     <lastmod>2018-06-25T07:26:07.615Z</lastmod>
     <data>
@@ -246,6 +184,68 @@
     
     
     
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/9fdd7050.html</loc>
+    <lastmod>2017-08-27T10:12:21.308Z</lastmod>
+    <data>
+        <display>
+        <title>Linux环境下Git安装与使用</title>
+        <pubTime>2017-08-27T18:12:06.000Z</pubTime>
+        
+        <tag>Git</tag>
+         
+         
+           
+             
+              <breadCrumb title="Git" url="http://gavinliu4011.github.io/categories/Git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/cdf8534a.html</loc>
+    <lastmod>2017-08-13T12:13:50.025Z</lastmod>
+    <data>
+        <display>
+        <title>Shell常用命令</title>
+        <pubTime>2017-08-13T20:13:40.000Z</pubTime>
+        
+        <tag>Shell</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://gavinliu4011.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/c8a586cb.html</loc>
+    <lastmod>2017-08-05T07:33:38.437Z</lastmod>
+    <data>
+        <display>
+        <title>Linux环境下安装Python3.X</title>
+        <pubTime>2017-08-05T15:33:23.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://gavinliu4011.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
   <url>
     <loc>http://gavinliu4011.github.io/post/b132932.html</loc>
