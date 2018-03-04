@@ -109,7 +109,7 @@
 <meta property="og:description" content="线程 CPU上的执行单位，线程也是程序运行过程中的一个抽象。 一个进程下可以有多个线程。 主线程：操作系统中的每一个进程都会对应一个地址空间。每一个进程中都会默认有一个控制线程，主线程随着进程的创建而出现。所以一个进程中主线程存在就代表了这个进程的存在，当进程中的主线程结束的时候，操作系统就会将该进程回收  有了进程为什么还要线程?进程有很多优点，它提供了多道编程，让我们感觉我们每个人都拥有自己的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://gavinliu4011.github.io/img/thread/2062170187.png">
-<meta property="og:updated_time" content="2018-03-08T15:19:50.832Z">
+<meta property="og:updated_time" content="2018-03-04T15:17:30.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python之线程">
 <meta name="twitter:description" content="线程 CPU上的执行单位，线程也是程序运行过程中的一个抽象。 一个进程下可以有多个线程。 主线程：操作系统中的每一个进程都会对应一个地址空间。每一个进程中都会默认有一个控制线程，主线程随着进程的创建而出现。所以一个进程中主线程存在就代表了这个进程的存在，当进程中的主线程结束的时候，操作系统就会将该进程回收  有了进程为什么还要线程?进程有很多优点，它提供了多道编程，让我们感觉我们每个人都拥有自己的">
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,842
+                  3,849
                 </span>
               
 
@@ -499,10 +499,11 @@
 <p>　　1）轻型实体</p>
 <p>　　线程中的实体基本上不拥有系统资源，只是有一点必不可少的、能保证独立运行的资源。</p>
 <p>　　线程的实体包括程序、数据和TCB。线程是动态概念，它的动态特性由线程控制块TCB（Thread Control Block）描述。</p>
-<p>​    2）独立调度和分派的基本单位。</p>
+<p>​    2）独立调度和分派的基本单位</p>
 <p>　　在多线程OS中，线程是能独立运行的基本单位，因而也是独立调度和分派的基本单位。由于线程很“轻”，故线程的切换非常迅速且开销小（在同一进程中的）。</p>
+<p>​    3）共享进程资源</p>
 <p>　　线程在同一进程中的各个线程，都可以共享该进程所拥有的资源，这首先表现在：所有线程都具有相同的进程id，这意味着，线程可以访问该进程的每一个内存资源；此外，还可以访问进程所拥有的已打开文件、定时器、信号量机构等。由于同一个进程内的线程共享内存和文件，所以线程之间互相通信不必调用内核。</p>
-<p>　　4<em>）可并发执行。</em></p>
+<p>　　4）可并发执行</p>
 <p>　　<em>在一个进程中的多个线程之间，可以并发执行，甚至允许在一个进程中所有线程都能并发执行；同样，不同进程中的线程也能并发执行，充分利用和发挥了处理机与外围设备并行工作的能力。</em></p>
 <blockquote>
 <p>TCB包括以下信息：<br>（1）线程状态。<br>（2）当线程不运行时，被保存的现场资源。<br>（3）一组执行堆栈。<br>（4）存放每个线程的局部变量主存区。<br>（5）访问同一个进程中的主存和其它资源。<br>用于指示被执行指令序列的程序计数器、保留局部变量、少数状态参数和返回地址等的一组寄存器和堆栈。</p>
@@ -577,7 +578,7 @@
   <p><span>本文标题:</span><a href="/post/c52e9d45.html">Python之线程</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 GavinLiu 的个人博客">GavinLiu</a></p>
   <p><span>发布时间:</span>2018年03月04日 - 23:03</p>
-  <p><span>最后更新:</span>2018年03月08日 - 23:03</p>
+  <p><span>最后更新:</span>2018年03月04日 - 23:03</p>
   <p><span>原始链接:</span><a href="/post/c52e9d45.html" title="Python之线程">http://gavinliu4011.github.io/post/c52e9d45.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://gavinliu4011.github.io/post/c52e9d45.html"  aria-label="复制成功！"></i></span>
   </p>
