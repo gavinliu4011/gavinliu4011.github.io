@@ -6,12 +6,130 @@
     
     
   <url>
+    <loc>http://gavinliu4011.github.io/post/b1bc006d.html</loc>
+    <lastmod>2018-03-08T15:19:12.432Z</lastmod>
+    <data>
+        <display>
+        <title>Python之concurrent.futures</title>
+        <pubTime>2018-03-08T23:19:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>进程池</tag>
+         
+        <tag>线程池</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python线程" url="http://gavinliu4011.github.io/categories/Python%E7%BA%BF%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/d068a68c.html</loc>
+    <lastmod>2018-03-07T15:32:41.838Z</lastmod>
+    <data>
+        <display>
+        <title>Python线程——信号量（Semaphore）、队列（Queue）</title>
+        <pubTime>2018-03-07T23:32:30.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>线程</tag>
+         
+        <tag>信号量</tag>
+         
+        <tag>队列</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python线程" url="http://gavinliu4011.github.io/categories/Python%E7%BA%BF%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/5b18ac8.html</loc>
+    <lastmod>2018-03-06T15:54:08.130Z</lastmod>
+    <data>
+        <display>
+        <title>Python线程——GIL锁、线程锁（互斥锁）、递归锁（RLock）</title>
+        <pubTime>2018-03-06T23:53:57.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>线程</tag>
+         
+        <tag>锁</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python线程" url="http://gavinliu4011.github.io/categories/Python%E7%BA%BF%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/5965383b.html</loc>
+    <lastmod>2018-03-05T14:44:37.652Z</lastmod>
+    <data>
+        <display>
+        <title>Python进程——守护线程</title>
+        <pubTime>2018-03-05T22:44:26.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>守护线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python线程" url="http://gavinliu4011.github.io/categories/Python%E7%BA%BF%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/c52e9d45.html</loc>
+    <lastmod>2018-03-04T15:17:06.393Z</lastmod>
+    <data>
+        <display>
+        <title>Python之线程</title>
+        <pubTime>2018-03-04T23:16:54.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python线程" url="http://gavinliu4011.github.io/categories/Python%E7%BA%BF%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://gavinliu4011.github.io/post/9f312a12.html</loc>
-    <lastmod>2018-02-18T15:22:04.409Z</lastmod>
+    <lastmod>2018-02-11T10:02:43.090Z</lastmod>
     <data>
         <display>
         <title>用Python操作Redis</title>
-        <pubTime>2018-02-18T23:21:56.000Z</pubTime>
+        <pubTime>2018-02-11T18:02:32.000Z</pubTime>
         
         <tag>Redis</tag>
          
@@ -59,9 +177,9 @@
         
         <tag>Python</tag>
          
-        <tag>进程通信</tag>
-         
         <tag>队列</tag>
+         
+        <tag>进程通信</tag>
          
          
            
