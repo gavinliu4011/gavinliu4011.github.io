@@ -126,15 +126,24 @@
 
     
   <url>
-    <loc>http://gavinliu4011.github.io/post/0.html</loc>
-    <lastmod>2018-03-17T15:37:44.180Z</lastmod>
+    <loc>http://gavinliu4011.github.io/post/79b12668.html</loc>
+    <lastmod>2018-03-17T15:46:45.802Z</lastmod>
     <data>
         <display>
-        <title></title>
-        <pubTime>2018-07-11T10:50:54.919Z</pubTime>
+        <title>Python版RabbitMQ消息队列之Hello World（一）</title>
+        <pubTime>2018-03-17T23:43:52.000Z</pubTime>
         
+        <tag>Python</tag>
+         
+        <tag>RabbitMQ</tag>
+         
+        <tag>消息队列</tag>
+         
          
            
+             
+              <breadCrumb title="RabbitMQ" url="http://gavinliu4011.github.io/categories/RabbitMQ/"/>
+          
         </display>
     </data>
     </url>
