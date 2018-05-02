@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="UzUVlriUzS" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,爬虫,BeautifulSoup," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="gavinliu's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="前言今天介绍一个强大的解析工具，叫做 BeautiSoup，它就是借助网页的结构和属性等特性来解析网页的工具，有了它我们不用再去写一些复杂的正则，只需要简单的几条语句就可以完成网页中某个元素的提取。  在崔庆才老师那里找了一遍很详细的BeautifulSoup的使用  原文地址：https://germey.gitbooks.io/python3webspider/4.2-BeautifulSou">
+<meta name="keywords" content="Python,爬虫,BeautifulSoup">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BeautifulSoup的使用">
+<meta property="og:url" content="http://gavinliu4011.github.io/post/cd406da8.html">
+<meta property="og:site_name" content="gavinliu&#39;s blog">
+<meta property="og:description" content="前言今天介绍一个强大的解析工具，叫做 BeautiSoup，它就是借助网页的结构和属性等特性来解析网页的工具，有了它我们不用再去写一些复杂的正则，只需要简单的几条语句就可以完成网页中某个元素的提取。  在崔庆才老师那里找了一遍很详细的BeautifulSoup的使用  原文地址：https://germey.gitbooks.io/python3webspider/4.2-BeautifulSou">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-02T12:24:58.956Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BeautifulSoup的使用">
+<meta name="twitter:description" content="前言今天介绍一个强大的解析工具，叫做 BeautiSoup，它就是借助网页的结构和属性等特性来解析网页的工具，有了它我们不用再去写一些复杂的正则，只需要简单的几条语句就可以完成网页中某个元素的提取。  在崔庆才老师那里找了一遍很详细的BeautifulSoup的使用  原文地址：https://germey.gitbooks.io/python3webspider/4.2-BeautifulSou">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gavinliu4011.github.io/post/cd406da8.html"/>
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "cc8b0df7"
+    });
+  daovoice('update');
+  </script>
+
+  <title>BeautifulSoup的使用 | gavinliu's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8c62539e2363db36b161b4c0d8ed72e5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/gavinliu4011" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gavinliu's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">刘泰丞的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gavinliu4011.github.io/post/cd406da8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GavinLiu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gavinliu's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">BeautifulSoup的使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T04:24:49+08:00">
+                2018-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/post/cd406da8.html" class="leancloud_visitors" data-flag-title="BeautifulSoup的使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+		 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7,622
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  34
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>今天介绍一个强大的解析工具，叫做 BeautiSoup，它就是借助网页的结构和属性等特性来解析网页的工具，有了它我们不用再去写一些复杂的正则，只需要简单的几条语句就可以完成网页中某个元素的提取。 </p>
+<p>在<a href="https://germey.gitbooks.io/python3webspider/4.2-BeautifulSoup%E7%9A%84%E4%BD%BF%E7%94%A8.html" target="_blank" rel="noopener">崔庆才</a>老师那里找了一遍很详细的BeautifulSoup的使用</p>
+<blockquote>
+<p>原文地址：<a href="https://germey.gitbooks.io/python3webspider/4.2-BeautifulSoup%E7%9A%84%E4%BD%BF%E7%94%A8.html" target="_blank" rel="noopener">https://germey.gitbooks.io/python3webspider/4.2-BeautifulSoup%E7%9A%84%E4%BD%BF%E7%94%A8.html</a></p>
+</blockquote>
+<h3 id="BeautifulSoup简介"><a href="#BeautifulSoup简介" class="headerlink" title="BeautifulSoup简介"></a>BeautifulSoup简介</h3><p>简单来说，BeautifulSoup 就是 Python 的一个 HTML 或 XML 的解析库，我们可以用它来方便地从网页中提取数据，官方的解释如下：</p>
+<blockquote>
+<p>BeautifulSoup提供一些简单的、Python式的函数用来处理导航、搜索、修改分析树等功能。它是一个工具箱，通过解析文档为用户提供需要抓取的数据，因为简单，所以不需要多少代码就可以写出一个完整的应用程序。 BeautifulSoup 自动将输入文档转换为 Unicode 编码，输出文档转换为 utf-8 编码。你不需要考虑编码方式，除非文档没有指定一个编码方式，这时你仅仅需要说明一下原始编码方式就可以了。 BeautifulSoup 已成为和 lxml、html6lib 一样出色的 Python 解释器，为用户灵活地提供不同的解析策略或强劲的速度。</p>
+</blockquote>
+<p>所以说，利用它我们可以省去很多繁琐的提取工作，提高解析效率。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="Pip安装"><a href="#Pip安装" class="headerlink" title="Pip安装"></a>Pip安装</h4><p>目前 BeautifulSoup 的最新版本是 4.x 版本，之前的版本已经停止开发了，推荐使用 Pip 来安装，安装命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install beautifulsoup4</span><br></pre></td></tr></table></figure>
+<p>命令执行完毕之后即可完成安装。</p>
+<h4 id="Wheel安装"><a href="#Wheel安装" class="headerlink" title="Wheel安装"></a>Wheel安装</h4><p>当然也可以从 PyPi 下载 Wheel 文件安装，链接如下： <a href="https://pypi.python.org/pypi/beautifulsoup4" target="_blank" rel="noopener">https://pypi.python.org/pypi/beautifulsoup4</a></p>
+<p>然后 Pip 安装 Wheel 文件即可。</p>
+<h3 id="解析器"><a href="#解析器" class="headerlink" title="解析器"></a>解析器</h3><p>BeautifulSoup 在解析的时候实际上是依赖于解析器的，它除了支持 Python 标准库中的 HTML 解析器，还支持一些第三方的解析器比如 LXML，下面我们对 BeautifulSoup 支持的解析器及它们的一些优缺点做一个简单的对比。</p>
+<table>
+<thead>
+<tr>
+<th>解析器</th>
+<th>使用方法</th>
+<th>优势</th>
+<th>劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python标准库</td>
+<td>BeautifulSoup(markup, “html.parser”)</td>
+<td>Python的内置标准库、执行速度适中 、文档容错能力强</td>
+<td>Python 2.7.3 or 3.2.2)前的版本中文容错能力差</td>
+</tr>
+<tr>
+<td>LXML HTML 解析器</td>
+<td>BeautifulSoup(markup, “lxml”)</td>
+<td>速度快、文档容错能力强</td>
+<td>需要安装C语言库</td>
+</tr>
+<tr>
+<td>LXML XML 解析器</td>
+<td>BeautifulSoup(markup, “xml”)</td>
+<td>速度快、唯一支持XML的解析器</td>
+<td>需要安装C语言库</td>
+</tr>
+<tr>
+<td>html5lib</td>
+<td>BeautifulSoup(markup, “html5lib”)</td>
+<td>最好的容错性、以浏览器的方式解析文档、生成 HTML5 格式的文档</td>
+<td>速度慢、不依赖外部扩展</td>
+</tr>
+</tbody>
+</table>
+<p>所以通过以上对比可以看出，LXML 这个解析器有解析 HTML 和 XML 的功能，而且速度快，容错能力强，所以推荐使用这个解析器来进行解析。</p>
+<p>使用 LXML 这个解析器，在初始化 BeautifulSoup 的时候我们可以把第二个参数改为 lxml 即可，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(&apos;&lt;p&gt;Hello&lt;/p&gt;&apos;, &apos;lxml&apos;)</span><br><span class="line">print(soup.p.string)</span><br></pre></td></tr></table></figure>
+<p>后面 BeautifulSoup 的用法实例也统一用这个解析器来演示。</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>下面我们首先用一个实例来感受一下 BeautifulSoup 的基本使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">html = &quot;&quot;&quot;</span><br><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class=&quot;title&quot; name=&quot;dromouse&quot;&gt;&lt;b&gt;The Dormouse&apos;s story&lt;/b&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="line">&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;&lt;!-- Elsie --&gt;&lt;/a&gt;,</span><br><span class="line">&lt;a href=&quot;http://example.com/lacie&quot; class=&quot;sister&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and</span><br><span class="line">&lt;a href=&quot;http://example.com/tillie&quot; class=&quot;sister&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;</span><br><span class="line">and they lived at the bottom of a well.&lt;/p&gt;</span><br><span class="line">&lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.prettify())</span><br><span class="line">print(soup.title.string)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line">  &lt;title&gt;</span><br><span class="line">   The Dormouse&apos;s story</span><br><span class="line">  &lt;/title&gt;</span><br><span class="line"> &lt;/head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line">  &lt;p class=&quot;title&quot; name=&quot;dromouse&quot;&gt;</span><br><span class="line">   &lt;b&gt;</span><br><span class="line">    The Dormouse&apos;s story</span><br><span class="line">   &lt;/b&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;p class=&quot;story&quot;&gt;</span><br><span class="line">   Once upon a time there were three little sisters; and their names were</span><br><span class="line">   &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">    &lt;!-- Elsie --&gt;</span><br><span class="line">   &lt;/a&gt;</span><br><span class="line">   ,</span><br><span class="line">   &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;</span><br><span class="line">    Lacie</span><br><span class="line">   &lt;/a&gt;</span><br><span class="line">   and</span><br><span class="line">   &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;</span><br><span class="line">    Tillie</span><br><span class="line">   &lt;/a&gt;</span><br><span class="line">   ;</span><br><span class="line">and they lived at the bottom of a well.</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;p class=&quot;story&quot;&gt;</span><br><span class="line">   ...</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line"> &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">The Dormouse&apos;s story</span><br></pre></td></tr></table></figure>
+<p>首先我们声明了一个变量 html，它是一个 HTML 字符串，但是注意到，它并不是一个完整的 HTML 字符串，body 和 html 节点都没有闭合，但是我们将它当作第一个参数传给 BeautifulSoup 对象，第二个参数传入的是解析器的类型，在这里我们使用 lxml，这样就完成了 BeaufulSoup 对象的初始化，将它赋值给 soup 这个变量。</p>
+<p>那么接下来我们就可以通过调用 soup 的各个方法和属性对这串 HTM L代码解析了。</p>
+<p>我们首先调用了 prettify() 方法，这个方法可以把要解析的字符串以标准的缩进格式输出，在这里注意到输出结果里面包含了 body 和 html 节点，也就是说对于不标准的 HTML 字符串 BeautifulSoup 可以自动更正格式，这一步实际上不是由 prettify() 方法做的，这个更正实际上在初始化 BeautifulSoup 时就完成了。</p>
+<p>然后我们调用了 soup.title.string ，这个实际上是输出了 HTML 中 title 节点的文本内容。所以 soup.title 就可以选择出 HTML 中的 title 节点，再调用 string 属性就可以得到里面的文本了，所以我们就可以通过简单地调用几个属性就可以完成文本的提取了，是不是非常方便？</p>
+<h3 id="节点选择器"><a href="#节点选择器" class="headerlink" title="节点选择器"></a>节点选择器</h3><p>刚才我们选择元素的时候直接通过调用节点的名称就可以选择节点元素了，然后再调用 string 属性就可以得到节点内的文本了，这种选择方式速度非常快，如果单个节点结构话层次非常清晰，可以选用这种方式来解析。</p>
+<h4 id="选择元素"><a href="#选择元素" class="headerlink" title="选择元素"></a>选择元素</h4><p>下面我们再用一个例子详细说明一下它的选择方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">html = &quot;&quot;&quot;</span><br><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class=&quot;title&quot; name=&quot;dromouse&quot;&gt;&lt;b&gt;The Dormouse&apos;s story&lt;/b&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="line">&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;&lt;!-- Elsie --&gt;&lt;/a&gt;,</span><br><span class="line">&lt;a href=&quot;http://example.com/lacie&quot; class=&quot;sister&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and</span><br><span class="line">&lt;a href=&quot;http://example.com/tillie&quot; class=&quot;sister&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;</span><br><span class="line">and they lived at the bottom of a well.&lt;/p&gt;</span><br><span class="line">&lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.title)</span><br><span class="line">print(type(soup.title))</span><br><span class="line">print(soup.title.string)</span><br><span class="line">print(soup.head)</span><br><span class="line">print(soup.p)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;</span><br><span class="line">&lt;class &apos;bs4.element.Tag&apos;&gt;</span><br><span class="line">The Dormouse&apos;s story</span><br><span class="line">&lt;head&gt;&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;p class=&quot;title&quot; name=&quot;dromouse&quot;&gt;&lt;b&gt;The Dormouse&apos;s story&lt;/b&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>在这里我们依然选用了刚才的 HTML 代码，我们首先打印输出了 title 节点的选择结果，输出结果正是 title 节点加里面的文字内容。接下来输出了它的类型，是 bs4.element.Tag 类型，这是 BeautifulSoup 中的一个重要的数据结构，经过选择器选择之后，选择结果都是这种 Tag 类型，它具有一些属性比如 string 属性，调用 Tag 的 string 属性，就可以得到节点的文本内容了，所以接下来的输出结果正是节点的文本内容。</p>
+<p>接下来我们又尝试选择了 head 节点，结果也是节点加其内部的所有内容，再接下来选择了 p 节点，不过这次情况比较特殊，我们发现结果是第一个 p 节点的内容，后面的几个 p 节点并没有选择到，也就是说，当有多个节点时，这种选择方式只会选择到第一个匹配的节点，其他的后面的节点都会忽略。</p>
+<h4 id="提取信息"><a href="#提取信息" class="headerlink" title="提取信息"></a>提取信息</h4><p>在上面我们演示了调用 string 属性来获取文本的值，那我们要获取节点属性值怎么办呢？获取节点名怎么办呢？下面我们来统一梳理一下信息的提取方式</p>
+<h5 id="获取名称"><a href="#获取名称" class="headerlink" title="获取名称"></a>获取名称</h5><p>可以利用 name 属性来获取节点的名称。还是以上面的文本为例，我们选取 title 节点，然后调用 name 属性就可以得到节点名称。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(soup.title.name)</span><br></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title</span><br></pre></td></tr></table></figure>
+<h5 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h5><p>每个节点可能有多个属性，比如 id，class 等等，我们选择到这个节点元素之后，可以调用 attrs 获取所有属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(soup.p.attrs)</span><br><span class="line">print(soup.p.attrs[&apos;name&apos;])</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;class&apos;: [&apos;title&apos;], &apos;name&apos;: &apos;dromouse&apos;&#125;</span><br><span class="line">dromouse</span><br></pre></td></tr></table></figure>
+<p>可以看到 attrs 的返回结果是字典形式，把选择的节点的所有属性和属性值组合成一个字典，接下来如果要获取 name 属性，就相当于从字典中获取某个键值，只需要用中括号加属性名称就可以得到结果了，比如获取 name 属性就可以通过 attrs[‘name’] 得到相应的属性值。</p>
+<p>其实这样的写法还有点繁琐，还有一种更简单的获取方式，我们可以不用写 attrs，直接节点元素后面加中括号，传入属性名就可以达到属性值了，样例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(soup.p[&apos;name&apos;])</span><br><span class="line">print(soup.p[&apos;class&apos;])</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dromouse</span><br><span class="line">[&apos;title&apos;]</span><br></pre></td></tr></table></figure>
+<p>在这里注意到有的返回结果是字符串，有的返回结果是字符串组成的列表。比如 name 属性的值是唯一的，返回的结果就是单个字符串，而对于 class，一个节点元素可能由多个 class，所以返回的是列表，所以在实际处理过程中要注意判断类型。</p>
+<h5 id="获取内容"><a href="#获取内容" class="headerlink" title="获取内容"></a>获取内容</h5><p>可以利用 string 属性获取节点元素包含的文本内容，比如上面的文本我们获取第一个 p 节点的文本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(soup.p.string)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The Dormouse&apos;s story</span><br></pre></td></tr></table></figure>
+<p>再次注意一下这里选择到的 p 节点是第一个 p 节点，获取的文本也就是第一个 p 节点里面的文本。</p>
+<h4 id="嵌套选择"><a href="#嵌套选择" class="headerlink" title="嵌套选择"></a>嵌套选择</h4><p>在上面的例子中我们知道每一个返回结果都是 bs4.element.Tag 类型，它同样可以继续调用节点进行下一步的选择，比如我们获取了 head 节点元素，我们可以继续调用 head 来选取其内部的 head 节点元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">html = &quot;&quot;&quot;</span><br><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.head.title)</span><br><span class="line">print(type(soup.head.title))</span><br><span class="line">print(soup.head.title.string)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;</span><br><span class="line">&lt;class &apos;bs4.element.Tag&apos;&gt;</span><br><span class="line">The Dormouse&apos;s story</span><br></pre></td></tr></table></figure>
+<p>第一行结果是我们调用了 head 之后再次调用了 title 来选择的 title 节点元素，然后我们紧接着打印输出了它的类型，可以看到它仍然是 bs4.element.Tag 类型，也就是说我们在 Tag 类型的基础上再次选择得到的依然还是 Tag 类型，每次返回的结果都相同，所以这样我们就可以这样做嵌套的选择了。</p>
+<p>最后输出了一下它的 string 属性，也就是节点里的文本内容。</p>
+<h4 id="关联选择"><a href="#关联选择" class="headerlink" title="关联选择"></a>关联选择</h4><p>我们在做选择的时候有时候不能做到一步就可以选择到想要的节点元素，有时候在选择的时候需要先选中某一个节点元素，然后以它为基准再选择它的子节点、父节点、兄弟节点等等。所以在这里我们就介绍下如何来选择这些节点元素。</p>
+<h5 id="子节点和子孙节点"><a href="#子节点和子孙节点" class="headerlink" title="子节点和子孙节点"></a>子节点和子孙节点</h5><p>选取到了一个节点元素之后，如果想要获取它的直接子节点可以调用 contents 属性，我们用一个实例来感受一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">html = &quot;&quot;&quot;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;p class=&quot;story&quot;&gt;</span><br><span class="line">            Once upon a time there were three little sisters; and their names were</span><br><span class="line">            &lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">                &lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">            &lt;/a&gt;</span><br><span class="line">            &lt;a href=&quot;http://example.com/lacie&quot; class=&quot;sister&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; </span><br><span class="line">            and</span><br><span class="line">            &lt;a href=&quot;http://example.com/tillie&quot; class=&quot;sister&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;</span><br><span class="line">            and they lived at the bottom of a well.</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">        &lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[&apos;\n            Once upon a time there were three little sisters; and their names were\n            &apos;, &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">&lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;, &apos;\n&apos;, &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;, &apos; \n            and\n            &apos;, &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;, &apos;\n            and they lived at the bottom of a well.\n        &apos;]</span><br></pre></td></tr></table></figure>
+<p>返回的结果是列表形式，p 节点里面既包含文本，又包含节点，返回的结果会将他们以列表形式都统一返回。</p>
+<p>注意得到的列表的每一个元素都是 p 节点的直接子节点，比如第一个 a 节点里面包含了一层 span 节点，这个就相当于孙子节点了，但是返回结果中并没有单独把 span 节点选出来作为结果的一部分，所以说 contents 属性得到的结果是直接子节点的列表。</p>
+<p>同样地我们可以调用 children 属性，得到相应的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.p.children)</span><br><span class="line">for i, child in enumerate(soup.p.children):</span><br><span class="line">    print(i, child)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;list_iterator object at 0x1064f7dd8&gt;</span><br><span class="line">0 </span><br><span class="line">            Once upon a time there were three little sisters; and their names were</span><br><span class="line"></span><br><span class="line">1 &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">&lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">2 </span><br><span class="line"></span><br><span class="line">3 &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;</span><br><span class="line">4  </span><br><span class="line">            and</span><br><span class="line"></span><br><span class="line">5 &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;</span><br><span class="line">6 </span><br><span class="line">            and they lived at the bottom of a well.</span><br></pre></td></tr></table></figure>
+<p>还是同样的 HTML 文本，在这里我们调用了 children 属性来进行选择，返回结果可以看到是生成器类型，所以接下来我们用 for 循环输出了一下相应的内容，内容其实是一样的，只不过 children 返回的是生成器类型，而 contents 返回的是列表类型。</p>
+<p>如果我们要得到所有的子孙节点的话可以调用 descendants 属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.p.descendants)</span><br><span class="line">for i, child in enumerate(soup.p.descendants):</span><br><span class="line">    print(i, child)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;generator object descendants at 0x10650e678&gt;</span><br><span class="line">0 </span><br><span class="line">            Once upon a time there were three little sisters; and their names were</span><br><span class="line"></span><br><span class="line">1 &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">&lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">2 </span><br><span class="line"></span><br><span class="line">3 &lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">4 Elsie</span><br><span class="line">5 </span><br><span class="line"></span><br><span class="line">6 </span><br><span class="line"></span><br><span class="line">7 &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;</span><br><span class="line">8 Lacie</span><br><span class="line">9  </span><br><span class="line">            and</span><br><span class="line"></span><br><span class="line">10 &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;</span><br><span class="line">11 Tillie</span><br><span class="line">12 </span><br><span class="line">            and they lived at the bottom of a well.</span><br></pre></td></tr></table></figure>
+<p>返回结果还是生成器，遍历输出一下可以看到这次的输出结果就包含了 span 节点，descendants 会递归地查询所有子节点，得到的是所有的子孙节点。</p>
+<h5 id="父节点和祖先节点"><a href="#父节点和祖先节点" class="headerlink" title="父节点和祖先节点"></a>父节点和祖先节点</h5><p>如果要获取某个节点元素的父节点，可以调用 parent 属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">html = &quot;&quot;&quot;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;p class=&quot;story&quot;&gt;</span><br><span class="line">            Once upon a time there were three little sisters; and their names were</span><br><span class="line">            &lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">                &lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">            &lt;/a&gt;</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">        &lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.a.parent)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class=&quot;story&quot;&gt;</span><br><span class="line">            Once upon a time there were three little sisters; and their names were</span><br><span class="line">            &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">&lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>在这里我们选择的是第一个 a 节点的父节点元素，很明显它的父节点是 p 节点，输出结果便是 p 节点及其内部的内容。</p>
+<p>注意到这里输出的仅仅是 a 节点的直接父节点，而没有再向外寻找父节点的祖先节点，如果我们要想获取所有的祖先节点，可以调用 parents 属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">html = &quot;&quot;&quot;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;p class=&quot;story&quot;&gt;</span><br><span class="line">            &lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">                &lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">            &lt;/a&gt;</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(type(soup.a.parents))</span><br><span class="line">print(list(enumerate(soup.a.parents)))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;class &apos;generator&apos;&gt;</span><br><span class="line">[(0, &lt;p class=&quot;story&quot;&gt;</span><br><span class="line">&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">&lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;/p&gt;), (1, &lt;body&gt;</span><br><span class="line">&lt;p class=&quot;story&quot;&gt;</span><br><span class="line">&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">&lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;), (2, &lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class=&quot;story&quot;&gt;</span><br><span class="line">&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">&lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;&lt;/html&gt;), (3, &lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class=&quot;story&quot;&gt;</span><br><span class="line">&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">&lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;&lt;/html&gt;)]</span><br></pre></td></tr></table></figure>
+<p>返回结果是一个生成器类型，我们在这里用列表输出了它的索引和内容，可以发现列表中的元素就是 a 节点的祖先节点。</p>
+<h5 id="兄弟节点"><a href="#兄弟节点" class="headerlink" title="兄弟节点"></a>兄弟节点</h5><p>上面说明了子节点和父节点的获取方式，如果要获取同级的节点也就是兄弟节点应该怎么办？我们先用一个实例来感受一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">html = &quot;&quot;&quot;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;p class=&quot;story&quot;&gt;</span><br><span class="line">            Once upon a time there were three little sisters; and their names were</span><br><span class="line">            &lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;</span><br><span class="line">                &lt;span&gt;Elsie&lt;/span&gt;</span><br><span class="line">            &lt;/a&gt;</span><br><span class="line">            Hello</span><br><span class="line">            &lt;a href=&quot;http://example.com/lacie&quot; class=&quot;sister&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; </span><br><span class="line">            and</span><br><span class="line">            &lt;a href=&quot;http://example.com/tillie&quot; class=&quot;sister&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;</span><br><span class="line">            and they lived at the bottom of a well.</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(&apos;Next Sibling&apos;, soup.a.next_sibling)</span><br><span class="line">print(&apos;Prev Sibling&apos;, soup.a.previous_sibling)</span><br><span class="line">print(&apos;Next Siblings&apos;, list(enumerate(soup.a.next_siblings)))</span><br><span class="line">print(&apos;Prev Siblings&apos;, list(enumerate(soup.a.previous_siblings)))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Next Sibling </span><br><span class="line">            Hello</span><br><span class="line"></span><br><span class="line">Prev Sibling </span><br><span class="line">            Once upon a time there were three little sisters; and their names were</span><br><span class="line"></span><br><span class="line">Next Siblings [(0, &apos;\n            Hello\n            &apos;), (1, &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;), (2, &apos; \n            and\n            &apos;), (3, &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;), (4, &apos;\n            and they lived at the bottom of a well.\n        &apos;)]</span><br><span class="line">Prev Siblings [(0, &apos;\n            Once upon a time there were three little sisters; and their names were\n            &apos;)]</span><br></pre></td></tr></table></figure>
+<p>可以看到在这里我们调用了四个不同的属性，next_sibling 和 previous_sibling 分别可以获取节点的下一个和上一个兄弟元素，next_siblings 和 previous_siblings 则分别返回所有前面和后面的兄弟节点的生成器。</p>
+<h5 id="提取信息-1"><a href="#提取信息-1" class="headerlink" title="提取信息"></a>提取信息</h5><p>在上面我们讲解了关联元素节点的选择方法，如果我们想要获取它们的一些信息，比如文本、属性等等也是同样的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">html = &quot;&quot;&quot;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;p class=&quot;story&quot;&gt;</span><br><span class="line">            Once upon a time there were three little sisters; and their names were</span><br><span class="line">            &lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;Bob&lt;/a&gt;&lt;a href=&quot;http://example.com/lacie&quot; class=&quot;sister&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; </span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(&apos;Next Sibling:&apos;)</span><br><span class="line">print(type(soup.a.next_sibling))</span><br><span class="line">print(soup.a.next_sibling)</span><br><span class="line">print(soup.a.next_sibling.string)</span><br><span class="line">print(&apos;Parent:&apos;)</span><br><span class="line">print(type(soup.a.parents))</span><br><span class="line">print(list(soup.a.parents)[0])</span><br><span class="line">print(list(soup.a.parents)[0].attrs[&apos;class&apos;])</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Next Sibling:</span><br><span class="line">&lt;class &apos;bs4.element.Tag&apos;&gt;</span><br><span class="line">&lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;</span><br><span class="line">Lacie</span><br><span class="line">Parent:</span><br><span class="line">&lt;class &apos;generator&apos;&gt;</span><br><span class="line">&lt;p class=&quot;story&quot;&gt;</span><br><span class="line">            Once upon a time there were three little sisters; and their names were</span><br><span class="line">            &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Bob&lt;/a&gt;&lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">[&apos;story&apos;]</span><br></pre></td></tr></table></figure>
+<p>如果返回结果是单个节点，那么可以直接调用 string、attrs 等属性来获得其文本和属性，如果返回结果是多个节点的生成器，则可以转为列表后取出某个元素，然后再调用 string、attrs 等属性来获取其对应节点等文本和属性。</p>
+<h3 id="方法选择器"><a href="#方法选择器" class="headerlink" title="方法选择器"></a>方法选择器</h3><p>前面我们所讲的选择方法都是通过属性来选择元素的，这种选择方法非常快，但是如果要进行比较复杂的选择的话则会比较繁琐，不够灵活。所以 BeautifulSoup 还为我们提供了一些查询的方法，比如 find_all()、find() 等方法，我们可以调用方法然后传入相应等参数就可以灵活地进行查询了。</p>
+<p>最常用的查询方法莫过于 find_all() 和 find() 了，下面我们对它们的用法进行详细的介绍。</p>
+<h4 id="find-all"><a href="#find-all" class="headerlink" title="find_all()"></a>find_all()</h4><p>find_all，顾名思义，就是查询所有符合条件的元素，可以给它传入一些属性或文本来得到符合条件的元素，功能十分强大。</p>
+<p>它的API如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find_all(name , attrs , recursive , text , **kwargs)</span><br></pre></td></tr></table></figure>
+<h5 id="name"><a href="#name" class="headerlink" title="name"></a>name</h5><p>我们可以根据节点名来查询元素，下面我们用一个实例来感受一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">html=&apos;&apos;&apos;</span><br><span class="line">&lt;div class=&quot;panel&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;panel-heading&quot;&gt;</span><br><span class="line">        &lt;h4&gt;Hello&lt;/h4&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;panel-body&quot;&gt;</span><br><span class="line">        &lt;ul class=&quot;list&quot; id=&quot;list-1&quot;&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">        &lt;ul class=&quot;list list-small&quot; id=&quot;list-2&quot;&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.find_all(name=&apos;ul&apos;))</span><br><span class="line">print(type(soup.find_all(name=&apos;ul&apos;)[0]))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[&lt;ul class=&quot;list&quot; id=&quot;list-1&quot;&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;, &lt;ul class=&quot;list list-small&quot; id=&quot;list-2&quot;&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;]</span><br><span class="line">&lt;class &apos;bs4.element.Tag&apos;&gt;</span><br></pre></td></tr></table></figure>
+<p>在这里我们调用了 find_all() 方法，传入了一个 name 参数，参数值为 ul，也就是说我们想要查询所有 ul 节点，返回结果是列表类型，长度为 2，每个元素依然都是 bs4.element.Tag 类型。</p>
+<p>因为都是 Tag 类型，所以我们依然可以进行嵌套查询，还是同样的文本，在这里我们查询出所有 ul 节点后再继续查询其内部的 li 节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for ul in soup.find_all(name=&apos;ul&apos;):</span><br><span class="line">    print(ul.find_all(name=&apos;li&apos;))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;]</span><br><span class="line">[&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;]</span><br></pre></td></tr></table></figure>
+<p>返回结果是列表类型，列表中的每个元素依然还是 Tag 类型。</p>
+<p>接下来我们就可以遍历每个 li 获取它的文本了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for ul in soup.find_all(name=&apos;ul&apos;):</span><br><span class="line">    print(ul.find_all(name=&apos;li&apos;))</span><br><span class="line">    for li in ul.find_all(name=&apos;li&apos;):</span><br><span class="line">        print(li.string)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;]</span><br><span class="line">Foo</span><br><span class="line">Bar</span><br><span class="line">Jay</span><br><span class="line">[&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;]</span><br><span class="line">Foo</span><br><span class="line">Bar</span><br></pre></td></tr></table></figure>
+<h5 id="attrs"><a href="#attrs" class="headerlink" title="attrs"></a>attrs</h5><p>除了根据节点名查询，我们也可以传入一些属性来进行查询，我们用一个实例感受一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">html=&apos;&apos;&apos;</span><br><span class="line">&lt;div class=&quot;panel&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;panel-heading&quot;&gt;</span><br><span class="line">        &lt;h4&gt;Hello&lt;/h4&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;panel-body&quot;&gt;</span><br><span class="line">        &lt;ul class=&quot;list&quot; id=&quot;list-1&quot; name=&quot;elements&quot;&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">        &lt;ul class=&quot;list list-small&quot; id=&quot;list-2&quot;&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.find_all(attrs=&#123;&apos;id&apos;: &apos;list-1&apos;&#125;))</span><br><span class="line">print(soup.find_all(attrs=&#123;&apos;name&apos;: &apos;elements&apos;&#125;))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[&lt;ul class=&quot;list&quot; id=&quot;list-1&quot; name=&quot;elements&quot;&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;]</span><br><span class="line">[&lt;ul class=&quot;list&quot; id=&quot;list-1&quot; name=&quot;elements&quot;&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;]</span><br></pre></td></tr></table></figure>
+<p>在这里我们查询的时候传入的是 attrs 参数，参数的类型是字典类型，比如我们要查询 id 为 list-1 的节点，那就可以传入attrs={‘id’: ‘list-1’} 的查询条件，得到的结果是列表形式，包含的内容就是符合 id 为 list-1 的所有节点，上面的例子中符合条件的元素个数是 1，所以结果是长度为 1 的列表。</p>
+<p>对于一些常用的属性比如 id、class 等，我们可以不用 attrs 来传递，比如我们要查询 id 为 list-1 的节点，我们可以直接传入 id 这个参数，还是上面的文本，我们换一种方式来查询。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.find_all(id=&apos;list-1&apos;))</span><br><span class="line">print(soup.find_all(class_=&apos;element&apos;))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[&lt;ul class=&quot;list&quot; id=&quot;list-1&quot;&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;]</span><br><span class="line">[&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;]</span><br></pre></td></tr></table></figure>
+<p>在这里我们直接传入 id=’list-1’ 就可以查询 id 为 list-1 的节点元素了。而对于 class 来说，由于 class 在 python 里是一个关键字，所以在这里后面需要加一个下划线，class_=’element’，返回的结果依然还是 Tag 组成的列表。</p>
+<h5 id="text"><a href="#text" class="headerlink" title="text"></a>text</h5><p>text 参数可以用来匹配节点的文本，传入的形式可以是字符串，可以是正则表达式对象，我们用一个实例来感受一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">html=&apos;&apos;&apos;</span><br><span class="line">&lt;div class=&quot;panel&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;panel-body&quot;&gt;</span><br><span class="line">        &lt;a&gt;Hello, this is a link&lt;/a&gt;</span><br><span class="line">        &lt;a&gt;Hello, this is a link, too&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.find_all(text=re.compile(&apos;link&apos;)))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;Hello, this is a link&apos;, &apos;Hello, this is a link, too&apos;]</span><br></pre></td></tr></table></figure>
+<p>在这里有两个 a 节点，其内部包含有文本信息，在这里我们调用 find_all() 方法传入 text 参数，参数为正则表达式对象，结果会返回所有匹配正则表达式的节点文本组成的列表。</p>
+<h4 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h4><p>除了 find_all() 方法，还有 find() 方法，只不过 find() 方法返回的是单个元素，也就是第一个匹配的元素，而 find_all() 返回的是所有匹配的元素组成的列表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">html=&apos;&apos;&apos;</span><br><span class="line">&lt;div class=&quot;panel&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;panel-heading&quot;&gt;</span><br><span class="line">        &lt;h4&gt;Hello&lt;/h4&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;panel-body&quot;&gt;</span><br><span class="line">        &lt;ul class=&quot;list&quot; id=&quot;list-1&quot;&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">        &lt;ul class=&quot;list list-small&quot; id=&quot;list-2&quot;&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.find(name=&apos;ul&apos;))</span><br><span class="line">print(type(soup.find(name=&apos;ul&apos;)))</span><br><span class="line">print(soup.find(class_=&apos;list&apos;))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=&quot;list&quot; id=&quot;list-1&quot;&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;class &apos;bs4.element.Tag&apos;&gt;</span><br><span class="line">&lt;ul class=&quot;list&quot; id=&quot;list-1&quot;&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>返回结果不再是列表形式，而是第一个匹配的节点元素，类型依然是 Tag 类型。</p>
+<p>另外还有许多的查询方法，用法与前面介绍的 find_all()、find() 方法完全相同，只不过查询范围不同，在此做一下简单的说明。</p>
+<h4 id="find-parents-find-parent"><a href="#find-parents-find-parent" class="headerlink" title="find_parents() find_parent()"></a>find_parents() find_parent()</h4><p>find_parents() 返回所有祖先节点，find_parent() 返回直接父节点。</p>
+<h4 id="find-next-siblings-find-next-sibling"><a href="#find-next-siblings-find-next-sibling" class="headerlink" title="find_next_siblings() find_next_sibling()"></a>find_next_siblings() find_next_sibling()</h4><p>find_next_siblings() 返回后面所有兄弟节点，find_next_sibling() 返回后面第一个兄弟节点。</p>
+<h4 id="find-previous-siblings-find-previous-sibling"><a href="#find-previous-siblings-find-previous-sibling" class="headerlink" title="find_previous_siblings() find_previous_sibling()"></a>find_previous_siblings() find_previous_sibling()</h4><p>find_previous_siblings() 返回前面所有兄弟节点，find_previous_sibling() 返回前面第一个兄弟节点。</p>
+<h4 id="find-all-next-find-next"><a href="#find-all-next-find-next" class="headerlink" title="find_all_next() find_next()"></a>find_all_next() find_next()</h4><p>find_all_next() 返回节点后所有符合条件的节点, find_next() 返回第一个符合条件的节点。</p>
+<h4 id="find-all-previous-和-find-previous"><a href="#find-all-previous-和-find-previous" class="headerlink" title="find_all_previous() 和 find_previous()"></a>find_all_previous() 和 find_previous()</h4><p>find_all_previous() 返回节点后所有符合条件的节点, find_previous() 返回第一个符合条件的节点</p>
+<h3 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h3><p>BeautifulSoup 还提供了另外一种选择器，那就是 CSS 选择器，如果对 Web 开发熟悉对话，CSS 选择器肯定也不陌生，如果不熟悉的话，可以看一下：<a href="http://www.w3school.com.cn/cssref/css_selectors.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/cssref/css_selectors.asp</a>。</p>
+<p>使用 CSS 选择器，只需要调用 select() 方法，传入相应的 CSS 选择器即可，我们用一个实例来感受一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">html=&apos;&apos;&apos;</span><br><span class="line">&lt;div class=&quot;panel&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;panel-heading&quot;&gt;</span><br><span class="line">        &lt;h4&gt;Hello&lt;/h4&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;panel-body&quot;&gt;</span><br><span class="line">        &lt;ul class=&quot;list&quot; id=&quot;list-1&quot;&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">        &lt;ul class=&quot;list list-small&quot; id=&quot;list-2&quot;&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">print(soup.select(&apos;.panel .panel-heading&apos;))</span><br><span class="line">print(soup.select(&apos;ul li&apos;))</span><br><span class="line">print(soup.select(&apos;#list-2 .element&apos;))</span><br><span class="line">print(type(soup.select(&apos;ul&apos;)[0]))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[&lt;div class=&quot;panel-heading&quot;&gt;</span><br><span class="line">&lt;h4&gt;Hello&lt;/h4&gt;</span><br><span class="line">&lt;/div&gt;]</span><br><span class="line">[&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;]</span><br><span class="line">[&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;]</span><br><span class="line">&lt;class &apos;bs4.element.Tag&apos;&gt;</span><br></pre></td></tr></table></figure>
+<p>在这里我们用了三次 CSS 选择器，返回的结果均是符合 CSS 选择器的节点组成的列表。例如 select(‘ul li’) 则是选择所有 ul 节点下面的所有 li 节点，结果便是所有的 li 节点组成的列表。</p>
+<p>最后一句我们打印输出了列表中元素的类型，可以看到类型依然是 Tag 类型。</p>
+<h4 id="嵌套选择-1"><a href="#嵌套选择-1" class="headerlink" title="嵌套选择"></a>嵌套选择</h4><p>select() 方法同样支持嵌套选择，例如我们先选择所有 ul 节点，再遍历每个 ul 节点选择其 li 节点，样例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">for ul in soup.select(&apos;ul&apos;):</span><br><span class="line">    print(ul.select(&apos;li&apos;))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Jay&lt;/li&gt;]</span><br><span class="line">[&lt;li class=&quot;element&quot;&gt;Foo&lt;/li&gt;, &lt;li class=&quot;element&quot;&gt;Bar&lt;/li&gt;]</span><br></pre></td></tr></table></figure>
+<p>可以看到正常输出了遍历每个 ul 节点之后，其下的所有 li 节点组成的列表。</p>
+<h4 id="获取属性-1"><a href="#获取属性-1" class="headerlink" title="获取属性"></a>获取属性</h4><p>我们知道节点类型是 Tag 类型，所以获取属性还是可以用原来的方法获取，仍然是上面的 HTML 文本，我们在这里尝试获取每个 ul 节点的 id 属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">for ul in soup.select(&apos;ul&apos;):</span><br><span class="line">    print(ul[&apos;id&apos;])</span><br><span class="line">    print(ul.attrs[&apos;id&apos;])</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list-1</span><br><span class="line">list-1</span><br><span class="line">list-2</span><br><span class="line">list-2</span><br></pre></td></tr></table></figure>
+<p>可以看到直接传入中括号和属性名和通过 attrs 属性获取属性值都是可以成功的。</p>
+<h4 id="获取文本"><a href="#获取文本" class="headerlink" title="获取文本"></a>获取文本</h4><p>那么获取文本当然也可以用前面所讲的 string 属性，还有一个方法那就是 get_text()，同样可以获取文本值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line">for li in soup.select(&apos;li&apos;):</span><br><span class="line">    print(&apos;Get Text:&apos;, li.get_text())</span><br><span class="line">    print(&apos;String:&apos;, li.string)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Get Text: Foo</span><br><span class="line">String: Foo</span><br><span class="line">Get Text: Bar</span><br><span class="line">String: Bar</span><br><span class="line">Get Text: Jay</span><br><span class="line">String: Jay</span><br><span class="line">Get Text: Foo</span><br><span class="line">String: Foo</span><br><span class="line">Get Text: Bar</span><br><span class="line">String: Bar</span><br></pre></td></tr></table></figure>
+<p>二者的效果是完全一致的，都可以获取到节点的文本值。</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><blockquote>
+<ul>
+<li>推荐使用 LXML 解析库，必要时使用 html.parser。</li>
+<li>节点选择筛选功能弱但是速度快。</li>
+<li>建议使用 find()、find_all() 查询匹配单个结果或者多个结果。</li>
+<li>如果对 CSS 选择器熟悉的话可以使用 select() 选择法。</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/post/cd406da8.html">BeautifulSoup的使用</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 GavinLiu 的个人博客">GavinLiu</a></p>
+  <p><span>发布时间:</span>2018年05月02日 - 20:05</p>
+  <p><span>最后更新:</span>2018年05月02日 - 20:05</p>
+  <p><span>原始链接:</span><a href="/post/cd406da8.html" title="BeautifulSoup的使用">http://gavinliu4011.github.io/post/cd406da8.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://gavinliu4011.github.io/post/cd406da8.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请博主吃个鸡腿吧</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="GavinLiu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="GavinLiu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/爬虫/" rel="tag"><i class="fa fa-tag"></i> 爬虫</a>
+          
+            <a href="/tags/BeautifulSoup/" rel="tag"><i class="fa fa-tag"></i> BeautifulSoup</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/606df891.html" rel="next" title="XPath 和 lxml库">
+                <i class="fa fa-chevron-left"></i> XPath 和 lxml库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/f484e02f.html" rel="prev" title="BeautifulSoup实例">
+                BeautifulSoup实例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2154292" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="GavinLiu" />
+            
+              <p class="site-author-name" itemprop="name">GavinLiu</p>
+              <p class="site-description motion-element" itemprop="description">刘泰丞的个人网站，记录生活的瞬间，分享学习的心得，感悟生活，留住感动</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gavinliu4011" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/jackfrued" title="骆昊博客" target="_blank">骆昊博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zoie1996.github.io/" title="Zoie博客" target="_blank">Zoie博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://threereyed.github.io/" title="露灵博客" target="_blank">露灵博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://alexyanglong.github.io/" title="AlexYang博客" target="_blank">AlexYang博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://simonzhao88.github.io/" title="Simonzhao博客" target="_blank">Simonzhao博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeautifulSoup简介"><span class="nav-number">2.</span> <span class="nav-text">BeautifulSoup简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pip安装"><span class="nav-number">3.1.</span> <span class="nav-text">Pip安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Wheel安装"><span class="nav-number">3.2.</span> <span class="nav-text">Wheel安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析器"><span class="nav-number">4.</span> <span class="nav-text">解析器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本使用"><span class="nav-number">5.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点选择器"><span class="nav-number">6.</span> <span class="nav-text">节点选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择元素"><span class="nav-number">6.1.</span> <span class="nav-text">选择元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提取信息"><span class="nav-number">6.2.</span> <span class="nav-text">提取信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#获取名称"><span class="nav-number">6.2.1.</span> <span class="nav-text">获取名称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#获取属性"><span class="nav-number">6.2.2.</span> <span class="nav-text">获取属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#获取内容"><span class="nav-number">6.2.3.</span> <span class="nav-text">获取内容</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套选择"><span class="nav-number">6.3.</span> <span class="nav-text">嵌套选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关联选择"><span class="nav-number">6.4.</span> <span class="nav-text">关联选择</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#子节点和子孙节点"><span class="nav-number">6.4.1.</span> <span class="nav-text">子节点和子孙节点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#父节点和祖先节点"><span class="nav-number">6.4.2.</span> <span class="nav-text">父节点和祖先节点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#兄弟节点"><span class="nav-number">6.4.3.</span> <span class="nav-text">兄弟节点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提取信息-1"><span class="nav-number">6.4.4.</span> <span class="nav-text">提取信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法选择器"><span class="nav-number">7.</span> <span class="nav-text">方法选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#find-all"><span class="nav-number">7.1.</span> <span class="nav-text">find_all()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#name"><span class="nav-number">7.1.1.</span> <span class="nav-text">name</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#attrs"><span class="nav-number">7.1.2.</span> <span class="nav-text">attrs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#text"><span class="nav-number">7.1.3.</span> <span class="nav-text">text</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find"><span class="nav-number">7.2.</span> <span class="nav-text">find()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find-parents-find-parent"><span class="nav-number">7.3.</span> <span class="nav-text">find_parents() find_parent()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find-next-siblings-find-next-sibling"><span class="nav-number">7.4.</span> <span class="nav-text">find_next_siblings() find_next_sibling()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find-previous-siblings-find-previous-sibling"><span class="nav-number">7.5.</span> <span class="nav-text">find_previous_siblings() find_previous_sibling()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find-all-next-find-next"><span class="nav-number">7.6.</span> <span class="nav-text">find_all_next() find_next()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find-all-previous-和-find-previous"><span class="nav-number">7.7.</span> <span class="nav-text">find_all_previous() 和 find_previous()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS选择器"><span class="nav-number">8.</span> <span class="nav-text">CSS选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套选择-1"><span class="nav-number">8.1.</span> <span class="nav-text">嵌套选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取属性-1"><span class="nav-number">8.2.</span> <span class="nav-text">获取属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取文本"><span class="nav-number">8.3.</span> <span class="nav-text">获取文本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">9.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GavinLiu</span>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共66.9k字</span>
+</div>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Jyyv0zlVl9qFNLkwwjKwlDhD-gzGzoHsz", "dOnLXYcOXKVDypUky50GxgAN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: -30px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: 40px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/wanko.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- ҳ����С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>

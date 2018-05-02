@@ -6,12 +6,108 @@
     
     
   <url>
-    <loc>http://gavinliu4011.github.io/post/dc6a7e6c.html</loc>
-    <lastmod>2018-04-09T15:40:13.259Z</lastmod>
+    <loc>http://gavinliu4011.github.io/post/f825a662.html</loc>
+    <lastmod>2018-05-02T15:19:30.498Z</lastmod>
     <data>
         <display>
-        <title>Flask(二)</title>
-        <pubTime>2018-04-09T23:40:03.000Z</pubTime>
+        <title>爬虫糗事百科实例</title>
+        <pubTime>2018-05-02T23:18:08.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>爬虫</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="http://gavinliu4011.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/f484e02f.html</loc>
+    <lastmod>2018-05-02T15:18:33.046Z</lastmod>
+    <data>
+        <display>
+        <title>BeautifulSoup实例</title>
+        <pubTime>2018-05-02T22:34:43.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>爬虫</tag>
+         
+        <tag>BeautifulSoup</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="http://gavinliu4011.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/cd406da8.html</loc>
+    <lastmod>2018-05-02T12:24:58.956Z</lastmod>
+    <data>
+        <display>
+        <title>BeautifulSoup的使用</title>
+        <pubTime>2018-05-02T20:24:49.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>爬虫</tag>
+         
+        <tag>BeautifulSoup</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="http://gavinliu4011.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/606df891.html</loc>
+    <lastmod>2018-04-28T15:35:29.783Z</lastmod>
+    <data>
+        <display>
+        <title>XPath 和 lxml库</title>
+        <pubTime>2018-04-28T23:35:20.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>爬虫</tag>
+         
+        <tag>XPath</tag>
+         
+        <tag>lxml</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="http://gavinliu4011.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/735be50e.html</loc>
+    <lastmod>2018-04-09T15:40:55.532Z</lastmod>
+    <data>
+        <display>
+        <title>Flask(一)</title>
+        <pubTime>2018-04-08T20:32:28.000Z</pubTime>
         
         <tag>Python</tag>
          
@@ -28,12 +124,12 @@
 
     
   <url>
-    <loc>http://gavinliu4011.github.io/post/735be50e.html</loc>
-    <lastmod>2018-04-08T12:32:39.555Z</lastmod>
+    <loc>http://gavinliu4011.github.io/post/dc6a7e6c.html</loc>
+    <lastmod>2018-04-09T15:40:55.529Z</lastmod>
     <data>
         <display>
-        <title>Flask(一)</title>
-        <pubTime>2018-04-08T20:32:28.000Z</pubTime>
+        <title>Flask(二)</title>
+        <pubTime>2018-04-09T23:40:03.000Z</pubTime>
         
         <tag>Python</tag>
          
