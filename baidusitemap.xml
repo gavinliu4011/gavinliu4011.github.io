@@ -6,6 +6,54 @@
     
     
   <url>
+    <loc>http://gavinliu4011.github.io/post/1cfe1288.html</loc>
+    <lastmod>2018-05-05T14:30:58.731Z</lastmod>
+    <data>
+        <display>
+        <title>Scrapy 框架(四)之Spider</title>
+        <pubTime>2018-05-05T22:26:33.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>爬虫</tag>
+         
+        <tag>Scrapy</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="http://gavinliu4011.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/ae0bd4cd.html</loc>
+    <lastmod>2018-05-05T14:28:30.387Z</lastmod>
+    <data>
+        <display>
+        <title>Scrapy 框架(三)之Item Pipeline</title>
+        <pubTime>2018-05-05T09:44:36.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>爬虫</tag>
+         
+        <tag>Scrapy</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="http://gavinliu4011.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://gavinliu4011.github.io/post/a9fd3a36.html</loc>
     <lastmod>2018-05-04T13:50:02.373Z</lastmod>
     <data>

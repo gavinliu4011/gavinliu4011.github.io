@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="Python,进程池,线程池," />
+  <meta name="keywords" content="Python,爬虫,Scrapy," />
 
 
 
@@ -100,18 +100,18 @@
 
 
 
-<meta name="description" content="concurrent.futuresProcessPoolExecutor进程池，提供异步调用 基本方法 submit(fn, args, *kwargs) 异步提交任务  map(func, *iterables, timeout=None, chunksize=1) 取代for循环submit的操作  shutdown(wait=True) 相当于进程池的pool.close()+pool.j">
-<meta name="keywords" content="Python,进程池,线程池">
+<meta name="description" content="Item Pipeline当Item在Spider中被收集之后，它将会被传递到Item Pipeline，这些Item Pipeline组件按定义的顺序处理Item。 每个Item Pipeline都是实现了简单方法的Python类，比如决定此Item是丢弃还是存储。以下是Item Pipeline的一些典型应用：  验证爬取的数据(检查item包含某些字段，比如说name字段) 查重(并丢弃)">
+<meta name="keywords" content="Python,爬虫,Scrapy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python之concurrent.futures">
-<meta property="og:url" content="http://gavinliu4011.github.io/post/b1bc006d.html">
+<meta property="og:title" content="Scrapy 框架(三)之Item Pipeline">
+<meta property="og:url" content="http://gavinliu4011.github.io/post/ae0bd4cd.html">
 <meta property="og:site_name" content="gavinliu&#39;s blog">
-<meta property="og:description" content="concurrent.futuresProcessPoolExecutor进程池，提供异步调用 基本方法 submit(fn, args, *kwargs) 异步提交任务  map(func, *iterables, timeout=None, chunksize=1) 取代for循环submit的操作  shutdown(wait=True) 相当于进程池的pool.close()+pool.j">
+<meta property="og:description" content="Item Pipeline当Item在Spider中被收集之后，它将会被传递到Item Pipeline，这些Item Pipeline组件按定义的顺序处理Item。 每个Item Pipeline都是实现了简单方法的Python类，比如决定此Item是丢弃还是存储。以下是Item Pipeline的一些典型应用：  验证爬取的数据(检查item包含某些字段，比如说name字段) 查重(并丢弃)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-08T15:19:50.863Z">
+<meta property="og:updated_time" content="2018-05-05T14:28:30.387Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python之concurrent.futures">
-<meta name="twitter:description" content="concurrent.futuresProcessPoolExecutor进程池，提供异步调用 基本方法 submit(fn, args, *kwargs) 异步提交任务  map(func, *iterables, timeout=None, chunksize=1) 取代for循环submit的操作  shutdown(wait=True) 相当于进程池的pool.close()+pool.j">
+<meta name="twitter:title" content="Scrapy 框架(三)之Item Pipeline">
+<meta name="twitter:description" content="Item Pipeline当Item在Spider中被收集之后，它将会被传递到Item Pipeline，这些Item Pipeline组件按定义的顺序处理Item。 每个Item Pipeline都是实现了简单方法的Python类，比如决定此Item是丢弃还是存储。以下是Item Pipeline的一些典型应用：  验证爬取的数据(检查item包含某些字段，比如说name字段) 查重(并丢弃)">
 
 
 
@@ -141,7 +141,7 @@
 
 
 
-  <link rel="canonical" href="http://gavinliu4011.github.io/post/b1bc006d.html"/>
+  <link rel="canonical" href="http://gavinliu4011.github.io/post/ae0bd4cd.html"/>
 
 
 
@@ -156,7 +156,7 @@
   daovoice('update');
   </script>
 
-  <title>Python之concurrent.futures | gavinliu's blog</title>
+  <title>Scrapy 框架(三)之Item Pipeline | gavinliu's blog</title>
   
 
 
@@ -349,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gavinliu4011.github.io/post/b1bc006d.html">
+    <link itemprop="mainEntityOfPage" href="http://gavinliu4011.github.io/post/ae0bd4cd.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="GavinLiu">
@@ -366,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python之concurrent.futures</h1>
+          <h1 class="post-title" itemprop="name headline">Scrapy 框架(三)之Item Pipeline</h1>
         
 
         <div class="post-meta">
@@ -378,8 +378,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T07:19:00+08:00">
-                2018-03-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-05T17:44:36+08:00">
+                2018-05-05
               </time>
             
 
@@ -401,8 +401,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python线程/" itemprop="url" rel="index">
-                    <span itemprop="name">Python线程</span>
+                  <a href="/categories/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
                   </a>
                 </span>
 
@@ -418,7 +418,7 @@
 
           
           
-             <span id="/post/b1bc006d.html" class="leancloud_visitors" data-flag-title="Python之concurrent.futures">
+             <span id="/post/ae0bd4cd.html" class="leancloud_visitors" data-flag-title="Scrapy 框架(三)之Item Pipeline">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -444,7 +444,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  325
+                  823
                 </span>
               
 
@@ -460,7 +460,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -481,23 +481,49 @@
       
 
       
-        <h3 id="concurrent-futures"><a href="#concurrent-futures" class="headerlink" title="concurrent.futures"></a>concurrent.futures</h3><h4 id="ProcessPoolExecutor"><a href="#ProcessPoolExecutor" class="headerlink" title="ProcessPoolExecutor"></a>ProcessPoolExecutor</h4><p>进程池，提供异步调用</p>
-<h5 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h5><ul>
-<li><p>submit(fn, <em>args, *</em>kwargs) 异步提交任务</p>
+        <h3 id="Item-Pipeline"><a href="#Item-Pipeline" class="headerlink" title="Item Pipeline"></a>Item Pipeline</h3><p>当Item在Spider中被收集之后，它将会被传递到Item Pipeline，这些Item Pipeline组件按定义的顺序处理Item。</p>
+<p>每个Item Pipeline都是实现了简单方法的Python类，比如决定此Item是丢弃还是存储。以下是Item Pipeline的一些典型应用：</p>
+<ul>
+<li>验证爬取的数据(检查item包含某些字段，比如说name字段)</li>
+<li>查重(并丢弃)</li>
+<li>将爬取结果保存到文件或者数据库中</li>
+<li>清理HTML数据</li>
+</ul>
+<h4 id="编写Item-Pipeline"><a href="#编写Item-Pipeline" class="headerlink" title="编写Item Pipeline"></a>编写Item Pipeline</h4><p>编写item pipeline很简单，item pipiline组件是一个独立的Python类，其中process_item()方法必须实现，另外还有几个比较实用的方法：open_spider()、close_spider()、from_crawler()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomethingPipeline</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span>    </span><br><span class="line">        <span class="comment"># 可选实现，做参数初始化等</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">from_crawler</span><span class="params">(cls, crawler)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> cls()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_item</span><span class="params">(self, item, spider)</span>:</span></span><br><span class="line">        <span class="comment"># item (Item 对象) – 被爬取的item</span></span><br><span class="line">        <span class="comment"># spider (Spider 对象) – 爬取该item的spider</span></span><br><span class="line">        <span class="comment"># 这个方法必须实现，每个item pipeline组件都需要调用该方法，</span></span><br><span class="line">        <span class="comment"># 这个方法必须返回一个 Item 对象，被丢弃的item将不会被之后的pipeline组件所处理。</span></span><br><span class="line">        <span class="keyword">return</span> item</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">open_spider</span><span class="params">(self, spider)</span>:</span></span><br><span class="line">        <span class="comment"># spider (Spider 对象) – 被开启的spider</span></span><br><span class="line">        <span class="comment"># 可选实现，当spider被开启时，这个方法被调用。</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close_spider</span><span class="params">(self, spider)</span>:</span></span><br><span class="line">        <span class="comment"># spider (Spider 对象) – 被关闭的spider</span></span><br><span class="line">        <span class="comment"># 可选实现，当spider被关闭时，这个方法被调用</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>process_item(self, item, spider)：是必须要实现的方法，被定义的 Item Pipeline 会默认调用这个方法对 Item 进行处理。比如，我们可以进行数据处理或者将数据写入到数据库等操作。它必须返回 Item 类型的值或者抛出一个 DropItem 异常。</p>
+<ul>
+<li>item：是 Item 对象，即被处理的 Item。</li>
+<li>spider：是Spider对象，即生成该Item的Spider。</li>
+</ul>
+<p>如果它返回的是Item对象，那么此Item会被低优先级的Item Pipeline的process_item()方法处理，直到所有的方法被调用完毕。</p>
+<p>如果它抛出的是DropItem异常，那么此Item会被丢弃，不再进行处理。</p>
 </li>
-<li><p>map(func, *iterables, timeout=None, chunksize=1) 取代for循环submit的操作</p>
+<li><p>open_spider(self, spider)：open_spider()方法是在Spider开启的时候被自动调用的，在这里我们可以做一些初始化操作，如开启数据库连接等。</p>
+<ul>
+<li>spider：是被开启的Spider对象。</li>
+</ul>
 </li>
-<li><p>shutdown(wait=True) 相当于进程池的pool.close()+pool.join()操作</p>
-<p>wait=True，等待池内所有任务执行完毕回收完资源后才继续<br>wait=False，立即返回，并不会等待池内的任务执行完毕<br>但不管wait参数为何值，整个程序都会等到所有任务执行完毕<br>submit和map必须在shutdown之前</p>
+<li><p>close_spider(self, spider)：close_spider()方法是在Spider关闭的时候自动调用的，在这里我们可以做一些收尾工作，比如关闭数据库连接等。</p>
+<ul>
+<li>spider：是被关闭的Spider对象。</li>
+</ul>
 </li>
-<li><p>result(timeout=None)取得结果</p>
+<li><p>from_crawler(cls, crawler)：from_crawler()方法是一个类方法，用@classmethod标识，是一种依赖注入的方式。</p>
 </li>
-<li><p>add_done_callback(fn)回调函数</p>
+<li><ul>
+<li>cls：就是Class，返回一个Class实例。</li>
+</ul>
+</li>
+<li><ul>
+<li>crawler：通过crawler对象，我们可以拿到Scrapy的所有核心组件，如全局配置的每个信息，然后创建一个Pipeline实例。</li>
+</ul>
 </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor, ProcessPoolExecutor</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os, time, random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">task</span><span class="params">(n)</span>:</span></span><br><span class="line">    print(<span class="string">'%s is runing'</span> % os.getpid())</span><br><span class="line">    time.sleep(random.randint(<span class="number">1</span>, <span class="number">3</span>))</span><br><span class="line">    <span class="keyword">return</span> n ** <span class="number">2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line"></span><br><span class="line">    executor = ProcessPoolExecutor(max_workers=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">    futures = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">11</span>):</span><br><span class="line">        future = executor.submit(task, i)</span><br><span class="line">        futures.append(future)</span><br><span class="line">    executor.shutdown(<span class="keyword">True</span>)</span><br><span class="line">    print(<span class="string">'+++&gt;'</span>)</span><br><span class="line">    <span class="keyword">for</span> future <span class="keyword">in</span> futures:</span><br><span class="line">        print(future.result())</span><br></pre></td></tr></table></figure>
-<h4 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h4><p>线程池，提供异步调用，用法与ProcessPoolExecutor相同，只需要将ProcessPoolExecutor换成ThreadPoolExecutor</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(n)</span>:</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(n)</span><br><span class="line">    <span class="keyword">return</span> n * n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">call_back</span><span class="params">(m)</span>:</span></span><br><span class="line">    print(<span class="string">'结果是 %s'</span> % m.result())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    tpool = ThreadPoolExecutor(max_workers=<span class="number">5</span>)  <span class="comment"># 默认 不要超过cpu个数*5</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>):</span><br><span class="line">        tpool.submit(func, i).add_done_callback(call_back)</span><br></pre></td></tr></table></figure>
+<h4 id="启用一个Item-Pipeline组件"><a href="#启用一个Item-Pipeline组件" class="headerlink" title="启用一个Item Pipeline组件"></a>启用一个Item Pipeline组件</h4><p>为了启用Item Pipeline组件，必须将它的类添加到 settings.py文件ITEM_PIPELINES 配置，就像下面这个例子: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span></span><br><span class="line"><span class="comment">#ITEM_PIPELINES = &#123;</span></span><br><span class="line">    <span class="string">'mySpider.pipelines.MyspiderPipeline'</span>: <span class="number">300</span>,</span><br><span class="line"><span class="comment">#&#125;</span></span><br></pre></td></tr></table></figure>
+<p>分配给每个类的整型值，确定了他们运行的顺序，item按数字从低到高的顺序，通过pipeline，通常将这些数字定义在0-1000范围内（0-1000随意设置，数值越低，组件的优先级越高） </p>
 
       
     </div>
@@ -524,12 +550,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/post/b1bc006d.html">Python之concurrent.futures</a></p>
+  <p><span>本文标题:</span><a href="/post/ae0bd4cd.html">Scrapy 框架(三)之Item Pipeline</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 GavinLiu 的个人博客">GavinLiu</a></p>
-  <p><span>发布时间:</span>2018年03月08日 - 23:03</p>
-  <p><span>最后更新:</span>2018年03月08日 - 23:03</p>
-  <p><span>原始链接:</span><a href="/post/b1bc006d.html" title="Python之concurrent.futures">http://gavinliu4011.github.io/post/b1bc006d.html</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://gavinliu4011.github.io/post/b1bc006d.html"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年05月05日 - 09:05</p>
+  <p><span>最后更新:</span>2018年05月05日 - 22:05</p>
+  <p><span>原始链接:</span><a href="/post/ae0bd4cd.html" title="Scrapy 框架(三)之Item Pipeline">http://gavinliu4011.github.io/post/ae0bd4cd.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://gavinliu4011.github.io/post/ae0bd4cd.html"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -590,9 +616,9 @@
           
             <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
           
-            <a href="/tags/进程池/" rel="tag"><i class="fa fa-tag"></i> 进程池</a>
+            <a href="/tags/爬虫/" rel="tag"><i class="fa fa-tag"></i> 爬虫</a>
           
-            <a href="/tags/线程池/" rel="tag"><i class="fa fa-tag"></i> 线程池</a>
+            <a href="/tags/Scrapy/" rel="tag"><i class="fa fa-tag"></i> Scrapy</a>
           
         </div>
       
@@ -620,8 +646,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/d068a68c.html" rel="next" title="Python线程——信号量（Semaphore）、队列（Queue）">
-                <i class="fa fa-chevron-left"></i> Python线程——信号量（Semaphore）、队列（Queue）
+              <a href="/post/a9fd3a36.html" rel="next" title="Scrapy 框架(二)之Scrapy Shell">
+                <i class="fa fa-chevron-left"></i> Scrapy 框架(二)之Scrapy Shell
               </a>
             
           </div>
@@ -630,8 +656,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/79b12668.html" rel="prev" title="Python版RabbitMQ消息队列之Hello World（一）">
-                Python版RabbitMQ消息队列之Hello World（一） <i class="fa fa-chevron-right"></i>
+              <a href="/post/1cfe1288.html" rel="prev" title="Scrapy 框架(四)之Spider">
+                Scrapy 框架(四)之Spider <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -846,7 +872,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#concurrent-futures"><span class="nav-number">1.</span> <span class="nav-text">concurrent.futures</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ProcessPoolExecutor"><span class="nav-number">1.1.</span> <span class="nav-text">ProcessPoolExecutor</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ThreadPoolExecutor"><span class="nav-number">1.2.</span> <span class="nav-text">ThreadPoolExecutor</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Item-Pipeline"><span class="nav-number">1.</span> <span class="nav-text">Item Pipeline</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编写Item-Pipeline"><span class="nav-number">1.1.</span> <span class="nav-text">编写Item Pipeline</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启用一个Item-Pipeline组件"><span class="nav-number">1.2.</span> <span class="nav-text">启用一个Item Pipeline组件</span></a></li></ol></li></ol></div>
             
 
           </div>
