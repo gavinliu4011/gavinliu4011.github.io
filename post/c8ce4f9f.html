@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="gavinliu&#39;s blog">
 <meta property="og:description" content="Spider MiddlewareSpider Middleware是介入到Scrapy 的 Spider 处理机制的钩子框架，当Downloader 生成 Response 之后，Response 会被发送给 Spider，在发送给 Spider 之前，Response会首先经过 Spider Middleware 处理，当 Spider处理生成 Item 和 Request 之后，Item 和">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-07T13:33:37.169Z">
+<meta property="og:updated_time" content="2018-05-07T07:18:30.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scrapy 框架(六)之Spider Middleware">
 <meta name="twitter:description" content="Spider MiddlewareSpider Middleware是介入到Scrapy 的 Spider 处理机制的钩子框架，当Downloader 生成 Response 之后，Response 会被发送给 Spider，在发送给 Spider 之前，Response会首先经过 Spider Middleware 处理，当 Spider处理生成 Item 和 Request 之后，Item 和">
@@ -496,14 +496,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">process_spider_input(self,response, spider)</span><br><span class="line">process_spider_output(self,response, result, spider)</span><br><span class="line">process_spider_exception(self,response, exception, spider)</span><br><span class="line">process_start_requests(self,start_requests, spider)</span><br></pre></td></tr></table></figure>
 <h5 id="process-spider-input-self-response-spider"><a href="#process-spider-input-self-response-spider" class="headerlink" title="process_spider_input(self,response, spider)"></a>process_spider_input(self,response, spider)</h5><ul>
 <li>当 Response 被 Spider Middleware 处理时被调用</li>
-<li>process_spider_input()方法返回 None 或者抛出一个异常</li>
-<li><ul>
+<li>process_spider_input()方法返回 None 或者抛出一个异常<ul>
 <li>如果返回None，Scrapy 将会继续处理该 Response，调用所有其他的 Spider Middleware，直到 Spider处理该 Response。</li>
 <li>如果抛出一个异常， Scrapy 将不会调用任何其他 Spider Middleware 的process_spider_input()方法，而调用 Request 的 errback() 方法，errback 的输出将会被重新输入到中间件中，使用process_spider_output()方法来处理，当其抛出异常时则调用process_spider_exception()方法来处理</li>
 </ul>
 </li>
-<li>参数：</li>
-<li><ul>
+<li>参数：<ul>
 <li><code>response (Response 对象)</code> – 被处理的 Response</li>
 <li><code>spider (Spider 对象)</code> – 该Response 对应的 Spider</li>
 </ul>
@@ -512,8 +510,7 @@
 <h5 id="process-spider-output-self-response-result-spider"><a href="#process-spider-output-self-response-result-spider" class="headerlink" title="process_spider_output(self,response, result, spider)"></a>process_spider_output(self,response, result, spider)</h5><ul>
 <li>当 Spider 处理 Response 返回结果时被调用</li>
 <li>process_spider_output()方法必须返回以下其中一个：包含Request 或者 Item 对象的可迭代对象</li>
-<li>参数：</li>
-<li><ul>
+<li>参数：<ul>
 <li><code>response (Response 对象)</code> – 生成该输出的 Response</li>
 <li><code>result（包含Request或Item对象的可迭代对象）</code> – Spider 返回的结果</li>
 <li><code>spider (Spider 对象)</code> – 其结果对应的 Spider</li>
@@ -522,14 +519,12 @@
 </ul>
 <h5 id="process-spider-exception-self-response-exception-spider"><a href="#process-spider-exception-self-response-exception-spider" class="headerlink" title="process_spider_exception(self,response, exception, spider)"></a>process_spider_exception(self,response, exception, spider)</h5><ul>
 <li>当 Spider 或 Spider Middleware 的 process_spider_input()方法抛出异常时被调用</li>
-<li>process_spider_exception()方法必须返回以下其中一种：None、包含 Response 或 Item对象的可迭代对象</li>
-<li><ul>
+<li>process_spider_exception()方法必须返回以下其中一种：None、包含 Response 或 Item对象的可迭代对象<ul>
 <li>如果返回None，Scrapy 将继续处理该异常，调用其他 Spider Middleware 中的process_spider_exception()方法，直到所有 Spider Middleware 都被调用。</li>
 <li>如果返回时一个可迭代对象，那么其他 Spider Middleware 的process_spider_exception()方法不会被调用，而是调用process_spider_output()方法</li>
 </ul>
 </li>
-<li>参数：</li>
-<li><ul>
+<li>参数：<ul>
 <li><code>response (Response 对象)</code> – 异常被抛出时被处理的 Response</li>
 <li><code>exception（Exception对象）</code> – 被抛出的异常</li>
 <li><code>spider (Spider 对象)</code> – 抛出该异常的 Spider</li>
@@ -539,8 +534,7 @@
 <h5 id="process-start-requests-self-start-requests-spider"><a href="#process-start-requests-self-start-requests-spider" class="headerlink" title="process_start_requests(self,start_requests, spider)"></a>process_start_requests(self,start_requests, spider)</h5><ul>
 <li>当爬虫启动时调用</li>
 <li>process_start_requests()方法必须返回包含Request 对象的可迭代对象</li>
-<li>参数：</li>
-<li><ul>
+<li>参数：<ul>
 <li><code>start_requests (包含Request的可迭代对象)</code> – Start Requests</li>
 <li><code>spider (Spider 对象)</code> – Start Requests 所属 Spider</li>
 </ul>
@@ -575,7 +569,7 @@
   <p><span>本文标题:</span><a href="/post/c8ce4f9f.html">Scrapy 框架(六)之Spider Middleware</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 GavinLiu 的个人博客">GavinLiu</a></p>
   <p><span>发布时间:</span>2018年05月07日 - 21:05</p>
-  <p><span>最后更新:</span>2018年05月07日 - 21:05</p>
+  <p><span>最后更新:</span>2018年05月07日 - 15:05</p>
   <p><span>原始链接:</span><a href="/post/c8ce4f9f.html" title="Scrapy 框架(六)之Spider Middleware">http://gavinliu4011.github.io/post/c8ce4f9f.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://gavinliu4011.github.io/post/c8ce4f9f.html"  aria-label="复制成功！"></i></span>
   </p>

@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="gavinliu&#39;s blog">
 <meta property="og:description" content="Downloader MiddlewareDownloader Middleware就是下载中间件，下载中间件是处于引擎(crawler.engine)和下载器(crawler.engine.download())之间的一层组件，可以有多个下载中间件被加载运行。  当引擎传递请求给下载器的过程中，下载中间件可以对请求进行处理 （例如增加http header信息，增加proxy信息等）； 在下载器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-06T15:27:02.702Z">
+<meta property="og:updated_time" content="2018-05-07T07:15:35.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scrapy 框架(五)之Downloader Middleware">
 <meta name="twitter:description" content="Downloader MiddlewareDownloader Middleware就是下载中间件，下载中间件是处于引擎(crawler.engine)和下载器(crawler.engine.download())之间的一层组件，可以有多个下载中间件被加载运行。  当引擎传递请求给下载器的过程中，下载中间件可以对请求进行处理 （例如增加http header信息，增加proxy信息等）； 在下载器">
@@ -526,13 +526,9 @@
 </ul>
 </li>
 </ul>
-<p>#####process_exception(self, request, exception, spider)</p>
-<ul>
-<li><p>当Downloader或process_request()方法抛出异常时被调用</p>
-</li>
-<li><p>process_exception() 必须返回以下其中之一：None、Response对象、Request对象。</p>
-</li>
-<li><ul>
+<h5 id="process-exception-self-request-exception-spider"><a href="#process-exception-self-request-exception-spider" class="headerlink" title="process_exception(self, request, exception, spider)"></a>process_exception(self, request, exception, spider)</h5><ul>
+<li>当Downloader或process_request()方法抛出异常时被调用</li>
+<li>process_exception() 必须返回以下其中之一：None、Response对象、Request对象。<ul>
 <li>如果返回None时，更低优先级的Downloader Middleware的process_exception()方法会被继续调用，直到所有的方法都被调用完毕。</li>
 <li>如果返回为Response对象时，更低优先级的Downloader Middleware的process_exception()方法不再被继续调用，每个Downloader Middleware的 process_response()方法转而被依次调用。</li>
 <li>如果返回为Request对象时，更低优先级的Downloader Middleware的process_exception()方法不再被继续调用，该 Request 对象会重新放到调度队列里面等待被调度，它相当于一个全新的 Request 。</li>
@@ -570,7 +566,7 @@
   <p><span>本文标题:</span><a href="/post/f1fb118c.html">Scrapy 框架(五)之Downloader Middleware</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 GavinLiu 的个人博客">GavinLiu</a></p>
   <p><span>发布时间:</span>2018年05月06日 - 23:05</p>
-  <p><span>最后更新:</span>2018年05月06日 - 23:05</p>
+  <p><span>最后更新:</span>2018年05月07日 - 15:05</p>
   <p><span>原始链接:</span><a href="/post/f1fb118c.html" title="Scrapy 框架(五)之Downloader Middleware">http://gavinliu4011.github.io/post/f1fb118c.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://gavinliu4011.github.io/post/f1fb118c.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -889,7 +885,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Downloader-Middleware"><span class="nav-number">1.</span> <span class="nav-text">Downloader Middleware</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用说明"><span class="nav-number">1.1.</span> <span class="nav-text">使用说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心方法"><span class="nav-number">1.2.</span> <span class="nav-text">核心方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#process-request-self-request-spider"><span class="nav-number">1.2.1.</span> <span class="nav-text">process_request(self, request, spider)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#process-response-self-request-response-spider"><span class="nav-number">1.2.2.</span> <span class="nav-text">process_response(self, request, response, spider)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用案例"><span class="nav-number">1.3.</span> <span class="nav-text">使用案例</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Downloader-Middleware"><span class="nav-number">1.</span> <span class="nav-text">Downloader Middleware</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用说明"><span class="nav-number">1.1.</span> <span class="nav-text">使用说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心方法"><span class="nav-number">1.2.</span> <span class="nav-text">核心方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#process-request-self-request-spider"><span class="nav-number">1.2.1.</span> <span class="nav-text">process_request(self, request, spider)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#process-response-self-request-response-spider"><span class="nav-number">1.2.2.</span> <span class="nav-text">process_response(self, request, response, spider)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#process-exception-self-request-exception-spider"><span class="nav-number">1.2.3.</span> <span class="nav-text">process_exception(self, request, exception, spider)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用案例"><span class="nav-number">1.3.</span> <span class="nav-text">使用案例</span></a></li></ol></li></ol></div>
             
 
           </div>
