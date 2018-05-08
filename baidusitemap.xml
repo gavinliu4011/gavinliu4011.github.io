@@ -6,8 +6,32 @@
     
     
   <url>
+    <loc>http://gavinliu4011.github.io/post/cf3226c9.html</loc>
+    <lastmod>2018-05-08T11:42:12.007Z</lastmod>
+    <data>
+        <display>
+        <title>Scrapy 框架(七)之settings配置文件</title>
+        <pubTime>2018-05-08T19:42:03.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>爬虫</tag>
+         
+        <tag>Scrapy</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="http://gavinliu4011.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://gavinliu4011.github.io/post/c8ce4f9f.html</loc>
-    <lastmod>2018-05-07T13:32:51.173Z</lastmod>
+    <lastmod>2018-05-07T13:33:37.169Z</lastmod>
     <data>
         <display>
         <title>Scrapy 框架(六)之Spider Middleware</title>
