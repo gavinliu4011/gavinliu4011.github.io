@@ -31,7 +31,7 @@
     <!--Title-->
 
 
-<title>归档：2018/5 | 刘泰丞的个人博客</title>
+<title>Hexo | 刘泰丞的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="刘泰丞的个人博客" type="application/atom+xml">
@@ -122,33 +122,139 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <div id="main">
-  <div id="post-list">
-    <ul class="archives-post-list">
-    	<h1 class="info">2018年 5月</h1>
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Hexo">
+            
+	            Hexo
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/Hexo">
+            Hexo
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Hexo" title='Hexo'>
+                        Hexo
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
         
-          <li class="post-items" _href="/2018/05/14/Python之禅/">
-            <h3 class="post-item-title">
-            	<a href="/2018/05/14/Python之禅/"> Python之禅 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2018/05/14/Linux环境下安装Python3-X/">
-            <h3 class="post-item-title">
-            	<a href="/2018/05/14/Linux环境下安装Python3-X/"> Linux环境下安装Python3.X </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2018/05/14/hexo/">
-            <h3 class="post-item-title">
-            	<a href="/2018/05/14/hexo/"> Hexo </a>
-            </h3>  
-          </li>
-        
-    </ul>
-  </div>
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/05/13</span>
+        </span>
+    
 </div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>使用hexo搭建一个博客，并托管在github pages上的简易教程。                                                                                    </p>
+<blockquote>
+<p>什么是Hexo?</p>
+</blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<blockquote>
+<p>安装前提</p>
+</blockquote>
+<p>安装 Hexo 相当简单。然而在安装前，您必须检查电脑中是否已安装下列应用程序：</p>
+<ul>
+<li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a></li>
+<li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a></li>
+</ul>
+<p>如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>如果有环境问题,请参考<a href="https://hexo.bootcss.com/docs/" target="_blank" rel="noopener">Hexo文档</a></p>
+<h3 id="如何使用Hexo搭建Github-Pages博客"><a href="#如何使用Hexo搭建Github-Pages博客" class="headerlink" title="如何使用Hexo搭建Github Pages博客"></a>如何使用Hexo搭建Github Pages博客</h3><blockquote>
+<p>创建仓库</p>
+</blockquote>
+<p>首先我们需要在<a href="https://github.com/" target="_blank" rel="noopener">Github</a>创建一个账号,然后我们登录进去创建仓库</p>
+<p>仓库名称<strong>必须</strong>为 <strong>username</strong>.github.io (注：username为你在github的用户名)</p>
+<p><img src="/..\img\hexo\1.png" alt="1"></p>
+<p><img src="/..\img\hexo\2.png" alt="1"></p>
+<p>如果报错就是仓库已经存在。</p>
+<p>仓库创建成功后，github会给你该仓库的https和ssh地址，复制ssh地址作为备用</p>
+<blockquote>
+<p>建站</p>
+</blockquote>
+<p>上面的操作完成后,我们就可以进行建站操作了,可以参照<a href="https://hexo.bootcss.com/docs/setup.html" target="_blank" rel="noopener">Hexo建站文档</a>,也可以运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>上面操作完成后我们建站就成功了,现在我们可以看看自己的博客是什么样子了。在命令行运行下面这条的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-server --save</span><br></pre></td></tr></table></figure>
+<p>server安装成功后，启动server便可以把博客跑起来：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>现在默认是在本地运行,运行hexo server成功后会出现一个<a href="http://localhost:4000/地址" target="_blank" rel="noopener">http://localhost:4000/地址</a></p>
+<p><img src="/../img/hexo/hexo-blog.png" alt="hexo-blog.png"></p>
+<blockquote>
+<p>部署</p>
+</blockquote>
+<p>到现在我们自己的博客就已经搭建起来,现在我们修改项目的部署信息</p>
+<p>在博客的根目录下可以找到<strong>_config.yml</strong>文件,在文件最后可以找到deploy信息,现做如下配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:&#123;username&#125;/&#123;username&#125;.github.io.git # 这个地址就是github创建仓库后的shh地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>有了这些配置后便可以提交部署到Github Pages,执行下面的命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean <span class="comment"># 删除database和public文件夹,因为执行了hexo server</span></span><br></pre></td></tr></table></figure>
+<p>成功后再执行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate <span class="comment"># 生成新的部署所需要的文件</span></span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>在执行了hexo deploy命令后可能会出现报错<strong>ERROR Deployer not found : github</strong>,这个需要再安装<strong>hexo-deployer-git</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>完成后再次执行<code>hexo deploy</code>命令,待命令执行成功后我们就成功部署了自己的博客,直接访问<code>https://your-github-username.github.io/</code>这样就可以看到默认主题的博客了</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">GavinLiu</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/05/14/Linux环境下安装Python3-X/" class="pre-post btn btn-default" title='Linux环境下安装Python3.X'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Linux环境下安装Python3.X</span>
+        </a>
+    
+    
+</div>
+
+
+    <div id="comments">
+        
+	<!--PC和WAP自适应版-->
+<div id="SOHUCS"></div>
+<script type="text/javascript">
+	(function(){var appid='cyt8KmUC1';var conf='prod_855a68d3b3d91855360a6215672a505a';var width=window.innerWidth||document.documentElement.clientWidth;if(width<960){window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id='+appid+'&conf='+conf+'"><\/script>');}else{var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}
+	c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});}})();
+</script>	
+
+    </div>
 
 
 

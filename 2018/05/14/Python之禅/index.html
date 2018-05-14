@@ -31,7 +31,7 @@
     <!--Title-->
 
 
-<title>Hexo | 刘泰丞的个人博客</title>
+<title>Python之禅 | 刘泰丞的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="刘泰丞的个人博客" type="application/atom+xml">
@@ -126,9 +126,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Hexo">
+        <h1 id="Python之禅">
             
-	            Hexo
+	            Python之禅
             
         </h1>
         <div class="post-meta">
@@ -136,8 +136,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/Hexo">
-            Hexo
+        <a href="/categories/Python">
+            Python
         </a>
     </span>
     
@@ -147,8 +147,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/Hexo" title='Hexo'>
-                        Hexo
+                    <a href="/tags/Python" title='Python'>
+                        Python
                     </a>
                 
             
@@ -170,55 +170,8 @@
     </div>
     
     <div class="post-body post-content">
-        <p>使用hexo搭建一个博客，并托管在github pages上的简易教程。                                                                                    </p>
-<blockquote>
-<p>什么是Hexo?</p>
-</blockquote>
-<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-<blockquote>
-<p>安装前提</p>
-</blockquote>
-<p>安装 Hexo 相当简单。然而在安装前，您必须检查电脑中是否已安装下列应用程序：</p>
-<ul>
-<li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a></li>
-<li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a></li>
-</ul>
-<p>如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>如果有环境问题,请参考<a href="https://hexo.bootcss.com/docs/" target="_blank" rel="noopener">Hexo文档</a></p>
-<h3 id="如何使用Hexo搭建Github-Pages博客"><a href="#如何使用Hexo搭建Github-Pages博客" class="headerlink" title="如何使用Hexo搭建Github Pages博客"></a>如何使用Hexo搭建Github Pages博客</h3><blockquote>
-<p>创建仓库</p>
-</blockquote>
-<p>首先我们需要在<a href="https://github.com/" target="_blank" rel="noopener">Github</a>创建一个账号,然后我们登录进去创建仓库</p>
-<p>仓库名称<strong>必须</strong>为 <strong>username</strong>.github.io (注：username为你在github的用户名)</p>
-<p><img src="/..\img\hexo\1.png" alt="1"></p>
-<p><img src="/..\img\hexo\2.png" alt="1"></p>
-<p>如果报错就是仓库已经存在。</p>
-<p>仓库创建成功后，github会给你该仓库的https和ssh地址，复制ssh地址作为备用</p>
-<blockquote>
-<p>建站</p>
-</blockquote>
-<p>上面的操作完成后,我们就可以进行建站操作了,可以参照<a href="https://hexo.bootcss.com/docs/setup.html" target="_blank" rel="noopener">Hexo建站文档</a>,也可以运行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<p>上面操作完成后我们建站就成功了,现在我们可以看看自己的博客是什么样子了。在命令行运行下面这条的命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-server --save</span><br></pre></td></tr></table></figure>
-<p>server安装成功后，启动server便可以把博客跑起来：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>现在默认是在本地运行,运行hexo server成功后会出现一个<a href="http://localhost:4000/地址" target="_blank" rel="noopener">http://localhost:4000/地址</a></p>
-<p><img src="/../img/hexo/hexo-blog.png" alt="hexo-blog.png"></p>
-<blockquote>
-<p>部署</p>
-</blockquote>
-<p>到现在我们自己的博客就已经搭建起来,现在我们修改项目的部署信息</p>
-<p>在博客的根目录下可以找到<strong>_config.yml</strong>文件,在文件最后可以找到deploy信息,现做如下配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:&#123;username&#125;/&#123;username&#125;.github.io.git # 这个地址就是github创建仓库后的shh地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>有了这些配置后便可以提交部署到Github Pages,执行下面的命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean <span class="comment"># 删除database和public文件夹,因为执行了hexo server</span></span><br></pre></td></tr></table></figure>
-<p>成功后再执行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate <span class="comment"># 生成新的部署所需要的文件</span></span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>在执行了hexo deploy命令后可能会出现报错<strong>ERROR Deployer not found : github</strong>,这个需要再安装<strong>hexo-deployer-git</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>完成后再次执行<code>hexo deploy</code>命令,待命令执行成功后我们就成功部署了自己的博客,直接访问<code>https://your-github-username.github.io/</code>这样就可以看到默认主题的博客了</p>
+        <p>用过 Python的人，基本上都知道在交互式解释器中输入 import this 就会显示 Tim Peters 的 The Zen of Python，但它那偈语般的语句有点令人费解，所以我想分享一下我对它的体会，顺带给出我的翻译。</p>
+<h3 id="Python之禅"><a href="#Python之禅" class="headerlink" title="Python之禅"></a>Python之禅</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Beautiful is better than ugly.											</span><br><span class="line">优美胜于丑陋（Python 以编写优美的代码为目标）</span><br><span class="line"></span><br><span class="line">Explicit is better than implicit.										</span><br><span class="line">明了胜于晦涩（优美的代码应当是明了的，命名规范，风格相似）</span><br><span class="line"></span><br><span class="line">Simple is better than complex.											</span><br><span class="line">简洁胜于复杂（优美的代码应当是简洁的，不要有复杂的内部实现）</span><br><span class="line"></span><br><span class="line">Complex is better than complicated.										</span><br><span class="line">复杂胜于凌乱（如果复杂不可避免，那代码间也不能有难懂的关系，要保持接口简洁）</span><br><span class="line"></span><br><span class="line">Flat is better than nested.												</span><br><span class="line">扁平胜于嵌套（优美的代码应当是扁平的，不能有太多的嵌套）</span><br><span class="line"></span><br><span class="line">Sparse is better than dense.											</span><br><span class="line">间隔胜于紧凑（优美的代码有适当的间隔，不要奢望一行代码解决问题）</span><br><span class="line"></span><br><span class="line">Readability counts.														</span><br><span class="line">可读性很重要（优美的代码是可读的）</span><br><span class="line"></span><br><span class="line">Special cases aren&apos;t special enough to break the rules.					</span><br><span class="line">Although practicality beats purity.</span><br><span class="line">即便假借特例的实用性之名，也不可违背这些规则（这些规则至高无上）</span><br><span class="line"></span><br><span class="line">Errors should never pass silently.										</span><br><span class="line">不要包容所有错误</span><br><span class="line"></span><br><span class="line">Unless explicitly silenced.                                             </span><br><span class="line">除非你确定需要这样做（精准地捕获异常，不写 except:pass 风格的代码）</span><br><span class="line"></span><br><span class="line">In the face of ambiguity, refuse the temptation to guess.				</span><br><span class="line">当存在多种可能，不要尝试去猜测</span><br><span class="line"></span><br><span class="line">There should be one-- and preferably only one --obvious way to do it.	</span><br><span class="line">而是尽量找一种，最好是唯一一种明显的解决方案（如果不确定，就用穷举法）</span><br><span class="line"></span><br><span class="line">Although that way may not be obvious at first unless you&apos;re Dutch.		</span><br><span class="line">虽然这并不容易，因为你不是 Python 之父（这里的 Dutch 是指 Guido ）</span><br><span class="line"></span><br><span class="line">Now is better than never.												</span><br><span class="line">做也许好过不做</span><br><span class="line"></span><br><span class="line">Although never is often better than right now.							</span><br><span class="line">但不假思索就动手还不如不做</span><br><span class="line"></span><br><span class="line">If the implementation is hard to explain, it&apos;s a bad idea.				</span><br><span class="line">If the implementation is easy to explain, it may be a good idea.</span><br><span class="line">如果你无法向人描述你的方案，那肯定不是一个好方案；反之亦然（方案测评标准）</span><br><span class="line"></span><br><span class="line">Namespaces are one honking great idea -- let&apos;s do more of those!		</span><br><span class="line">命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -343,7 +296,7 @@
         
     <div class="widget">
         <h3 class="title">分类</h3>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link current" href="/categories/Hexo/"><i class="fa" aria-hidden="true">Hexo</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">1</span></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/"><i class="fa" aria-hidden="true">Hexo</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">2</span></li></ul>
     </div>
 
 
@@ -351,7 +304,7 @@
         
     <div class="widget">
       <h3 class="title">归档</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">五月 2018</i></a><span class="archive-list-count">2</span></li></ul>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">五月 2018</i></a><span class="archive-list-count">3</span></li></ul>
     </div>
 
 
@@ -360,7 +313,7 @@
   <div class="widget">
     <h3 class="title">标签云</h3>
     <div class="content tag-cloud">
-        <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Python3/" style="font-size: 10px;">Python3</a>
+        <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Python3/" style="font-size: 10px;">Python3</a>
     </div>
   </div>
 
