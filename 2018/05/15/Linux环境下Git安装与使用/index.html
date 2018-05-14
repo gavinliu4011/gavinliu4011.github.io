@@ -31,7 +31,7 @@
     <!--Title-->
 
 
-<title>Python3基础之基本数据类型、变量和运算符 | 刘泰丞的个人博客</title>
+<title>Linux环境下Git安装与使用 | 刘泰丞的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="刘泰丞的个人博客" type="application/atom+xml">
@@ -126,9 +126,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Python3基础之基本数据类型、变量和运算符">
+        <h1 id="Linux环境下Git安装与使用">
             
-	            Python3基础之基本数据类型、变量和运算符
+	            Linux环境下Git安装与使用
             
         </h1>
         <div class="post-meta">
@@ -136,8 +136,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/Python基础">
-            Python基础
+        <a href="/categories/Git">
+            Git
         </a>
     </span>
     
@@ -147,16 +147,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/Python" title='Python'>
-                        Python
-                    </a>
-                
-                    <a href="/tags/数据类型" title='数据类型'>
-                        数据类型
-                    </a>
-                
-                    <a href="/tags/变量" title='变量'>
-                        变量
+                    <a href="/tags/Git" title='Git'>
+                        Git
                     </a>
                 
             
@@ -178,18 +170,93 @@
     </div>
     
     <div class="post-body post-content">
-        <h3 id="Python3基础之基本数据类型、变量和运算符"><a href="#Python3基础之基本数据类型、变量和运算符" class="headerlink" title="Python3基础之基本数据类型、变量和运算符"></a>Python3基础之基本数据类型、变量和运算符</h3><ol>
-<li><p>基本数据类型</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">在Python中，能够直接处理的数据类型有以下几种：</span><br><span class="line">    <span class="number">1</span>）整型:Python可以处理任意大小的整数，当然包括负整数</span><br><span class="line">    如：<span class="number">100</span> <span class="number">-100</span></span><br><span class="line">    计算机由于使用二进制，所以Python支持二进制（<span class="number">0b100</span>）、八进制(<span class="number">0o100</span>)和十六进制(<span class="number">0xff00</span>)表示</span><br><span class="line">    <span class="number">2</span>)浮点数:浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的</span><br><span class="line">    如: <span class="number">123.456</span> 但是对于很大或很小的浮点数，就必须用科学计数法表示，把<span class="number">10</span>用e替代，<span class="number">1.23</span>x10^<span class="number">9</span>就是<span class="number">1.23e9</span></span><br><span class="line">    <span class="number">3</span>)字符串型:字符串是以单引号或双引号括起来的任意文本</span><br><span class="line">    如: <span class="string">'hello world'</span> 或者 <span class="string">"hello world"</span></span><br><span class="line">    <span class="number">4</span>)布尔型:布尔值和布尔代数的表示完全一致，一个布尔值只有<span class="keyword">True</span>、<span class="keyword">False</span>两种值，要么是<span class="keyword">True</span>，要么是<span class="keyword">False</span>，在Python中，可以直接用<span class="keyword">True</span>、<span class="keyword">False</span>表示布尔值（请注意大小写）</span><br><span class="line">    如: <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">False</span></span><br><span class="line">        <span class="number">3</span> &gt; <span class="number">2</span></span><br><span class="line">        <span class="number">2</span> &lt; </span><br><span class="line">    <span class="number">5</span>)空类型:空类型是Python里一个特殊的值，用<span class="keyword">None</span>表示。<span class="keyword">None</span>不能理解为<span class="number">0</span>，因为<span class="number">0</span>是有意义的，而<span class="keyword">None</span>是一个特殊的空值。(请注意不要与其它语言中的null混淆)</span><br><span class="line">在Python中还支持复数、列表、字典、元组、集合等数据类型，之后会一一说明。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>变量</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">什么是变量</span><br><span class="line">    在计算机程序中，变量不仅可以是数字，还可以是任意数据类型。变量是一种存储数据的载体，其值可以被读取和修改。</span><br><span class="line">变量命名</span><br><span class="line">    a.只能有数字,字母,下划线组成</span><br><span class="line">    b.不能以数字开始</span><br><span class="line">    c.不要跟关键字和系统保留字冲突</span><br><span class="line">    `关键字:</span><br><span class="line">      [<span class="string">'False'</span>, <span class="string">'None'</span>, <span class="string">'True'</span>, <span class="string">'and'</span>, <span class="string">'as'</span>, <span class="string">'assert'</span>, <span class="string">'async'</span>, <span class="string">'await'</span>, <span class="string">'break'</span>, <span class="string">'class'</span>, <span class="string">'continue'</span>, <span class="string">'def'</span>, <span class="string">'del'</span>, <span class="string">'elif'</span>, <span class="string">'else'</span>, <span class="string">'except'</span>, <span class="string">'finally'</span>, <span class="string">'for'</span>, <span class="string">'from'</span>, <span class="string">'global'</span>, <span class="string">'if'</span>, <span class="string">'import'</span>, <span class="string">'in'</span>, <span class="string">'is'</span>, <span class="string">'lambda'</span>, <span class="string">'nonlocal'</span>, <span class="string">'not'</span>, <span class="string">'or'</span>, <span class="string">'pass'</span>, <span class="string">'raise'</span>, <span class="string">'return'</span>, <span class="string">'try'</span>, <span class="string">'while'</span>, <span class="string">'with'</span>, <span class="string">'yield'</span>]</span><br><span class="line">    d. 严格区分大小写</span><br><span class="line">    e. 见名之意</span><br><span class="line">    f. 遵循驼峰原则: UserName  userName   user_name</span><br><span class="line">变量的实用和作用</span><br><span class="line">    a = <span class="number">100</span></span><br><span class="line">    b = <span class="number">-100</span></span><br><span class="line">    c = <span class="number">3.1415926</span></span><br><span class="line">    d = <span class="keyword">True</span></span><br><span class="line">    e = <span class="keyword">False</span></span><br><span class="line">    f = <span class="keyword">None</span></span><br><span class="line">    作用是将不同的数据类型存到内存中</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运算符</p>
-<p><img src="https://gitee.com/gavinliu4011/codes/6kuiqc4nd0swy9ga83bvf76/raw?blob_name=%E8%BF%90%E7%AE%97%E7%AC%A6.png" alt="img"></p>
-<blockquote>
-<p>Python支持多种运算符，下表大致按照优先级从高到低的顺序列出了所有的运算符，我们会陆续使用到它们。<br>说明:此片段引用原文<a href="https://blog.csdn.net/jackfrued/article/details/79392196" target="_blank" rel="noopener">https://blog.csdn.net/jackfrued/article/details/79392196</a></p>
+        <p>Linux环境下Git安装和使用                                                                                                                                            </p>
+<h3 id="Linux环境下Git安装与使用"><a href="#Linux环境下Git安装与使用" class="headerlink" title="Linux环境下Git安装与使用"></a>Linux环境下Git安装与使用</h3><blockquote>
+<p>安装</p>
 </blockquote>
+<ol>
+<li><p>官网下载并解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos ~]# wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.17.0.tar.gz</span><br><span class="line">[root@VM_0_11_centos ~]# tar -xvf git-2.17.0.tar.gz</span><br><span class="line">[root@VM_0_11_centos ~]# cd git-2.17.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移除旧版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos ~]# yum remove git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装依赖库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos ~]# yum install libcurl-devel</span><br><span class="line">[root@VM_0_11_centos ~]# yum install  autoconf automake libtool</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos ~]# make configure</span><br><span class="line">GIT_VERSION = 2.17.0</span><br><span class="line">    GEN configure</span><br><span class="line">[root@VM_0_11_centos ~]# ./configure --prefix=/usr/local/git --with-iconv =/usr/local/lib（建议优先尝试后者）</span><br><span class="line">或者</span><br><span class="line">./configure --prefix=/usr/local/git --with-iconv --with-curl --with-expat=/usr/local/lib（如果没有安装libiconv请自行安装）</span><br><span class="line">[root@VM_0_11_centos git-2.17.0]# make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos git-2.17.0]# vim ~/.bash_profile</span><br><span class="line">在文件末尾追加上下面命令:</span><br><span class="line">PATH=$PATH:/usr/local/git/bin</span><br><span class="line">export PATH</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新加载环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos git-2.17.0]# source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看git版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos git-2.17.0]# git --version</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>使用</p>
+</blockquote>
+<ol>
+<li><p>在本地建立本地仓库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos ~]# mkdir test</span><br><span class="line">[root@VM_0_11_centos test]# cd test</span><br><span class="line">[root@VM_0_11_centos test]# git init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把文件纳入版本控制(加入暂存区)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git add &lt;filename&gt; # 将修改后的文件加入暂存区</span><br><span class="line">[root@VM_0_11_centos test]# git add . # add后跟.是将当前文件夹下面的所有文件及文件夹都加入暂存区</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交到仓库(-m 后是描述)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git commit -m '本次提交文件的相关描述信息'</span><br></pre></td></tr></table></figure>
+<p>如果提交报错,看否是缺少<code>user.name</code>、<code>user.email</code>,可执行下面的命令解决:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git config --global user.name 'your-name'</span><br><span class="line">[root@VM_0_11_centos test]# git config --global user.email 'your-email'</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看放入暂存区的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>回滚到某个版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git reset --hard 版本号</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示版本包括历史版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git reflog</span><br><span class="line">[root@VM_0_11_centos test]# git reflog --pretty=oneline # 单行显示</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把暂存区的内容全撤回来(可以在本地做修改,然后再次add进暂存区做提交)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git checkout -- [可跟上文件名]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加远端仓库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git remote add origin https://git.coding.net/gavinliu/test.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将本地仓库和远端仓库同步</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git push -u origin master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git branch [分支名]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git branch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git checkout [分支名]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git rm [filename]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git merge [分支名]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>克隆项目到本地</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos ~]# git clone https://git.coding.net/jackfrued/HelloGit.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>推送到服务器,origin是原始名字,master是分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git push origin master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拉取服务器代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_11_centos test]# git pull</span><br></pre></td></tr></table></figure>
+<p>​</p>
 </li>
 </ol>
 
@@ -209,15 +276,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/05/15/Python3基础之字符串、列表、元组、字典、集合等相关操作/" class="pre-post btn btn-default" title='Python3基础之字符串、列表、元组、字典、集合等相关操作'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">Python3基础之字符串、列表、元组、字典、集合等相关操作</span>
-        </a>
     
-    
-        <a href="/2018/05/14/Python之禅/" class="next-post btn btn-default" title='Python之禅'>
+        <a href="/2018/05/15/Python3基础之函数/" class="next-post btn btn-default" title='Python3基础之函数'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">Python之禅</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">Python3基础之函数</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
