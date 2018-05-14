@@ -31,7 +31,7 @@
     <!--Title-->
 
 
-<title>标签: Hexo | 刘泰丞的个人博客</title>
+<title>Linux环境下安装Python3.X | 刘泰丞的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="刘泰丞的个人博客" type="application/atom+xml">
@@ -122,37 +122,112 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <h3> 
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Linux环境下安装Python3.X">
+            
+	            Linux环境下安装Python3.X
+            
+        </h1>
+        <div class="post-meta">
     
-        Hexo 
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/Python">
+            Python
+        </a>
+    </span>
     
     
-</h3>
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Python3" title='Python3'>
+                        Python3
+                    </a>
+                
+                    <a href="/tags/Linux" title='Linux'>
+                        Linux
+                    </a>
+                
+            
+        </span>
+    </span>
+    
 
-    <article class="post">
+    
         
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/2018/05/15/hexo/">Hexo</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2018年05月14日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    使用hexo搭建一个博客，并托管在github pages上的简易教程。                                                                                 ...
-                
-            </p> 
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/05/14</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>Linux下大部分系统默认自带python2.x的版本，最常见的是python2.6或python2.7版本，默认的python被系统很多程序所依赖，比如centos下的yum就是python2写的，所以默认版本不要轻易删除，否则会有一些问题，如果需要使用最新的Python3那么我们可以编译安装源码包到独立目录，这和系统默认环境之间是没有任何影响的，python3和python2两个环境并存即可</p>
+<h2 id="Linux环境下安装Python3-X"><a href="#Linux环境下安装Python3-X" class="headerlink" title="Linux环境下安装Python3.X"></a>Linux环境下安装Python3.X</h2><blockquote>
+<p>1.下载Python源代码并解压缩到指定目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># wget https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tar.xz</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># xz -d Python-3.6.5.tar.xz</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># tar -xvf Python-3.6.5.tar</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.安装依赖库,没有安装可能导致Python在最后安装失败</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.进入Python源码目录进行配置和安装</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># cd Python-3.6.5</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># ./configure --prefix=/usr/local/python36 --enable-optimizations</span></span><br><span class="line"><span class="comment"># 待上面命令成功后</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># make &amp;&amp; make install</span></span><br><span class="line"><span class="comment">#如果在中途遇见错误,解决错误信息再重新执行make &amp;&amp; make install即可</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.创建软链接</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># ln -s /usr/local/python36/bin/python3 /usr/bin/python3</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># ln -s /usr/local/python36/bin/pip3 /usr/bin/pip3</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># ln -s /usr/local/python36/bin/2to3 /usr/bin/2to3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">注意:要用ipython环境要先安装ipyton</span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># pip3 install ipython</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># ln -s /usr/local/python36/bin/ipython3 /usr/bin/ipython3</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">GavinLiu</a>
+            
         </div>
-    </article>
- 
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/05/15/hexo/" class="pre-post btn btn-default" title='Hexo'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Hexo</span>
+        </a>
+    
+    
+</div>
 
 
+    <div id="comments">
+        
+	<!--PC和WAP自适应版-->
+<div id="SOHUCS"></div>
+<script type="text/javascript">
+	(function(){var appid='cyt8KmUC1';var conf='prod_855a68d3b3d91855360a6215672a505a';var width=window.innerWidth||document.documentElement.clientWidth;if(width<960){window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id='+appid+'&conf='+conf+'"><\/script>');}else{var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}
+	c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});}})();
+</script>	
+
+    </div>
 
 
 
