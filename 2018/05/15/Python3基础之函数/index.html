@@ -31,7 +31,7 @@
     <!--Title-->
 
 
-<title>Linux环境下安装Python3.X | 刘泰丞的个人博客</title>
+<title>Python3基础之函数 | 刘泰丞的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="刘泰丞的个人博客" type="application/atom+xml">
@@ -126,9 +126,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Linux环境下安装Python3.X">
+        <h1 id="Python3基础之函数">
             
-	            Linux环境下安装Python3.X
+	            Python3基础之函数
             
         </h1>
         <div class="post-meta">
@@ -136,8 +136,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/Python">
-            Python
+        <a href="/categories/Python基础">
+            Python基础
         </a>
     </span>
     
@@ -151,8 +151,8 @@
                         Python
                     </a>
                 
-                    <a href="/tags/Linux" title='Linux'>
-                        Linux
+                    <a href="/tags/函数" title='函数'>
+                        函数
                     </a>
                 
             
@@ -174,24 +174,24 @@
     </div>
     
     <div class="post-body post-content">
-        <p>Linux下大部分系统默认自带python2.x的版本，最常见的是python2.6或python2.7版本，默认的python被系统很多程序所依赖，比如centos下的yum就是python2写的，所以默认版本不要轻易删除，否则会有一些问题，如果需要使用最新的Python3那么我们可以编译安装源码包到独立目录，这和系统默认环境之间是没有任何影响的，python3和python2两个环境并存即可</p>
-<h2 id="Linux环境下安装Python3-X"><a href="#Linux环境下安装Python3-X" class="headerlink" title="Linux环境下安装Python3.X"></a>Linux环境下安装Python3.X</h2><blockquote>
-<p>1.下载Python源代码并解压缩到指定目录</p>
+        <h3 id="Python3基础之函数"><a href="#Python3基础之函数" class="headerlink" title="Python3基础之函数"></a>Python3基础之函数</h3><blockquote>
+<p>三元运算符补充</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># wget https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tar.xz</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># xz -d Python-3.6.5.tar.xz</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># tar -xvf Python-3.6.5.tar</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 三元运算符(或者三目运算)</span></span><br><span class="line"><span class="comment"># 格式</span></span><br><span class="line"><span class="comment"># 结果 = 值1 if 条件 else 值2</span></span><br><span class="line">result = <span class="keyword">True</span> <span class="keyword">if</span> <span class="number">1</span>&gt;<span class="number">2</span> <span class="keyword">else</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果条件成立则返回'值1',否则返回'值2'</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>2.安装依赖库,没有安装可能导致Python在最后安装失败</p>
+<p>函数的定义</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">在开始之前我们先上一段代码:</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>：</span><br><span class="line">    <span class="keyword">if</span> cpu利用率 &gt; <span class="number">90</span>%:</span><br><span class="line">        <span class="comment"># 发送邮件提醒</span></span><br><span class="line">        连接邮箱服务器</span><br><span class="line">        发送邮件</span><br><span class="line">        关闭连接</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> 硬盘使用空间 &gt; <span class="number">90</span>%:</span><br><span class="line">        <span class="comment"># 发送邮件提醒</span></span><br><span class="line">        连接邮箱服务器</span><br><span class="line">        发送邮件</span><br><span class="line">        关闭连接</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> 内存占用 &gt; <span class="number">80</span>%:</span><br><span class="line">        <span class="comment"># 发送邮件提醒</span></span><br><span class="line">        连接邮箱服务器</span><br><span class="line">        发送邮件</span><br><span class="line">        关闭连接</span><br></pre></td></tr></table></figure>
+<p>不知道大家是否注意到以上代码有很多重复的代码,要写出高质量的代码首先要解决的就是重复代码的问题。我们可以将上面的’发送邮件提醒’功能封装成一个函数,当满足条件时调用函数即可。<br>所以某些具有特殊功能的代码块, 将这些特定的代码块给他分封装起来,这个封装起来的代码块就是函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义函数</span></span><br><span class="line">函数的定义主要有如下要点：</span><br><span class="line">    <span class="number">1.</span><span class="function"><span class="keyword">def</span>：表示函数的关键字</span></span><br><span class="line"><span class="function">    2.函数名：函数的名称，日后根据函数名调用函数（函数的命名规则和变量的命名规则一致）</span></span><br><span class="line"><span class="function">    3.函数体：函数中进行一系列的逻辑计算，如：发送邮件</span></span><br><span class="line"><span class="function">    4.参数：为函数体提供数据</span></span><br><span class="line"><span class="function">    5.返回值：当函数执行完毕后，可以给调用者返回数据。</span></span><br><span class="line"><span class="function">下面我们重构一下上面发送邮件的代码：</span></span><br><span class="line"><span class="function"><span class="title">def</span> <span class="title">send</span><span class="params">()</span>:</span></span><br><span class="line">       </span><br><span class="line">    发送邮件的代码...</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">if</span> success: <span class="comment">#发送成功</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">   </span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">       </span><br><span class="line">    <span class="comment"># 每次执行发送邮件函数，都会将返回值自动赋值给result</span></span><br><span class="line">    <span class="comment"># 之后，可以根据result来写日志，或重发等操作</span></span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 在这儿根据函数名'send'来调用函数</span></span><br><span class="line">    result = send()</span><br><span class="line">    <span class="keyword">if</span> result == <span class="keyword">False</span>:</span><br><span class="line">        记录日志，短信发送失败...</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>3.进入Python源码目录进行配置和安装</p>
+<p>匿名函数</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># cd Python-3.6.5</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># ./configure --prefix=/usr/local/python36 --enable-optimizations</span></span><br><span class="line"><span class="comment"># 待上面命令成功后</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># make &amp;&amp; make install</span></span><br><span class="line"><span class="comment">#如果在中途遇见错误,解决错误信息再重新执行make &amp;&amp; make install即可</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">对于简单的函数，也存在一种简便的表示方式，即：<span class="keyword">lambda</span>表达式</span><br><span class="line"><span class="comment"># 普通方式</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(arg)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> arg + <span class="number">5</span></span><br><span class="line">print(sum(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 匿名函数</span></span><br><span class="line">lambda_sum = <span class="keyword">lambda</span> x, y: x + y</span><br><span class="line">print(lambda_sum(<span class="number">5</span>, <span class="number">5</span>))</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>4.创建软链接</p>
+<p>函数的运用</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># ln -s /usr/local/python36/bin/python3 /usr/bin/python3</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># ln -s /usr/local/python36/bin/pip3 /usr/bin/pip3</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># ln -s /usr/local/python36/bin/2to3 /usr/bin/2to3</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">注意:要用ipython环境要先安装ipyton</span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># pip3 install ipython</span></span><br><span class="line">[root@iZwz95cxo3u633jbk49xrpZ ~]<span class="comment"># ln -s /usr/local/python36/bin/ipython3 /usr/bin/ipython3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 递归调用,遍历文件夹目录</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_all_dir</span><span class="params">(path, str=<span class="string">"|--"</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">        实现目录的遍历</span></span><br><span class="line"><span class="string">    :param path: 遍历目录的路径</span></span><br><span class="line"><span class="string">    :param str: 样式</span></span><br><span class="line"><span class="string">    :return: </span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># 返回一个指定文件夹(目录)包含文件和文件夹(目录),并且返回一个列表,但是不包含.和..,他一般按照英文首字母排序</span></span><br><span class="line">    fill_all = os.listdir(path)</span><br><span class="line">    <span class="comment"># print(fillAll)</span></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> fill_all:</span><br><span class="line">        <span class="comment"># 一定不能少了全路径的拼接</span></span><br><span class="line">        file_path = os.path.join(path, filename)</span><br><span class="line">        <span class="comment"># print(filePath)</span></span><br><span class="line">        <span class="comment"># 判断filePath是否是目录</span></span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(file_path):</span><br><span class="line">            print(str + <span class="string">'文件夹'</span> + filename)</span><br><span class="line">            <span class="comment"># filePath是目录</span></span><br><span class="line">            get_all_dir(file_path, <span class="string">"\t"</span> + str)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># filePath不是目录,即是文件</span></span><br><span class="line">            print(str + <span class="string">'文件:'</span> + filename)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">get_all_dir(<span class="string">'../gavinliu_study'</span>)</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -209,15 +209,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/05/14/Python之禅/" class="pre-post btn btn-default" title='Python之禅'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">Python之禅</span>
-        </a>
     
-    
-        <a href="/2018/05/14/Hexo/" class="next-post btn btn-default" title='Hexo'>
+        <a href="/2018/05/15/Python3基础之分支结构和循环结构/" class="next-post btn btn-default" title='Python3基础之分支结构和循环结构'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">Hexo</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">Python3基础之分支结构和循环结构</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
