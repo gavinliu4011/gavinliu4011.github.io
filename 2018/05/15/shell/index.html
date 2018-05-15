@@ -1,0 +1,669 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="刘泰丞的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://gavinliu4011.github.io">
+    <!--SEO-->
+
+<meta name="description" content="刘泰丞的个人网站，记录生活的瞬间，分享学习的心得，感悟生活，留住感动"/>
+
+
+
+<meta name="keywords" content="刘泰丞,GavinLiu,IT,技术,博客,Python"/>
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>Shell常用命令 | 刘泰丞的个人博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="刘泰丞的个人博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner2.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='GavinLiu'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/技术杂谈/"><i class="fa "></i>技术杂谈</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/关于自己/"><i class="fa "></i>关于自己</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Shell常用命令">
+            
+	            Shell常用命令
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/Linux">
+            Linux
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Shell" title='Shell'>
+                        Shell
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/05/15</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>shell的基本常用命令                                                                                                                                                            </p>
+<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><blockquote>
+<p><strong>常用操作</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pwd</td>
+<td>当前路径</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>更改目录 不加参数 进入主目录</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>当前目录内容</td>
+</tr>
+<tr>
+<td>ls -a</td>
+<td>查看隐藏文件</td>
+</tr>
+<tr>
+<td>ls -l</td>
+<td>文件详情</td>
+</tr>
+<tr>
+<td>ls -ld</td>
+<td>目录本身信息</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>新建文件夹</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>rm -rf dir/</td>
+<td>删除文件夹</td>
+</tr>
+<tr>
+<td>cp file1 file2</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>cp -r dir1 dir2</td>
+<td>复制文件夹</td>
+</tr>
+<tr>
+<td>mv file ..</td>
+<td>移动文件到上一级</td>
+</tr>
+<tr>
+<td>mv file dir/</td>
+<td>移动到dir目录</td>
+</tr>
+<tr>
+<td>mv file1 file2</td>
+<td>替换文件</td>
+</tr>
+<tr>
+<td>mv dir1 dir2</td>
+<td>替换文件夹</td>
+</tr>
+<tr>
+<td>touch a.text</td>
+<td>创建文件</td>
+</tr>
+<tr>
+<td>&gt;a.text</td>
+<td>创建文件</td>
+</tr>
+<tr>
+<td>touch .file.text</td>
+<td>创建隐藏文件</td>
+</tr>
+<tr>
+<td>cat file</td>
+<td>查看文件</td>
+</tr>
+<tr>
+<td>less file</td>
+<td>查看文件</td>
+</tr>
+<tr>
+<td>file a.txt</td>
+<td>查看文件类型</td>
+</tr>
+<tr>
+<td>man xx</td>
+<td>打开xx指令的手册 /x 查找某参数 n 查找下一处</td>
+</tr>
+<tr>
+<td>table</td>
+<td>可以补全路径名</td>
+</tr>
+<tr>
+<td>echo</td>
+<td>打印</td>
+</tr>
+<tr>
+<td>date</td>
+<td>显示时间</td>
+</tr>
+<tr>
+<td>cal</td>
+<td>显示日历</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>解压缩</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unzip</td>
+<td>解压</td>
+</tr>
+<tr>
+<td>zip -r</td>
+<td>压缩 file.zip dir 压缩后的名称 压缩对象</td>
+</tr>
+<tr>
+<td>tar zxvf</td>
+<td>解压.tar.gz</td>
+</tr>
+<tr>
+<td>tar zcvf</td>
+<td>压缩文件</td>
+</tr>
+<tr>
+<td>tar jxvf</td>
+<td>解压tar.bz2</td>
+</tr>
+<tr>
+<td>tar jcvf</td>
+<td>解压tar.bz2</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>重定向</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>丨</td>
+<td>管道线</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>标准输入重定向</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>把输出流保存到文件中 重定向前把文件清空</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>把输出流保存到文件中 不清空文件</td>
+</tr>
+<tr>
+<td>cat file1 &gt;file</td>
+<td>把file1中的内容写入file中</td>
+</tr>
+<tr>
+<td>cat file1 &gt;&gt;file</td>
+<td>把file1中的内容写入file内容后</td>
+</tr>
+<tr>
+<td>ls shit 2 &gt;out.txt</td>
+<td>标准错误输出</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>权限</strong></p>
+</blockquote>
+<p>用户在自己的主目录有写权限，在其它目录没有。</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>su -</td>
+<td>更改用户为root</td>
+</tr>
+<tr>
+<td>sudo</td>
+<td>超级用户</td>
+</tr>
+<tr>
+<td>chmod +x +r +w</td>
+<td>添加执行/读/写权限</td>
+</tr>
+<tr>
+<td>chmod 777</td>
+<td>添加全部权限</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>进程</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ps -[ef丨aux] \丨grep 应用名称</td>
+<td>查看进程</td>
+</tr>
+<tr>
+<td>kill [-9] pid</td>
+<td>结束某个程序</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>搜索</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>find file -type f</td>
+<td>搜索文件</td>
+</tr>
+<tr>
+<td>find dir/ -type d</td>
+<td>搜索目录</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>概念</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>绝对路径</td>
+<td>以 <code>/</code> 开头的路径</td>
+</tr>
+<tr>
+<td>相对路径</td>
+<td>相对于当前工作路径 ./当前工作目录 ../上一级目录</td>
+</tr>
+<tr>
+<td>通配符</td>
+<td>例如 <code>*</code></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">GavinLiu</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/05/15/Linux环境下Git安装与使用/" class="next-post btn btn-default" title='Linux环境下Git安装与使用'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Linux环境下Git安装与使用</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+    <div class="widget">    
+        <h3 class="title">搜索</h3>
+        <div id="search-form">
+            <div id="result-mask" class="hide"></div>
+            <div class="search-area">
+                
+                    <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢?">
+                    <button type="button" class="search-form-submit" id="search-local">站内搜索</button>
+                
+                
+                    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Google Search"><button type="submit" class="search-form-submit">谷歌搜索</button><input type="hidden" name="sitesearch" value="http://gavinliu4011.github.io"></form>
+                
+            </div>
+            <div id="result-wrap" class="hide">
+                <div id="search-result"></div>
+            </div>
+            <div class="hide">
+                <template id="search-tpl">
+                    <div class="item">
+                        <a href="/{path}" title="{title}">
+                            <div class="title">{title}</div>
+                            <div class="content">{content}</div>
+                        </a>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <!-- <p>主题Snippet v1.2.0版本已经上线！欢迎更新~ <br/>
+主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br/>
+<hr/>接受贡献，包括不限于提交问题与需求，修复代码。欢迎Pull Request<br/>支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
+</p> -->
+暂无
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+      <h3 class="title">社交</h3> 
+        <div class="content social">
+            
+	            <a href="//github.com/gavinliu4011" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="git fa fa-git"></i>
+			    </a>
+            
+	            <a href="mailto:gavinliu4011@163.com" rel="external nofollow" title="邮箱" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+			    	<i class="qq fa fa-qq"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="微博" target="_blank">
+			    	<i class="weibo fa fa-weibo"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+			    	<i class="users fa fa-users"></i>
+			    </a>
+            
+	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+			    	<i class="feed fa fa-feed"></i>
+			    </a>
+            
+        </div>
+    </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">分类</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/"><i class="fa" aria-hidden="true">Git</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/"><i class="fa" aria-hidden="true">Hexo</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python基础/"><i class="fa" aria-hidden="true">Python基础</i></a><span class="category-list-count">4</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">五月 2018</i></a><span class="archive-list-count">9</span></li></ul>
+    </div>
+
+
+        
+        
+  <div class="widget">
+    <h3 class="title">标签云</h3>
+    <div class="content tag-cloud">
+        <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分支结构/" style="font-size: 10px;">分支结构</a> <a href="/tags/列表/" style="font-size: 10px;">列表</a> <a href="/tags/变量/" style="font-size: 10px;">变量</a> <a href="/tags/字典/" style="font-size: 10px;">字典</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/循环结构/" style="font-size: 10px;">循环结构</a> <a href="/tags/数据类型/" style="font-size: 10px;">数据类型</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
+    </div>
+  </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.baidu.com" class="fa" target="_blank">个人博客</a>
+        
+            <a href="https://my.csdn.net/jackfrued" class="fa" target="_blank">骆昊博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2018
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+	<script src="/js/search.js?rev=@@hash"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="刘泰丞的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://gavinliu4011.github.io">
+    <!--SEO-->
+
+<meta name="description" content="刘泰丞的个人网站，记录生活的瞬间，分享学习的心得，感悟生活，留住感动"/>
+
+
+
+<meta name="keywords" content="刘泰丞,GavinLiu,IT,技术,博客,Python"/>
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>Python3基础之字符串、列表、元组、字典、集合等相关操作 | 刘泰丞的个人博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="刘泰丞的个人博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner2.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='GavinLiu'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/技术杂谈/"><i class="fa "></i>技术杂谈</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/关于自己/"><i class="fa "></i>关于自己</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Python3基础之字符串、列表、元组、字典、集合等相关操作">
+            
+	            Python3基础之字符串、列表、元组、字典、集合等相关操作
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/Python基础">
+            Python基础
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/字符串" title='字符串'>
+                        字符串
+                    </a>
+                
+                    <a href="/tags/列表" title='列表'>
+                        列表
+                    </a>
+                
+                    <a href="/tags/元组" title='元组'>
+                        元组
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/05/14</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>下面将一一介绍Python中的字符串、列表、元组、集合的相关操作</p>
+<h3 id="字符串、列表、元组、字典、集合等相关操作"><a href="#字符串、列表、元组、字典、集合等相关操作" class="headerlink" title="字符串、列表、元组、字典、集合等相关操作"></a>字符串、列表、元组、字典、集合等相关操作</h3><blockquote>
+<p>字符串操作</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">字符串一般情况使用单引号或者双引号引起来</span><br><span class="line">规则: 单不能套单,单可以套双</span><br><span class="line">      双不能套双,双可以套单</span><br><span class="line"></span><br><span class="line"><span class="comment">## 多行字符串</span></span><br><span class="line"><span class="comment"># 方式二</span></span><br><span class="line">str3 = <span class="string">'3月25号我来到了美丽的成都,刚下飞机,'</span>\</span><br><span class="line">       <span class="string">'就碰到一个老外帅锅,结果他还跟我打招呼.但是我不会英语,好尴尬'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式一</span></span><br><span class="line">str4 = <span class="string">'''洁白的婚纱,手捧着鲜花 ,美丽的想通话.想起那年初夏,我为你牵挂.'''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式三</span></span><br><span class="line">str5 = <span class="string">"""洁白的婚纱,手捧着鲜花 ,美丽的想通话.想起那年初夏,我为你牵挂."""</span></span><br><span class="line">print(str5)</span><br><span class="line"></span><br><span class="line"><span class="comment">#--------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">##字符串的长度</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">len(): 获取字符串的长度</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">str1 = <span class="string">'lhy'</span></span><br><span class="line">str1 = <span class="string">'刘海艳'</span></span><br><span class="line">str1 = <span class="string">'幸福像花儿一样'</span></span><br><span class="line">print(len(str1))</span><br><span class="line"></span><br><span class="line">总结: 无论是字符还是汉字,只要有一个,则长度就是几个</span><br><span class="line"></span><br><span class="line"><span class="comment">#-------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">##提取某个字符</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">提取字符串中的某一个字符</span></span><br><span class="line"><span class="string">方式:</span></span><br><span class="line"><span class="string">从左往右开始, 下标从0开始提取</span></span><br><span class="line"><span class="string">str[0]   str[1]   str[2] ..... str[n]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">从优往左开始, 下标从-1开始</span></span><br><span class="line"><span class="string">str[-1]  str[-2] .....  str[-n]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">str1 = <span class="string">'It is a dog'</span></span><br><span class="line">print(str1[<span class="number">0</span>])</span><br><span class="line">print(str1[<span class="number">-2</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># pytjon中的字符串一旦定义好之后,是不可以修改的</span></span><br><span class="line">str1[<span class="number">0</span>] = <span class="string">'i'</span></span><br><span class="line">print(<span class="string">'str1 ='</span>, str1)</span><br><span class="line"></span><br><span class="line"><span class="comment">#------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">##转义字符</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">转义字符: 将原来的意义给他去掉  \(这是反斜线)   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">str1 = <span class="string">'我最喜欢的一首歌是\'咱们结婚吧\''</span></span><br><span class="line">str1 = <span class="string">'you\'re a good man'</span></span><br><span class="line">print(str1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">系统里边有一些特殊的字符: \t(制表符) \n(换行符)</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">print(<span class="string">'你好\\t宝强哥,你的媳妇是马蓉吗?'</span>)</span><br><span class="line">print(<span class="string">'你好\\n宋喆,你的情人是\t马蓉\n吗?'</span>)</span><br><span class="line"><span class="comment"># 如果想将原来具有特殊含义的字符失去本身的意义,我们可以直接在整个字符串前边添加一个r</span></span><br><span class="line">print(<span class="string">r'你好\t宝强哥,你的媳妇是马蓉吗?'</span>)</span><br><span class="line">print(<span class="string">r'你好\n宋喆,你的情人是马蓉吗?'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#-------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">##字符串截取</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">字符串截取:</span></span><br><span class="line"><span class="string">str1[开始下标:结束下标]: 从开始下标截取,到结束下标=结尾,.包含开始下标,但不包含结束下标</span></span><br><span class="line"><span class="string">str1[0:5] 提取是的结果你是zhous</span></span><br><span class="line"><span class="string">str1[:3] 默认从下标0开始到结束的开区间</span></span><br><span class="line"><span class="string">str1[3:] 从指定的下标开始到结尾</span></span><br><span class="line"><span class="string">str1[-n:]: 从最后边提取n个</span></span><br><span class="line"><span class="string">str1[:]:  提取全部字符</span></span><br><span class="line"><span class="string">str1[::2]  根据下标每个n个提取一次</span></span><br><span class="line"><span class="string">str1[::-1]  将字符逆序排列</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">##字符串的格式化</span></span><br><span class="line">%s:    给字符串站位</span><br><span class="line">%d:     给int类型站位</span><br><span class="line">%f:     给浮点类型站位,  默认保留<span class="number">6</span>为小数</span><br><span class="line">        %<span class="number">.2</span>f:  保留两位小数</span><br><span class="line">        %<span class="number">10.2</span>f  共<span class="number">10</span>位,保留两位小数,其他为使用空格补齐</span><br><span class="line">         %<span class="number">010.2</span>f  共<span class="number">10</span>位,保留两位小数,其他为使用<span class="number">0</span>补齐</span><br><span class="line">%c:     打印一个字符</span><br><span class="line">%o:    将十进制转换成八进制</span><br><span class="line">%x:    将十进制转换成十六进制</span><br><span class="line"></span><br><span class="line">name = <span class="string">'宝强'</span></span><br><span class="line">age = <span class="number">36</span></span><br><span class="line">like = <span class="string">'green'</span></span><br><span class="line">print(<span class="string">'他是&#123;&#125;,今年&#123;&#125;,他喜欢&#123;&#125;'</span> .format(name, age, like))</span><br><span class="line">print(<span class="string">'他是&#123;lala&#125;,今年&#123;wawa&#125;, 他喜欢&#123;heihei&#125;'</span> .format(wawa=age, heihei=like, lala=name))</span><br><span class="line"></span><br><span class="line"><span class="comment">#--------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">##字符串比较大小</span></span><br><span class="line">[规则:]从第一个字符开始比较,将字符转换成ascii值进行比较</span><br><span class="line">如果小于则返回<span class="keyword">True</span>,否则返回<span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>列表操作</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">列表:  格式:  列表名 = [元素1, 元素2,,...]</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># append()往列表后边追加一个元素</span></span><br><span class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">list1.append(<span class="number">100</span>)</span><br><span class="line"><span class="comment"># print(list1)</span></span><br><span class="line">list1.append([<span class="number">200</span>, <span class="number">400</span>, <span class="number">600</span>])</span><br><span class="line"><span class="comment"># print(list1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在末尾一次性追加另外一个列表中的多个值</span></span><br><span class="line">list2 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">list2.extend([<span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>])</span><br><span class="line"><span class="comment"># print(list2)</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">insert():在指定下标出添加一个元素,原来位置处的元素往后移动</span></span><br><span class="line"><span class="string">@参数一: 列表的下标</span></span><br><span class="line"><span class="string">@参数二: 列表中下标所对应的值</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">list3 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line">list3.insert(<span class="number">1</span>, <span class="number">250</span>)</span><br><span class="line"><span class="comment"># print(list3)</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">pop():将列表中指定下标的元素删除, 如果默认不传递参数,则删除的是最后一个元素</span></span><br><span class="line"><span class="string">@参数一: [可有可无] 列表对应的下标</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">list4 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line">list4.pop()</span><br><span class="line">list4.pop()</span><br><span class="line"><span class="comment"># print(list4)</span></span><br><span class="line">list4.pop(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># print(list4)</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">remove():移除列表中指定的元素</span></span><br><span class="line"><span class="string">@参数一: 列表中的元素</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">list5 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line">list5.remove(<span class="number">3</span>)</span><br><span class="line"><span class="comment"># print(list5)</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">clear():清除列表中所有的元素</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">list6 = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">list6.clear()</span><br><span class="line"><span class="comment"># print(list6)</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">index():获取列表元素锁对应的下标</span></span><br><span class="line"><span class="string">@参数一:  列表中的某一个元素</span></span><br><span class="line"><span class="string">返回值:  列表中元素所对应的下标</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">list7 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">index1 = list7.index(<span class="number">3</span>)</span><br><span class="line"><span class="comment"># print(index1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取列表的长度</span></span><br><span class="line">list8 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="comment"># print(len(list8))</span></span><br><span class="line"></span><br><span class="line">list9 = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="comment"># print(max(list9))</span></span><br><span class="line"></span><br><span class="line">list10 = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="comment"># print(min(list9))</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">count(): 计算列表中元素出现的次数</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">list11 = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="comment"># print(list11.count(3))</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">reverse():将列表进行倒序排列</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">list12 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">list12.reverse()</span><br><span class="line"><span class="comment"># print(list12)</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">sort():将列表中的元素进行升序排列</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">list13 = [<span class="number">1</span>, <span class="number">100</span>, <span class="number">78</span>, <span class="number">23</span>, <span class="number">65</span>, <span class="number">43</span>]</span><br><span class="line">list13.sort()</span><br><span class="line"><span class="comment"># print(list13)</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">引用传递:  </span></span><br><span class="line"><span class="string">在列表中,如果修改一个列表的元素,那么对应的另外一个列表的元素也改变</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">list14 = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">list15 = list14</span><br><span class="line">list15[<span class="number">1</span>] = <span class="number">200</span></span><br><span class="line"><span class="comment"># print(list14)</span></span><br><span class="line"><span class="comment"># print(list15)</span></span><br><span class="line"><span class="comment"># id():查看内存的地址</span></span><br><span class="line"><span class="comment"># print(id(list14))</span></span><br><span class="line"><span class="comment"># print(id(list15))</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">值传递</span></span><br><span class="line"><span class="string">在列表中修改一个元素的值时,对应的另外一个列表中的值是不发生改变的</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">list16 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">list17 = list16.copy()</span><br><span class="line">list17[<span class="number">1</span>] = <span class="number">250</span></span><br><span class="line">print(list16)</span><br><span class="line">print(list17)</span><br><span class="line">print(id(list16))</span><br><span class="line">print(id(list17))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>元组操作</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">元组:也是一种有序集合</span></span><br><span class="line"><span class="string">特点:</span></span><br><span class="line"><span class="string">1.跟列表非常相似:  list1 = []   tuple1 = ()</span></span><br><span class="line"><span class="string">2.一旦定义好之后不能修改</span></span><br><span class="line"><span class="string">3.使用小括号括起一个集合</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># 创建一个空元祖</span></span><br><span class="line">tuple1 = ()</span><br><span class="line"><span class="comment"># print(tuple1)</span></span><br><span class="line"><span class="comment"># print(type(tuple1))</span></span><br><span class="line"></span><br><span class="line">tuple2 = (<span class="number">23</span>, <span class="number">3.14</span>, <span class="string">'aaa'</span>, <span class="keyword">None</span>, <span class="keyword">True</span>)</span><br><span class="line"><span class="comment"># print(tuple2)</span></span><br><span class="line"></span><br><span class="line">tuple3 = (<span class="number">4</span>, )<span class="comment">#tuple</span></span><br><span class="line">tuple3 = (<span class="number">4</span>)<span class="comment">#int</span></span><br><span class="line"><span class="comment"># print(tuple3)</span></span><br><span class="line"><span class="comment"># print(type(tuple3))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问元祖的元素</span></span><br><span class="line">tuple4 = (<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)</span><br><span class="line"><span class="comment"># print(tuple4[0])</span></span><br><span class="line"><span class="comment"># print(tuple4[1])</span></span><br><span class="line"><span class="comment"># 元祖在访问的时候一定不能溢出(越界),直接报错</span></span><br><span class="line"><span class="comment"># print(tuple4[5])</span></span><br><span class="line"><span class="comment"># 获取元祖中最后一个元素</span></span><br><span class="line"><span class="comment"># print(tuple4[-1])</span></span><br><span class="line"><span class="comment"># print(tuple4[-2])</span></span><br><span class="line"><span class="comment"># 一定不能越界</span></span><br><span class="line"><span class="comment"># print(tuple4[-6])</span></span><br><span class="line"></span><br><span class="line">tuple5 = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="number">12</span>, <span class="number">34</span>, <span class="number">45</span>])</span><br><span class="line"><span class="comment"># print(tuple5)</span></span><br><span class="line"><span class="comment"># tuple5[0] = 150#直接报错, 元祖定义好之后是不能修改的</span></span><br><span class="line"><span class="comment"># print(tuple5)</span></span><br><span class="line"><span class="comment"># print(tuple5[-1][-2])</span></span><br><span class="line"><span class="comment"># print(tuple5[4][1])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除元祖的用法跟删除变量的用法一致</span></span><br><span class="line">tuple6 = (<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>)</span><br><span class="line"><span class="keyword">del</span> tuple6</span><br><span class="line"><span class="comment"># print(tuple6)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 元祖进行操作</span></span><br><span class="line">tuple7 = (<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">tuple8 = (<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>)</span><br><span class="line"><span class="comment"># 将两个元祖合并成一个新的元祖</span></span><br><span class="line">tuple9 = tuple7 + tuple8</span><br><span class="line"><span class="comment"># print(tuple9)</span></span><br><span class="line"><span class="comment"># print(tuple7, tuple8)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将元祖重复n次,最后返回一个新的元祖</span></span><br><span class="line">tuple10 = (<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="comment"># print(tuple10 * 10)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断一个元素是否在一个元祖中,如果在返回True,否则返回False</span></span><br><span class="line">tuple11 = (<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>)</span><br><span class="line"><span class="comment"># print(4 in tuple11)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 元祖的截取</span></span><br><span class="line"><span class="comment"># 格式: 元祖名[开始下标:结束下标]</span></span><br><span class="line">tuple12 = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>,<span class="number">10</span>)</span><br><span class="line"><span class="comment"># print(tuple12[1:5])</span></span><br><span class="line"><span class="comment"># print(tuple12[3:])</span></span><br><span class="line"><span class="comment"># print(tuple12[:6])</span></span><br><span class="line"><span class="comment"># 将元祖进行逆序排列</span></span><br><span class="line"><span class="comment"># print(tuple12[::-1])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二维元祖:</span></span><br><span class="line">tuple13 = ((<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>), (<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>))</span><br><span class="line"><span class="comment"># print(tuple13[1][1])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 元祖的方法</span></span><br><span class="line"><span class="comment"># 求一个元祖的长度</span></span><br><span class="line">tuple14 = (<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="comment"># print(len(tuple14))</span></span><br><span class="line"><span class="comment"># print(max(tuple14))</span></span><br><span class="line"><span class="comment"># print(min(tuple14))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对列表进行遍历</span></span><br><span class="line"><span class="comment"># for i in [1, 2, 3, 4, 5]:</span></span><br><span class="line"><span class="comment">#     print(i)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对元祖进行遍历</span></span><br><span class="line"><span class="comment"># for x in (3, 4, 5, 6, 7):</span></span><br><span class="line"><span class="comment">#     print(x)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将列表转换成元祖</span></span><br><span class="line">list11 = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>]</span><br><span class="line">tuple15 = tuple(list11)</span><br><span class="line"><span class="comment"># print(tuple15)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将元祖转换成列表</span></span><br><span class="line">tuple16 = (<span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>)</span><br><span class="line">list12 = list(tuple16)</span><br><span class="line"><span class="comment"># print(list12)</span></span><br><span class="line"></span><br><span class="line">list13 = range(<span class="number">0</span>, <span class="number">10</span>)</span><br><span class="line">print(type(list13))</span><br><span class="line"><span class="comment"># range(): 从开始值开始,但不包含结束值[0, 10)</span></span><br><span class="line"><span class="comment"># for i in range(0, 10):</span></span><br><span class="line"><span class="comment">#     print(i)</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>字典操作</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">dict(字典): 在字典里边一般存放的是键值对的形式.</span></span><br><span class="line"><span class="string">键1 = 值1   key = value</span></span><br><span class="line"><span class="string">键1 : 值1</span></span><br><span class="line"><span class="string">写法: &#123;键1:值1, 键2:值2, 键3:值3&#125;</span></span><br><span class="line"><span class="string">例子:dict1 = &#123;'name': '刘海艳', 'age': 17, 'sex': 'girl'&#125;</span></span><br><span class="line"><span class="string">注意事项:</span></span><br><span class="line"><span class="string">1.在字典中键(key)的值必须是唯一</span></span><br><span class="line"><span class="string">2.在字典中可以存放多个键值对</span></span><br><span class="line"><span class="string">3.在字典中键(key)必须是不可变类型   字符串  整数都可以作为键(key)</span></span><br><span class="line"><span class="string">4.list和tuple都是有序集合, 而dictsahib无序集合</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># 必须保证字典中的key是唯一的</span></span><br><span class="line">dict1 = &#123;<span class="string">'yelei'</span>: <span class="number">100</span>, <span class="string">'xiaoming'</span> : <span class="number">99</span>, <span class="string">'jianfei'</span>: <span class="number">59</span>, <span class="string">'zhouying'</span>: <span class="number">110</span>&#125;</span><br><span class="line"><span class="comment"># print(dict1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 元素的访问</span></span><br><span class="line"><span class="comment"># 获取的方式: 字典名[key]</span></span><br><span class="line"><span class="comment"># print(dict1['xiaoming'])</span></span><br><span class="line"><span class="comment"># print(dict1.get('yelei'))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print('yelei' in dict1)</span></span><br><span class="line"></span><br><span class="line">ret = dict1.get(<span class="string">'lhy'</span>)</span><br><span class="line"><span class="comment"># if ret == None:</span></span><br><span class="line"><span class="comment">#     print('没有')</span></span><br><span class="line"><span class="comment"># else:</span></span><br><span class="line"><span class="comment">#     print('有')</span></span><br><span class="line"></span><br><span class="line">dict2 = &#123;<span class="string">'user'</span>: <span class="string">'大黄'</span>, <span class="string">'sex'</span>: <span class="string">'男'</span>, <span class="string">'age'</span>: <span class="number">30</span>, <span class="string">'height'</span>: <span class="number">150</span> &#125;</span><br><span class="line"><span class="comment"># 添加元素</span></span><br><span class="line">dict2[<span class="string">'lover'</span>] = <span class="string">'小白'</span></span><br><span class="line"><span class="comment"># 一个key只能对应一个value</span></span><br><span class="line">dict2[<span class="string">'lover'</span>] = <span class="string">'小绿'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">dict2[<span class="string">'lover'</span>] = <span class="string">'小花'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">dict2.pop(<span class="string">'sex'</span>)</span><br><span class="line"><span class="comment"># 直接报错,因为他是无需集合</span></span><br><span class="line"><span class="comment"># dict2.pop()</span></span><br><span class="line"><span class="comment"># print(dict2)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历</span></span><br><span class="line"><span class="comment"># for x in dict2:</span></span><br><span class="line"><span class="comment">#     print(x, dict2[x])</span></span><br><span class="line"><span class="comment"># 获取字典所有的value和key</span></span><br><span class="line"><span class="comment"># print(dict2.values())</span></span><br><span class="line"><span class="comment"># print(dict2.keys())</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># for i in dict2.values():</span></span><br><span class="line"><span class="comment">#     print(i)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># for i in dict2.keys():</span></span><br><span class="line"><span class="comment">#     print(i)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># for k,v in dict2.items():</span></span><br><span class="line"><span class="comment">#     print(k, v)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#for k,v in enumerate(dict2):</span></span><br><span class="line"><span class="comment">#    print(k, v)</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>集合操作</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">set(集合):类似于dict, 也是无序的,以key-value新的形势存在,但是没有value</span></span><br><span class="line"><span class="string">作用: 是对list,tuple,dict进行去重的, 求交集.并集</span></span><br><span class="line"><span class="string">1.set是无序</span></span><br><span class="line"><span class="string">2.set集合是不可改变的</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># set1 = set([1, 2, 3, 5, 3, 2])</span></span><br><span class="line"><span class="comment"># print(set1)</span></span><br><span class="line"><span class="comment"># print(type(set1))</span></span><br><span class="line"><span class="comment"># set2 = set((1, 2, 3, 5, 3, 2, 4, 5))</span></span><br><span class="line"><span class="comment"># print(set2)</span></span><br><span class="line"><span class="comment"># print(type(set2))</span></span><br><span class="line"><span class="comment"># set3 = set(&#123;3, 4, 5,5, 6, 3, 7&#125;)</span></span><br><span class="line"><span class="comment"># print(set3)</span></span><br><span class="line"><span class="comment"># print(type(set3))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加</span></span><br><span class="line">set4 = set([<span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">set4.add(<span class="number">8</span>)</span><br><span class="line"><span class="comment"># set4.add(3)#可以添加重复的值,但是没效果</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 总结:list和dict是可改变的, 而tuple是不可改变</span></span><br><span class="line"><span class="comment"># set4.add([10, 9])#直接报错,不能添加list</span></span><br><span class="line"><span class="comment"># set4.add((10, 9))</span></span><br><span class="line"><span class="comment"># set4.add(&#123;'a':1&#125;)#直接报错,不能添加字典</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># print(set4)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">set5 = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="comment"># 将list dict tuple 等等整个插入进去</span></span><br><span class="line"><span class="comment"># set5.update([6, 7, 8])</span></span><br><span class="line"><span class="comment"># set5.update(&#123;9, 10&#125;)</span></span><br><span class="line"><span class="comment"># set5.update((11, 56))</span></span><br><span class="line"><span class="comment"># print(set5)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line"><span class="comment"># set6= set([3, 4, 5, 6, 7])</span></span><br><span class="line"><span class="comment"># set6.remove(4)</span></span><br><span class="line"><span class="comment"># print(set6)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历</span></span><br><span class="line">set7 = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>])</span><br><span class="line">set7 = set([<span class="string">'aaa'</span>, <span class="string">'bbb'</span>, <span class="string">'ccc'</span>])</span><br><span class="line">set7 = set((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line"><span class="comment"># 在set集合中,没有value,即使有value也遍历不出来</span></span><br><span class="line">set7 = set(&#123;<span class="string">'name'</span>:<span class="string">'小花'</span>, <span class="string">'age'</span>: <span class="number">18</span>&#125;)</span><br><span class="line"><span class="comment"># for i in set7:</span></span><br><span class="line"><span class="comment">#     print(i, end = ',')</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &amp; | - ^</span></span><br><span class="line">set8 = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">set9 = set([<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">set10 = set8 &amp; set9</span><br><span class="line">set11 = set8 | set9</span><br><span class="line">set12 = set8 - set9</span><br><span class="line">set13 = set8 ^ set9</span><br><span class="line">print(set10)</span><br><span class="line">print(set11)</span><br><span class="line">print(set12)</span><br><span class="line">print(set13)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">GavinLiu</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/05/15/Python3基础之分支结构和循环结构/" class="pre-post btn btn-default" title='Python3基础之分支结构和循环结构'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Python3基础之分支结构和循环结构</span>
+        </a>
+    
+    
+        <a href="/2018/05/14/hexo/" class="next-post btn btn-default" title='Hexo'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Hexo</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+    <div class="widget">    
+        <h3 class="title">搜索</h3>
+        <div id="search-form">
+            <div id="result-mask" class="hide"></div>
+            <div class="search-area">
+                
+                    <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢?">
+                    <button type="button" class="search-form-submit" id="search-local">站内搜索</button>
+                
+                
+                    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Google Search"><button type="submit" class="search-form-submit">谷歌搜索</button><input type="hidden" name="sitesearch" value="http://gavinliu4011.github.io"></form>
+                
+            </div>
+            <div id="result-wrap" class="hide">
+                <div id="search-result"></div>
+            </div>
+            <div class="hide">
+                <template id="search-tpl">
+                    <div class="item">
+                        <a href="/{path}" title="{title}">
+                            <div class="title">{title}</div>
+                            <div class="content">{content}</div>
+                        </a>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <!-- <p>主题Snippet v1.2.0版本已经上线！欢迎更新~ <br/>
+主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br/>
+<hr/>接受贡献，包括不限于提交问题与需求，修复代码。欢迎Pull Request<br/>支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
+</p> -->
+暂无
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+      <h3 class="title">社交</h3> 
+        <div class="content social">
+            
+	            <a href="//github.com/gavinliu4011" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="git fa fa-git"></i>
+			    </a>
+            
+	            <a href="mailto:gavinliu4011@163.com" rel="external nofollow" title="邮箱" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+			    	<i class="qq fa fa-qq"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="微博" target="_blank">
+			    	<i class="weibo fa fa-weibo"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+			    	<i class="users fa fa-users"></i>
+			    </a>
+            
+	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+			    	<i class="feed fa fa-feed"></i>
+			    </a>
+            
+        </div>
+    </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">分类</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/"><i class="fa" aria-hidden="true">Git</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/"><i class="fa" aria-hidden="true">Hexo</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python基础/"><i class="fa" aria-hidden="true">Python基础</i></a><span class="category-list-count">4</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">五月 2018</i></a><span class="archive-list-count">9</span></li></ul>
+    </div>
+
+
+        
+        
+  <div class="widget">
+    <h3 class="title">标签云</h3>
+    <div class="content tag-cloud">
+        <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分支结构/" style="font-size: 10px;">分支结构</a> <a href="/tags/列表/" style="font-size: 10px;">列表</a> <a href="/tags/变量/" style="font-size: 10px;">变量</a> <a href="/tags/字典/" style="font-size: 10px;">字典</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/循环结构/" style="font-size: 10px;">循环结构</a> <a href="/tags/数据类型/" style="font-size: 10px;">数据类型</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
+    </div>
+  </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.baidu.com" class="fa" target="_blank">个人博客</a>
+        
+            <a href="https://my.csdn.net/jackfrued" class="fa" target="_blank">骆昊博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2018
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+	<script src="/js/search.js?rev=@@hash"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
