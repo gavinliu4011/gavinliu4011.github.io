@@ -192,8 +192,8 @@
 <p>​<code>password</code>:mysql登录密码</p>
 <p>​<code>db</code>:数据库名称</p>
 <p>​<code>charset</code>:连接数据库采用的字符编码</p>
-<p>​<code>autocommit</code>:默认值是False,DML不自动提交,如果为True则会自动提交</p>
-<p>​<code>cursorclass</code>:pymysql.cursors.DictCursor - 设置游标的类型,查询返回的结果是以字典的方式</p>
+<p><code>autocommit</code>:默认值是False,DML(数据操纵语言)不会自动提交,如果为True则会自动提交</p>
+<p><code>cursorclass</code>:pymysql.cursors.DictCursor - 设置游标的类型,查询返回的结果是以字典的方式</p>
 </li>
 <li><p>测试是否连接成功</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(conn)</span><br><span class="line">$ &lt;pymysql.connections.Connection object at <span class="number">0x05656EB0</span>&gt;</span><br></pre></td></tr></table></figure>
