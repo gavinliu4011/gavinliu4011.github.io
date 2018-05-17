@@ -1,0 +1,435 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="刘泰丞的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://gavinliu4011.github.io">
+    <!--SEO-->
+
+<meta name="description" content="刘泰丞的个人网站，记录生活的瞬间，分享学习的心得，感悟生活，留住感动"/>
+
+
+
+<meta name="keywords" content="刘泰丞,GavinLiu,IT,技术,博客,Python"/>
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>Python3.x 连接MySQL数据库 | 刘泰丞的个人博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="刘泰丞的个人博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner2.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='GavinLiu'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/技术杂谈/"><i class="fa "></i>技术杂谈</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/关于自己/"><i class="fa "></i>关于自己</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Python3.x 连接MySQL数据库">
+            
+	            Python3.x 连接MySQL数据库
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/Python">
+            Python
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Python" title='Python'>
+                        Python
+                    </a>
+                
+                    <a href="/tags/pymysql" title='pymysql'>
+                        pymysql
+                    </a>
+                
+                    <a href="/tags/MySQL" title='MySQL'>
+                        MySQL
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/05/17</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="Python3-x-连接MySQL数据库"><a href="#Python3-x-连接MySQL数据库" class="headerlink" title="Python3.x 连接MySQL数据库"></a>Python3.x 连接MySQL数据库</h3><p>由于 MySQLdb 模块还不支持 Python3.x，所以 Python3.x 如果想连接MySQL需要安装 pymysql 模块。</p>
+<p>pymysql 模块可以通过 pip 安装<code>pip install PyMySQL</code></p>
+<blockquote>
+<p>用pymysql连接数据库</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">conn = pymysql.connect(host=<span class="string">'localhost'</span>,</span><br><span class="line">                           port=<span class="number">3306</span>,</span><br><span class="line">                           user=<span class="string">'root'</span>,</span><br><span class="line">                           password=<span class="string">'root'</span>,</span><br><span class="line">                           db=<span class="string">'hrs'</span>,</span><br><span class="line">                           charset=<span class="string">'utf8'</span>,</span><br><span class="line">                           autocommit=<span class="keyword">False</span>  <span class="comment"># 默认不自动提交</span></span><br><span class="line">                           )</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>常用参数说明:</p>
+<p>​<code>host</code>:主机IP</p>
+<p>​<code>port</code>:端口号</p>
+<p>​<code>user</code>:mysql登录用户名</p>
+<p>​<code>password</code>:mysql登录密码</p>
+<p>​<code>db</code>:数据库名称</p>
+<p>​<code>charset</code>:连接数据库采用的字符编码</p>
+<p>​<code>autocommit</code>:默认值是False,DML不自动提交,如果为True则会自动提交</p>
+<p>​<code>cursorclass</code>:pymysql.cursors.DictCursor - 设置游标的类型,查询返回的结果是以字典的方式</p>
+</li>
+<li><p>测试是否连接成功</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(conn)</span><br><span class="line">$ &lt;pymysql.connections.Connection object at <span class="number">0x05656EB0</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果运行上面的语句不报错,并且看到了输出到控制台的值,那么我们则用pymysql连接上了MySQL数据库.</p>
+<blockquote>
+<p>方法介绍</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">connection对象常用的方法</span><br><span class="line">cursor()        使用该连接创建并返回游标</span><br><span class="line">commit()        提交当前事务</span><br><span class="line">rollback()      回滚当前事务</span><br><span class="line">close()         关闭连接</span><br><span class="line"></span><br><span class="line">cursor对象常用的方法和属性</span><br><span class="line">execute(sql)    执行一个数据库的查询命令</span><br><span class="line">fetchone()      取得结果集的下一行</span><br><span class="line">fetchmany(size) 获取结果集的下几行</span><br><span class="line">fetchall()      获取结果集中的所有行</span><br><span class="line">rowcount      	返回数据条数或影响行数</span><br><span class="line">close()         关闭游标对象</span><br></pre></td></tr></table></figure>
+<p>在介绍上面方法使用前再看看连接数据库的代码块,其中有一个很重要的参数<strong>db</strong> (数据库名称),所以我们应当在连接数据库之前，先创建一个数据库，方便测试 pymysql 的功能</p>
+<blockquote>
+<p>使用Python实现增删改查和事务处理</p>
+</blockquote>
+<p>首先我们在上面说的<code>hrs</code>数据库中创建一张部门表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建部门表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tbdept</span><br><span class="line">(</span><br><span class="line">dno <span class="built_in">int</span>,					<span class="comment">-- 部门编号</span></span><br><span class="line">dname <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,	  <span class="comment">-- 部门名称</span></span><br><span class="line">dloc <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,	  <span class="comment">-- 部门所在地</span></span><br><span class="line">primary <span class="keyword">key</span> (dno)</span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 添加部门记录</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbdept <span class="keyword">values</span> </span><br><span class="line">(<span class="number">10</span>, <span class="string">'会计部'</span>, <span class="string">'北京'</span>),</span><br><span class="line">(<span class="number">20</span>, <span class="string">'研发部'</span>, <span class="string">'成都'</span>),</span><br><span class="line">(<span class="number">30</span>, <span class="string">'销售部'</span>, <span class="string">'重庆'</span>),</span><br><span class="line">(<span class="number">40</span>, <span class="string">'运维部'</span>, <span class="string">'深圳'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_conn</span><span class="params">()</span>:</span></span><br><span class="line">    config = &#123;</span><br><span class="line">        <span class="string">'host'</span>: <span class="string">'localhost'</span>,</span><br><span class="line">        <span class="string">'port'</span>: <span class="number">3306</span>,</span><br><span class="line">        <span class="string">'user'</span>: <span class="string">'root'</span>,</span><br><span class="line">        <span class="string">'password'</span>: <span class="string">'root'</span>,</span><br><span class="line">        <span class="string">'db'</span>: <span class="string">'hrs'</span>,</span><br><span class="line">        <span class="string">'charset'</span>: <span class="string">'utf8'</span>,</span><br><span class="line">        <span class="string">'autocommit'</span>: <span class="keyword">False</span>,  <span class="comment"># 默认不自动提交</span></span><br><span class="line">        <span class="string">'cursorclass'</span>: pymysql.cursors.DictCursor  <span class="comment"># 设置游标的类型,查询返回的结果是以字典的方式</span></span><br><span class="line">    &#125;</span><br><span class="line">    conn = pymysql.connect(**config)</span><br><span class="line">    <span class="keyword">return</span> conn</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>下面我们先来看看添加的操作:</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    插入</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># Connection(连接) / Cursor(游标)</span></span><br><span class="line">    conn = get_conn()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 创建Cursor对象,cursor支持上下文语法,可以放在with中</span></span><br><span class="line">        <span class="keyword">with</span> conn.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">            <span class="comment"># 向数据库发出sql语句</span></span><br><span class="line">            dno = input(<span class="string">'部门编号:'</span>)</span><br><span class="line">            dname = input(<span class="string">'部门名称:'</span>)</span><br><span class="line">            dloc = input(<span class="string">'部门地址:'</span>)</span><br><span class="line">            <span class="comment"># 如果使用字符串格式化的方式来组装SQL语句</span></span><br><span class="line">            <span class="comment"># 最大的风险是用被SQL注射攻击</span></span><br><span class="line">            <span class="comment"># sql = "insert into tbdept values (%d, '%s', '%s')" % (dno, dname, dloc)</span></span><br><span class="line">            <span class="comment"># result = cursor.execute(sql)</span></span><br><span class="line">            <span class="comment"># result = cursor.execute('insert into tbdept values (%s, %s, %s)', (dno, dname, dloc))</span></span><br><span class="line">            <span class="comment"># 这个方式传参是以字典的方式,但是要注意的是在占位的时候用%(name)s</span></span><br><span class="line">            result = cursor.execute(</span><br><span class="line">                <span class="string">'insert into tbdept values (%(dno)s, %(dname)s, %(dloc)s)'</span>,</span><br><span class="line">                &#123;<span class="string">'dno'</span>: dno, <span class="string">'dname'</span>: dname, <span class="string">'dloc'</span>: dloc&#125;</span><br><span class="line">            )</span><br><span class="line">            <span class="comment"># print('成功插入', cursor.rowcount, '条数据') # 这里cursor.rowcount是获取到受影响的行</span></span><br><span class="line">            print(<span class="string">'成功插入'</span>, result, <span class="string">'条数据'</span>)</span><br><span class="line">            conn.commit()</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        conn.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改操作</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    修改</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    conn = get_conn()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> conn.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">            dno = input(<span class="string">'部门编号:'</span>)</span><br><span class="line">            dname = input(<span class="string">'部门名称:'</span>)</span><br><span class="line">            <span class="comment"># 这个方式传参是以字典的方式,但是要注意的是在占位的时候用%(name)s</span></span><br><span class="line">            result = cursor.execute(</span><br><span class="line">                <span class="string">'update tbdept set dname=%(dname)s where dno=%(dno)s'</span>,</span><br><span class="line">                &#123;<span class="string">'dno'</span>: dno, <span class="string">'dname'</span>: dname&#125;</span><br><span class="line">            )</span><br><span class="line">            <span class="comment"># print('成功插入', cursor.rowcount, '条数据') # 这里cursor.rowcount是获取到受影响的行</span></span><br><span class="line">            print(<span class="string">'成功修改'</span>, result, <span class="string">'条数据'</span>)</span><br><span class="line">            conn.commit()</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        conn.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除操作</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(dno)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    根据编号删除</span></span><br><span class="line"><span class="string">    :param dno: 编号</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    conn = get_conn()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> conn.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">            <span class="comment"># 向数据库发出sql语句</span></span><br><span class="line">            <span class="comment"># execute方法中占位后传参除了元组和字典外,还可以是列表</span></span><br><span class="line">            result = cursor.execute(<span class="string">'delete from tbdept where dno=%s'</span>, [dno])</span><br><span class="line">            <span class="comment"># 如果事务中的所有操作全部成功了最后手动提交</span></span><br><span class="line">            conn.commit()</span><br><span class="line">            print(<span class="string">'删除成功'</span> <span class="keyword">if</span> result == <span class="number">1</span> <span class="keyword">else</span> <span class="string">'删除失败'</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">        <span class="comment"># 如果事务操作有任何一个操作发生异常,那么就会回滚事务</span></span><br><span class="line">        conn.rollback()</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        conn.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询操作</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    查询</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    conn = get_conn()</span><br><span class="line">    print(conn)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 创建Cursor对象</span></span><br><span class="line">        <span class="keyword">with</span> conn.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">            <span class="comment"># 向数据库发出sql语句</span></span><br><span class="line">            cursor.execute(<span class="string">'select dno, dname, dloc from tbdept'</span>)</span><br><span class="line">            result = cursor.fetchone()</span><br><span class="line">            <span class="comment"># 程序中最好不要使用fetchall(),如果库中数据量很大,那么脑补一下会有什么样的结果呢</span></span><br><span class="line">            <span class="keyword">while</span> result:</span><br><span class="line">                print(result)</span><br><span class="line">                <span class="comment"># 取出部门名称</span></span><br><span class="line">                <span class="comment"># 在这里我上面连接数据时,使用了cursorclass参数,查询时返回的结果是以字典的方式</span></span><br><span class="line">                print(result[<span class="string">'dname'</span>])</span><br><span class="line">                result = cursor.fetchone()</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        conn.close()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>到现在我们已经简单的介绍了用pymysql完成了对数据库的CURD操作</p>
+<blockquote>
+<p>源码地址为: <a href="https://coding.net/u/gavinliu4011/p/study-python/git/tree/master/mypymysql" target="_blank" rel="noopener">https://coding.net/u/gavinliu4011/p/study-python/git/tree/master/mypymysql</a> 或者 <a href="https://gitee.com/gavinliu4011/study-python/tree/master/mypymysql" target="_blank" rel="noopener">https://gitee.com/gavinliu4011/study-python/tree/master/mypymysql</a></p>
+</blockquote>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">GavinLiu</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/05/15/shell/" class="next-post btn btn-default" title='Shell常用命令'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Shell常用命令</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+    <div class="widget">    
+        <h3 class="title">搜索</h3>
+        <div id="search-form">
+            <div id="result-mask" class="hide"></div>
+            <div class="search-area">
+                
+                    <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢?">
+                    <button type="button" class="search-form-submit" id="search-local">站内搜索</button>
+                
+                
+                    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Google Search"><button type="submit" class="search-form-submit">谷歌搜索</button><input type="hidden" name="sitesearch" value="http://gavinliu4011.github.io"></form>
+                
+            </div>
+            <div id="result-wrap" class="hide">
+                <div id="search-result"></div>
+            </div>
+            <div class="hide">
+                <template id="search-tpl">
+                    <div class="item">
+                        <a href="/{path}" title="{title}">
+                            <div class="title">{title}</div>
+                            <div class="content">{content}</div>
+                        </a>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <!-- <p>主题Snippet v1.2.0版本已经上线！欢迎更新~ <br/>
+主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br/>
+<hr/>接受贡献，包括不限于提交问题与需求，修复代码。欢迎Pull Request<br/>支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
+</p> -->
+暂无
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+      <h3 class="title">社交</h3> 
+        <div class="content social">
+            
+	            <a href="//github.com/gavinliu4011" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="git fa fa-git"></i>
+			    </a>
+            
+	            <a href="mailto:gavinliu4011@163.com" rel="external nofollow" title="邮箱" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+			    	<i class="qq fa fa-qq"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="微博" target="_blank">
+			    	<i class="weibo fa fa-weibo"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+			    	<i class="users fa fa-users"></i>
+			    </a>
+            
+	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+			    	<i class="feed fa fa-feed"></i>
+			    </a>
+            
+        </div>
+    </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">分类</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/"><i class="fa" aria-hidden="true">Git</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/"><i class="fa" aria-hidden="true">Hexo</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python基础/"><i class="fa" aria-hidden="true">Python基础</i></a><span class="category-list-count">4</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">五月 2018</i></a><span class="archive-list-count">10</span></li></ul>
+    </div>
+
+
+        
+        
+  <div class="widget">
+    <h3 class="title">标签云</h3>
+    <div class="content tag-cloud">
+        <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/pymysql/" style="font-size: 10px;">pymysql</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分支结构/" style="font-size: 10px;">分支结构</a> <a href="/tags/列表/" style="font-size: 10px;">列表</a> <a href="/tags/变量/" style="font-size: 10px;">变量</a> <a href="/tags/字典/" style="font-size: 10px;">字典</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/循环结构/" style="font-size: 10px;">循环结构</a> <a href="/tags/数据类型/" style="font-size: 10px;">数据类型</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
+    </div>
+  </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.baidu.com" class="fa" target="_blank">个人博客</a>
+        
+            <a href="https://my.csdn.net/jackfrued" class="fa" target="_blank">骆昊博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2018
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+	<script src="/js/search.js?rev=@@hash"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
