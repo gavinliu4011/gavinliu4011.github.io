@@ -1,0 +1,1110 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="刘泰丞的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://gavinliu4011.github.io">
+    <!--SEO-->
+
+<meta name="description" content="刘泰丞的个人网站，记录生活的瞬间，分享学习的心得，感悟生活，留住感动"/>
+
+
+
+<meta name="keywords" content="刘泰丞,GavinLiu,IT,技术,博客,Python"/>
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>redis | 刘泰丞的个人博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="刘泰丞的个人博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner2.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='GavinLiu'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/技术杂谈/"><i class="fa "></i>技术杂谈</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/关于自己/"><i class="fa "></i>关于自己</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="redis">
+            
+	            redis
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/05/17</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="Redis安装和使用"><a href="#Redis安装和使用" class="headerlink" title="Redis安装和使用"></a>Redis安装和使用</h3><h4 id="Window-下安装"><a href="#Window-下安装" class="headerlink" title="Window 下安装"></a>Window 下安装</h4><p><strong>下载地址：</strong><a href="https://github.com/MSOpenTech/redis/releases" target="_blank" rel="noopener">https://github.com/MSOpenTech/redis/releases</a>。</p>
+<p>Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况选择，这里我们下载 <strong>Redis-x64-xxx.zip</strong>压缩包到 C 盘，解压后，将文件夹重新命名为 <strong>redis</strong>。</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2014/11/3B8D633F-14CE-42E3-B174-FCCD48B11FF3.jpg" alt="img"></p>
+<p>打开一个 <strong>cmd</strong> 窗口 使用cd命令切换目录到 <strong>C:\redis</strong> 运行 <strong>redis-server.exe redis.windows.conf</strong> 。</p>
+<p>如果想方便的话，可以把 redis 的路径加到系统的环境变量里，这样就省得再输路径了，后面的那个 redis.windows.conf 可以省略，如果省略，会启用默认的。输入之后，会显示如下界面：</p>
+<p>这时候另启一个cmd窗口，原来的不要关闭，不然就无法访问服务端了。</p>
+<p>切换到redis目录下运行 <strong>redis-cli.exe -h 127.0.0.1 -p 6379</strong> 。</p>
+<p>设置键值对 <strong>set myKey abc</strong></p>
+<p>取出键值对 <strong>get myKey</strong></p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2014/11/redis-install2.jpg" alt="Redis 安装"></p>
+<hr>
+<h4 id="Linux-下安装"><a href="#Linux-下安装" class="headerlink" title="Linux 下安装"></a>Linux 下安装</h4><p><strong>下载地址：</strong><a href="http://redis.io/download" target="_blank" rel="noopener">http://redis.io/download</a>，下载最新稳定版本。</p>
+<p>本文档使用3.2.11,下载并安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://download.redis.io/releases/redis-3.2.11.tar.gz</span><br><span class="line">$ tar -xvf redis-3.2.11.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> redis-3.2.11</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>安装完成后,我们先改一下redis.conf的配置:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ cp redis.conf ../myredis.conf <span class="comment"># 将文件redis.conf复制到上以及文件夹下并命名为myredis.conf</span></span><br><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ vim myredis.conf</span><br><span class="line"><span class="comment"># redis.conf是一个默认的配置文件。我们可以根据需要使用自己的配置文件。</span></span><br><span class="line"><span class="comment"># 建议修改以下地方:</span></span><br><span class="line"><span class="comment"># 找到bind这个地方并修改成[bind 本机内网地址]</span></span><br><span class="line"><span class="comment"># 再找到requirepass这个地方,这里是修改redis的密码</span></span><br><span class="line"><span class="comment"># 完成上述操作后保存退出</span></span><br><span class="line">$ redis-server myredis.conf</span><br></pre></td></tr></table></figure>
+<p>启动redis服务进程后，就可以使用测试客户端程序redis-cli和redis服务交互了,如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli -h host -p port</span><br><span class="line">$ auth [password] <span class="comment"># 这里输入的密码就是你上面设置的密码,如果没有则跳过此步骤</span></span><br><span class="line">redis 127.0.0.1:6379&gt; ping</span><br><span class="line">PONG</span><br><span class="line">$ redis-cli -h host -p port -a password <span class="comment"># 这个命令也能登录</span></span><br></pre></td></tr></table></figure>
+<h4 id="用Python连接Redis"><a href="#用Python连接Redis" class="headerlink" title="用Python连接Redis"></a>用Python连接Redis</h4><p>当前在本地我已经安装了 Redis 并运行在 9736 端口，密码设置为 123456</p>
+<p>用下面例子连接Redis进行测试:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    config = &#123;</span><br><span class="line">        <span class="string">'host'</span>: <span class="string">'localhost'</span>,</span><br><span class="line">        <span class="string">'port'</span>: <span class="number">9736</span>,</span><br><span class="line">        <span class="string">'db'</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="string">'password'</span>: <span class="string">'123456'</span></span><br><span class="line">    &#125;</span><br><span class="line">    client = redis.Redis(**config)</span><br><span class="line">    <span class="keyword">if</span> client.ping():</span><br><span class="line">        client.set(<span class="string">'name'</span>, <span class="string">'gavinliu'</span>)</span><br><span class="line">        print(client.get(<span class="string">'name'</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>在这里我们使用redis.Redis传入参数连接本地Redis服务,传入的四个参数分别为<code>Redis的地址</code>、<code>运行端口</code>、<code>使用的数据库</code>、<code>密码</code>，我们这里使用的Redis其实是继承了StrictRedis，所以在默认情况下不传这四个参数时，参数值会有默认值分别为localhost、6379、0、None。</p>
+<p>上面运行的结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">b'gavinliu'</span></span><br></pre></td></tr></table></figure>
+<p>在Python中使用Redis其实很方便，Redis的命令(命令详细情况可以参照<a href="http://redisdoc.com/" target="_blank" rel="noopener">Redis命令参考</a>)在Python中都能找到相应的方法，这里引用<a href="https://cuiqingcai.com/" target="_blank" rel="noopener">崔庆才老师</a>对Redis总结介绍一下Key(键)、String(字符串)、Hash(哈希表)、List(列表)、Set(集合)、SortedSet(有序集合)</p>
+<blockquote>
+<p><strong>Key(键)</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exists(name)</td>
+<td>判断一个key是否存在</td>
+<td>name: key名</td>
+<td><code>redis.exists(&#39;name&#39;)</code></td>
+<td>是否存在name这个key</td>
+<td>True</td>
+</tr>
+<tr>
+<td>delete(name)</td>
+<td>删除一个key</td>
+<td>name: key名</td>
+<td><code>redis.delete(&#39;name&#39;)</code></td>
+<td>删除name这个key</td>
+<td>1</td>
+</tr>
+<tr>
+<td>type(name)</td>
+<td>判断key类型</td>
+<td>name: key名</td>
+<td><code>redis.type(&#39;name&#39;)</code></td>
+<td>判断name这个key类型</td>
+<td>b’string’</td>
+</tr>
+<tr>
+<td>keys(pattern)</td>
+<td>获取所有符合规则的key</td>
+<td>pattern: 匹配规则</td>
+<td><code>redis.keys(&#39;n*&#39;)</code></td>
+<td>获取所有以n开头的key</td>
+<td>[b’name’]</td>
+</tr>
+<tr>
+<td>randomkey()</td>
+<td>获取随机的一个key</td>
+<td></td>
+<td><code>randomkey()</code></td>
+<td>获取随机的一个key</td>
+<td>b’name’</td>
+</tr>
+<tr>
+<td>rename(src, dst)</td>
+<td>将key重命名</td>
+<td>src: 原key名 dst: 新key名</td>
+<td><code>redis.rename(&#39;name&#39;, &#39;nickname&#39;)</code></td>
+<td>将name重命名为nickname</td>
+<td>True</td>
+</tr>
+<tr>
+<td>dbsize()</td>
+<td>获取当前数据库中key的数目</td>
+<td></td>
+<td><code>dbsize()</code></td>
+<td>获取当前数据库中key的数目</td>
+<td>100</td>
+</tr>
+<tr>
+<td>expire(name, time)</td>
+<td>设定key的过期时间，单位秒</td>
+<td>name: key名 time: 秒数</td>
+<td><code>redis.expire(&#39;name&#39;, 2)</code></td>
+<td>将name这key的过期时间设置2秒</td>
+<td>True</td>
+</tr>
+<tr>
+<td>ttl(name)</td>
+<td>获取key的过期时间，单位秒，-1为永久不过期</td>
+<td>name: key名</td>
+<td><code>redis.ttl(&#39;name&#39;)</code></td>
+<td>获取name这key的过期时间</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>move(name, db)</td>
+<td>将key移动到其他数据库</td>
+<td>name: key名 db: 数据库代号</td>
+<td><code>move(&#39;name&#39;, 2)</code></td>
+<td>将name移动到2号数据库</td>
+<td>True</td>
+</tr>
+<tr>
+<td>flushdb()</td>
+<td>删除当前选择数据库中的所有key</td>
+<td></td>
+<td><code>flushdb()</code></td>
+<td>删除当前选择数据库中的所有key</td>
+<td>True</td>
+</tr>
+<tr>
+<td>flushall()</td>
+<td>删除所有数据库中的所有key</td>
+<td></td>
+<td><code>flushall()</code></td>
+<td>删除所有数据库中的所有key</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>String(字符串)</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set(name, value)</td>
+<td>给数据库中key为name的string赋予值value</td>
+<td>name: key名 value: 值</td>
+<td><code>redis.set(&#39;name&#39;, &#39;Bob&#39;)</code></td>
+<td>给name这个key的value赋值为Bob</td>
+<td>True</td>
+</tr>
+<tr>
+<td>get(name)</td>
+<td>返回数据库中key为name的string的value</td>
+<td>name: key名</td>
+<td><code>redis.get(&#39;name&#39;)</code></td>
+<td>返回name这个key的value</td>
+<td>b’Bob’</td>
+</tr>
+<tr>
+<td>getset(name, value)</td>
+<td>给数据库中key为name的string赋予值value并返回上次的value</td>
+<td>name: key名 value: 新值</td>
+<td><code>redis.getset(&#39;name&#39;, &#39;Mike&#39;)</code></td>
+<td>赋值name为Mike并得到上次的value</td>
+<td>b’Bob’</td>
+</tr>
+<tr>
+<td>mget(keys, *args)</td>
+<td>返回多个key对应的value</td>
+<td>keys: key的列表</td>
+<td><code>redis.mget([&#39;name&#39;, &#39;nickname&#39;])</code></td>
+<td>返回name和nickname的value</td>
+<td>[b’Mike’, b’Miker’]</td>
+</tr>
+<tr>
+<td>setnx(name, value)</td>
+<td>如果key不存在才设置value</td>
+<td>name: key名</td>
+<td><code>redis.setnx(&#39;newname&#39;, &#39;James&#39;)</code></td>
+<td>如果newname这key不存在则设置值为James</td>
+<td>第一次运行True，第二次False</td>
+</tr>
+<tr>
+<td>setex(name, time, value)</td>
+<td>设置可以对应的值为string类型的value，并指定此键值对应的有效期</td>
+<td>name: key名 time: 有效期 value: 值</td>
+<td><code>redis.setex(&#39;name&#39;, 1, &#39;James&#39;)</code></td>
+<td>将name这key的值设为James，有效期1秒</td>
+<td>True</td>
+</tr>
+<tr>
+<td>setrange(name, offset, value)</td>
+<td>设置指定key的value值的子字符串</td>
+<td>name: key名 offset: 偏移量 value: 值</td>
+<td><code>redis.set(&#39;name&#39;, &#39;Hello&#39;) redis.setrange(&#39;name&#39;, 6, &#39;World&#39;)</code></td>
+<td>设置name为Hello字符串，并在index为6的位置补World</td>
+<td>11，修改后的字符串长度</td>
+</tr>
+<tr>
+<td>mset(mapping)</td>
+<td>批量赋值</td>
+<td>mapping: 字典</td>
+<td><code>redis.mset({&#39;name1&#39;: &#39;Durant&#39;, &#39;name2&#39;: &#39;James&#39;})</code></td>
+<td>将name1设为Durant，name2设为James</td>
+<td>True</td>
+</tr>
+<tr>
+<td>msetnx(mapping)</td>
+<td>key均不存在时才批量赋值</td>
+<td>mapping: 字典</td>
+<td><code>redis.msetnx({&#39;name3&#39;: &#39;Smith&#39;, &#39;name4&#39;: &#39;Curry&#39;})</code></td>
+<td>在name3和name4均不存在的情况下才设置二者值</td>
+<td>True</td>
+</tr>
+<tr>
+<td>incr(name, amount=1)</td>
+<td>key为name的value增值操作，默认1，key不存在则被创建并设为amount</td>
+<td>name: key名 amount:增长的值</td>
+<td><code>redis.incr(&#39;age&#39;, 1)</code></td>
+<td>age对应的值增1，若不存在则会创建并设置为1</td>
+<td>1，即修改后的值</td>
+</tr>
+<tr>
+<td>decr(name, amount=1)</td>
+<td>key为name的value减值操作，默认1，key不存在则被创建并设置为-amount</td>
+<td>name: key名 amount:减少的值</td>
+<td><code>redis.decr(&#39;age&#39;, 1)</code></td>
+<td>age对应的值减1，若不存在则会创建并设置为-1</td>
+<td>-1，即修改后的值</td>
+</tr>
+<tr>
+<td>append(key, value)</td>
+<td>key为name的string的值附加value</td>
+<td>key: key名</td>
+<td><code>redis.append(&#39;nickname&#39;, &#39;OK&#39;)</code></td>
+<td>向key为nickname的值后追加OK</td>
+<td>13，即修改后的字符串长度</td>
+</tr>
+<tr>
+<td>substr(name, start, end=-1)</td>
+<td>返回key为name的string的value的子串</td>
+<td>name: key名 start: 起始索引 end: 终止索引，默认-1截取到末尾</td>
+<td><code>redis.substr(&#39;name&#39;, 1, 4)</code></td>
+<td>返回key为name的值的字符串，截取索引为1-4的字符</td>
+<td>b’ello’</td>
+</tr>
+<tr>
+<td>getrange(key, start, end)</td>
+<td>获取key的value值从start到end的子字符串</td>
+<td>key: key名 start: 起始索引 end: 终止索引</td>
+<td><code>redis.getrange(&#39;name&#39;, 1, 4)</code></td>
+<td>返回key为name的值的字符串，截取索引为1-4的字符</td>
+<td>b’ello’</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Hash(哈希表)</strong></p>
+</blockquote>
+<p>Hash，即哈希。Redis 还提供了哈希表的数据结构，我们可以用name指定一个哈希表的名称，然后表内存储了各个键值对，用法总结如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hset(name, key, value)</td>
+<td>向key为name的hash中添加映射</td>
+<td>name: key名 key: 映射键名 value: 映射键值</td>
+<td><code>hset(&#39;price&#39;, &#39;cake&#39;, 5)</code></td>
+<td>向key为price的hash中添加映射关系，cake的值为5</td>
+<td>1，即添加的映射个数</td>
+</tr>
+<tr>
+<td>hsetnx(name, key, value)</td>
+<td>向key为name的hash中添加映射，如果映射键名不存在</td>
+<td>name: key名 key: 映射键名 value: 映射键值</td>
+<td><code>hsetnx(&#39;price&#39;, &#39;book&#39;, 6)</code></td>
+<td>向key为price的hash中添加映射关系，book的值为6</td>
+<td>1，即添加的映射个数</td>
+</tr>
+<tr>
+<td>hget(name, key)</td>
+<td>返回key为name的hash中field对应的value</td>
+<td>name: key名 key: 映射键名</td>
+<td><code>redis.hget(&#39;price&#39;, &#39;cake&#39;)</code></td>
+<td>获取key为price的hash中键名为cake的value</td>
+<td>5</td>
+</tr>
+<tr>
+<td>hmget(name, keys, *args)</td>
+<td>返回key为name的hash中各个键对应的value</td>
+<td>name: key名 keys: 映射键名列表</td>
+<td><code>redis.hmget(&#39;price&#39;, [&#39;apple&#39;, &#39;orange&#39;])</code></td>
+<td>获取key为price的hash中apple和orange的值</td>
+<td>[b’3’, b’7’]</td>
+</tr>
+<tr>
+<td>hmset(name, mapping)</td>
+<td>向key为name的hash中批量添加映射</td>
+<td>name: key名 mapping: 映射字典</td>
+<td><code>redis.hmset(&#39;price&#39;, {&#39;banana&#39;: 2, &#39;pear&#39;: 6})</code></td>
+<td>向key为price的hash中批量添加映射</td>
+<td>True</td>
+</tr>
+<tr>
+<td>hincrby(name, key, amount=1)</td>
+<td>将key为name的hash中映射的value增加amount</td>
+<td>name: key名 key: 映射键名 amount: 增长量</td>
+<td><code>redis.hincrby(&#39;price&#39;, &#39;apple&#39;, 3)</code></td>
+<td>key为price的hash中apple的值增加3</td>
+<td>6，修改后的值</td>
+</tr>
+<tr>
+<td>hexists(name, key)</td>
+<td>key为namehash中是否存在键名为key的映射</td>
+<td>name: key名 key: 映射键名</td>
+<td><code>redis.hexists(&#39;price&#39;, &#39;banana&#39;)</code></td>
+<td>key为price的hash中banana的值是否存在</td>
+<td>True</td>
+</tr>
+<tr>
+<td>hdel(name, *keys)</td>
+<td>key为namehash中删除键名为key的映射</td>
+<td>name: key名 key: 映射键名</td>
+<td><code>redis.hdel(&#39;price&#39;, &#39;banana&#39;)</code></td>
+<td>从key为price的hash中删除键名为banana的映射</td>
+<td>True</td>
+</tr>
+<tr>
+<td>hlen(name)</td>
+<td>从key为name的hash中获取映射个数</td>
+<td>name: key名</td>
+<td><code>redis.hlen(&#39;price&#39;)</code></td>
+<td>从key为price的hash中获取映射个数</td>
+<td>6</td>
+</tr>
+<tr>
+<td>hkeys(name)</td>
+<td>从key为name的hash中获取所有映射键名</td>
+<td>name: key名</td>
+<td><code>redis.hkeys(&#39;price&#39;)</code></td>
+<td>从key为price的hash中获取所有映射键名</td>
+<td>[b’cake’, b’book’, b’banana’, b’pear’]</td>
+</tr>
+<tr>
+<td>hvals(name)</td>
+<td>从key为name的hash中获取所有映射键值</td>
+<td>name: key名</td>
+<td><code>redis.hvals(&#39;price&#39;)</code></td>
+<td>从key为price的hash中获取所有映射键值</td>
+<td>[b’5’, b’6’, b’2’, b’6’]</td>
+</tr>
+<tr>
+<td>hgetall(name)</td>
+<td>从key为name的hash中获取所有映射键值对</td>
+<td>name: key名</td>
+<td><code>redis.hgetall(&#39;price&#39;)</code></td>
+<td>从key为price的hash中获取所有映射键值对</td>
+<td>{b’cake’: b’5’, b’book’: b’6’, b’orange’: b’7’, b’pear’: b’6’}</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>List(列表)</strong></p>
+</blockquote>
+<p>Redis 还提供了列表存储，列表内的元素可以重复，而且可以从两端存储</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rpush(name, *values)</td>
+<td>在key为name的list尾添加值为value的元素，可以传多个</td>
+<td>name: key名 values: 值</td>
+<td><code>redis.rpush(&#39;list&#39;, 1, 2, 3)</code></td>
+<td>给list这个key的list尾添加1、2、3</td>
+<td>3，list大小</td>
+</tr>
+<tr>
+<td>lpush(name, *values)</td>
+<td>在key为name的list头添加值为value的元素，可以传多个</td>
+<td>name: key名 values: 值</td>
+<td><code>redis.lpush(&#39;list&#39;, 0)</code></td>
+<td>给list这个key的list头添加0</td>
+<td>4，list大小</td>
+</tr>
+<tr>
+<td>llen(name)</td>
+<td>返回key为name的list的长度</td>
+<td>name: key名</td>
+<td><code>redis.llen(&#39;list&#39;)</code></td>
+<td>返回key为list的列表的长度</td>
+<td>4</td>
+</tr>
+<tr>
+<td>lrange(name, start, end)</td>
+<td>返回key为name的list中start至end之间的元素</td>
+<td>name: key名 start: 起始索引 end: 终止索引</td>
+<td><code>redis.lrange(&#39;list&#39;, 1, 3)</code></td>
+<td>返回起始为1终止为3的索引范围对应的list</td>
+<td><code>[b&#39;3&#39;, b&#39;2&#39;, b&#39;1&#39;]</code></td>
+</tr>
+<tr>
+<td>ltrim(name, start, end)</td>
+<td>截取key为name的list，保留索引为start到end的内容</td>
+<td>name:key名 start: 起始索引 end: 终止索引</td>
+<td><code>ltrim(&#39;list&#39;, 1, 3)</code></td>
+<td>保留key为list的索引为1到3的元素</td>
+<td>True</td>
+</tr>
+<tr>
+<td>lindex(name, index)</td>
+<td>返回key为name的list中index位置的元素</td>
+<td>name: key名 index: 索引</td>
+<td><code>redis.lindex(&#39;list&#39;, 1)</code></td>
+<td>返回key为list的列表index为1的元素</td>
+<td>b’2’</td>
+</tr>
+<tr>
+<td>lset(name, index, value)</td>
+<td>给key为name的list中index位置的元素赋值，越界则报错</td>
+<td>name: key名 index: 索引位置 value: 值</td>
+<td><code>redis.lset(&#39;list&#39;, 1, 5)</code></td>
+<td>将key为list的list索引1位置赋值为5</td>
+<td>True</td>
+</tr>
+<tr>
+<td>lrem(name, count, value)</td>
+<td>删除count个key的list中值为value的元素</td>
+<td>name: key名 count: 删除个数 value: 值</td>
+<td><code>redis.lrem(&#39;list&#39;, 2, 3)</code></td>
+<td>将key为list的列表删除2个3</td>
+<td>1，即删除的个数</td>
+</tr>
+<tr>
+<td>lpop(name)</td>
+<td>返回并删除key为name的list中的首元素</td>
+<td>name: key名</td>
+<td><code>redis.lpop(&#39;list&#39;)</code></td>
+<td>返回并删除名为list的list第一个元素</td>
+<td>b’5’</td>
+</tr>
+<tr>
+<td>rpop(name)</td>
+<td>返回并删除key为name的list中的尾元素</td>
+<td>name: key名</td>
+<td><code>redis.rpop(&#39;list&#39;)</code></td>
+<td>返回并删除名为list的list最后一个元素</td>
+<td>b’2’</td>
+</tr>
+<tr>
+<td>blpop(keys, timeout=0)</td>
+<td>返回并删除名称为在keys中的list中的首元素，如果list为空，则会一直阻塞等待</td>
+<td>keys: key列表 timeout: 超时等待时间，0为一直等待</td>
+<td><code>redis.blpop(&#39;list&#39;)</code></td>
+<td>返回并删除名为list的list的第一个元素</td>
+<td>[b’5’]</td>
+</tr>
+<tr>
+<td>brpop(keys, timeout=0)</td>
+<td>返回并删除key为name的list中的尾元素，如果list为空，则会一直阻塞等待</td>
+<td>keys: key列表 timeout: 超时等待时间，0为一直等待</td>
+<td><code>redis.brpop(&#39;list&#39;)</code></td>
+<td>返回并删除名为list的list的最后一个元素</td>
+<td>[b’2’]</td>
+</tr>
+<tr>
+<td>rpoplpush(src, dst)</td>
+<td>返回并删除名称为src的list的尾元素，并将该元素添加到名称为dst的list的头部</td>
+<td>src: 源list的key dst: 目标list的key</td>
+<td><code>redis.rpoplpush(&#39;list&#39;, &#39;list2&#39;)</code></td>
+<td>将key为list的list尾元素删除并返回并将其添加到key为list2的list头部</td>
+<td>b’2’</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Set(集合)</strong></p>
+</blockquote>
+<p>Redis 还提供了集合存储，集合中的元素都是不重复的</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sadd(name, *values)</td>
+<td>向key为name的set中添加元素</td>
+<td>name: key名 values: 值，可为多个</td>
+<td><code>redis.sadd(&#39;tags&#39;, &#39;Book&#39;, &#39;Tea&#39;, &#39;Coffee&#39;)</code></td>
+<td>向key为tags的set中添加Book、Tea、Coffee三个内容</td>
+<td>3，即插入的数据个数</td>
+</tr>
+<tr>
+<td>srem(name, *values)</td>
+<td>从key为name的set中删除元素</td>
+<td>name: key名 values: 值，可为多个</td>
+<td><code>redis.srem(&#39;tags&#39;, &#39;Book&#39;)</code></td>
+<td>从key为tags的set中删除Book</td>
+<td>1，即删除的数据个数</td>
+</tr>
+<tr>
+<td>spop(name)</td>
+<td>随机返回并删除key为name的set中一个元素</td>
+<td>name: key名</td>
+<td><code>redis.spop(&#39;tags&#39;)</code></td>
+<td>从key为tags的set中随机删除并返回该元素</td>
+<td>b’Tea’</td>
+</tr>
+<tr>
+<td>smove(src, dst, value)</td>
+<td>从src对应的set中移除元素并添加到dst对应的set中</td>
+<td>src: 源set dst: 目标set value: 元素值</td>
+<td><code>redis.smove(&#39;tags&#39;, &#39;tags2&#39;, &#39;Coffee&#39;)</code></td>
+<td>从key为tags的set中删除元素Coffee并添加到key为tags2的set</td>
+<td>True</td>
+</tr>
+<tr>
+<td>scard(name)</td>
+<td>返回key为name的set的元素个数</td>
+<td>name: key名</td>
+<td><code>redis.scard(&#39;tags&#39;)</code></td>
+<td>获取key为tags的set中元素个数</td>
+<td>3</td>
+</tr>
+<tr>
+<td>sismember(name, value)</td>
+<td>测试member是否是key为name的set的元素</td>
+<td>name:key值</td>
+<td><code>redis.sismember(&#39;tags&#39;, &#39;Book&#39;)</code></td>
+<td>判断Book是否为key为tags的set元素</td>
+<td>True</td>
+</tr>
+<tr>
+<td>sinter(keys, *args)</td>
+<td>返回所有给定key的set的交集</td>
+<td>keys: key列表</td>
+<td><code>redis.sinter([&#39;tags&#39;, &#39;tags2&#39;])</code></td>
+<td>返回key为tags的set和key为tags2的set的交集</td>
+<td>{b’Coffee’}</td>
+</tr>
+<tr>
+<td>sinterstore(dest, keys, *args)</td>
+<td>求交集并将交集保存到dest的集合</td>
+<td>dest:结果集合 keys:key列表</td>
+<td><code>redis.sinterstore(&#39;inttag&#39;, [&#39;tags&#39;, &#39;tags2&#39;])</code></td>
+<td>求key为tags的set和key为tags2的set的交集并保存为inttag</td>
+<td>1</td>
+</tr>
+<tr>
+<td>sunion(keys, *args)</td>
+<td>返回所有给定key的set的并集</td>
+<td>keys: key列表</td>
+<td><code>redis.sunion([&#39;tags&#39;, &#39;tags2&#39;])</code></td>
+<td>返回key为tags的set和key为tags2的set的并集</td>
+<td>{b’Coffee’, b’Book’, b’Pen’}</td>
+</tr>
+<tr>
+<td>sunionstore(dest, keys, *args)</td>
+<td>求并集并将并集保存到dest的集合</td>
+<td>dest:结果集合 keys:key列表</td>
+<td><code>redis.sunionstore(&#39;inttag&#39;, [&#39;tags&#39;, &#39;tags2&#39;])</code></td>
+<td>求key为tags的set和key为tags2的set的并集并保存为inttag</td>
+<td>3</td>
+</tr>
+<tr>
+<td>sdiff(keys, *args)</td>
+<td>返回所有给定key的set的差集</td>
+<td>keys: key列表</td>
+<td><code>redis.sdiff([&#39;tags&#39;, &#39;tags2&#39;])</code></td>
+<td>返回key为tags的set和key为tags2的set的差集</td>
+<td>{b’Book’, b’Pen’}</td>
+</tr>
+<tr>
+<td>sdiffstore(dest, keys, *args)</td>
+<td>求差集并将差集保存到dest的集合</td>
+<td>dest:结果集合 keys:key列表</td>
+<td><code>redis.sdiffstore(&#39;inttag&#39;, [&#39;tags&#39;, &#39;tags2&#39;])</code></td>
+<td>求key为tags的set和key为tags2的set的差集并保存为inttag</td>
+<td>3</td>
+</tr>
+<tr>
+<td>smembers(name)</td>
+<td>返回key为name的set的所有元素</td>
+<td>name: key名</td>
+<td><code>redis.smembers(&#39;tags&#39;)</code></td>
+<td>返回key为tags的set的所有元素</td>
+<td>{b’Pen’, b’Book’, b’Coffee’}</td>
+</tr>
+<tr>
+<td>srandmember(name)</td>
+<td>随机返回key为name的set的一个元素，但不删除元素</td>
+<td>name: key值</td>
+<td><code>redis.srandmember(&#39;tags&#39;)</code></td>
+<td>随机返回key为tags的set的一个元素</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SortedSet(有序集合)</strong></p>
+</blockquote>
+<p>有序集合，它相比集合多了一个分数字段，利用它我们可以对集合中的数据进行排序</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zadd(name, *args, **kwargs)</td>
+<td>向key为name的zset中添加元素member，score用于排序。如果该元素存在，则更新其顺序</td>
+<td>name: key名 args: 可变参数</td>
+<td><code>redis.zadd(&#39;grade&#39;, 100, &#39;Bob&#39;, 98, &#39;Mike&#39;)</code></td>
+<td>向key为grade的zset中添加Bob，score为100，添加Mike，score为98</td>
+<td>2，即添加的元素个数</td>
+</tr>
+<tr>
+<td>zrem(name, *values)</td>
+<td>删除key为name的zset中的元素</td>
+<td>name: key名 values: 元素</td>
+<td><code>redis.zrem(&#39;grade&#39;, &#39;Mike&#39;)</code></td>
+<td>从key为grade的zset中删除Mike</td>
+<td>1，即删除的元素个数</td>
+</tr>
+<tr>
+<td>zincrby(name, value, amount=1)</td>
+<td>如果在key为name的zset中已经存在元素value，则该元素的score增加amount，否则向该集合中添加该元素，其score的值为amount</td>
+<td>name: key名 value: 元素 amount: 增长的score值</td>
+<td><code>redis.zincrby(&#39;grade&#39;, &#39;Bob&#39;, -2)</code></td>
+<td>key为grade的zset中Bob的score减2</td>
+<td>98.0，即修改后的值</td>
+</tr>
+<tr>
+<td>zrank(name, value)</td>
+<td>返回key为name的zset中元素的排名（按score从小到大排序）即下标</td>
+<td>name: key名 value: 元素值</td>
+<td><code>redis.zrank(&#39;grade&#39;, &#39;Amy&#39;)</code></td>
+<td>得到key为grade的zset中Amy的排名</td>
+<td>1</td>
+</tr>
+<tr>
+<td>zrevrank(name, value)</td>
+<td>返回key为name的zset中元素的倒数排名（按score从大到小排序）即下标</td>
+<td>name: key名 value: 元素值</td>
+<td><code>redis.zrevrank(&#39;grade&#39;, &#39;Amy&#39;)</code></td>
+<td>得到key为grade的zset中Amy的倒数排名</td>
+<td>2</td>
+</tr>
+<tr>
+<td>zrevrange(name, start, end, withscores=False)</td>
+<td>返回key为name的zset（按score从大到小排序）中的index从start到end的所有元素</td>
+<td>name: key值 start: 开始索引 end: 结束索引 withscores: 是否带score</td>
+<td><code>redis.zrevrange(&#39;grade&#39;, 0, 3)</code></td>
+<td>返回key为grade的zset前四名元素</td>
+<td>[b’Bob’, b’Mike’, b’Amy’, b’James’]</td>
+</tr>
+<tr>
+<td>zrangebyscore(name, min, max, start=None, num=None, withscores=False)</td>
+<td>返回key为name的zset中score在给定区间的元素</td>
+<td>name:key名 min: 最低score max:最高score start: 起始索引 num: 个数 withscores: 是否带score</td>
+<td><code>redis.zrangebyscore(&#39;grade&#39;, 80, 95)</code></td>
+<td>返回key为grade的zset中score在80和95之间的元素</td>
+<td>[b’Amy’, b’James’]</td>
+</tr>
+<tr>
+<td>zcount(name, min, max)</td>
+<td>返回key为name的zset中score在给定区间的数量</td>
+<td>name:key名 min: 最低score max: 最高score</td>
+<td><code>redis.zcount(&#39;grade&#39;, 80, 95)</code></td>
+<td>返回key为grade的zset中score在80到95的元素个数</td>
+<td>2</td>
+</tr>
+<tr>
+<td>zcard(name)</td>
+<td>返回key为name的zset的元素个数</td>
+<td>name: key名</td>
+<td><code>redis.zcard(&#39;grade&#39;)</code></td>
+<td>获取key为grade的zset中元素个数</td>
+<td>3</td>
+</tr>
+<tr>
+<td>zremrangebyrank(name, min, max)</td>
+<td>删除key为name的zset中排名在给定区间的元素</td>
+<td>name:key名 min: 最低位次 max: 最高位次</td>
+<td><code>redis.zremrangebyrank(&#39;grade&#39;, 0, 0)</code></td>
+<td>删除key为grade的zset中排名第一的元素</td>
+<td>1，即删除的元素个数</td>
+</tr>
+<tr>
+<td>zremrangebyscore(name, min, max)</td>
+<td>删除key为name的zset中score在给定区间的元素</td>
+<td>name:key名 min: 最低score max:最高score</td>
+<td><code>redis.zremrangebyscore(&#39;grade&#39;, 80, 90)</code></td>
+<td>删除score在80到90之间的元素</td>
+<td>1，即删除的元素个数</td>
+</tr>
+</tbody>
+</table>
+<p>以上便是用Python操作Redis的总结了，在后面的项目中会常用到Redis操作，所以我们还是需要掌握一些常用操作。</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://gavinliu4011.github.io" target="_blank">GavinLiu</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/05/21/django/" class="pre-post btn btn-default" title='Django(一)'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Django(一)</span>
+        </a>
+    
+    
+        <a href="/2018/05/18/pymysql/" class="next-post btn btn-default" title='Python3.x 连接MySQL数据库'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Python3.x 连接MySQL数据库</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+    <div class="widget">    
+        <h3 class="title">搜索</h3>
+        <div id="search-form">
+            <div id="result-mask" class="hide"></div>
+            <div class="search-area">
+                
+                    <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢?">
+                    <button type="button" class="search-form-submit" id="search-local">站内搜索</button>
+                
+                
+                    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Google Search"><button type="submit" class="search-form-submit">谷歌搜索</button><input type="hidden" name="sitesearch" value="http://gavinliu4011.github.io"></form>
+                
+            </div>
+            <div id="result-wrap" class="hide">
+                <div id="search-result"></div>
+            </div>
+            <div class="hide">
+                <template id="search-tpl">
+                    <div class="item">
+                        <a href="/{path}" title="{title}">
+                            <div class="title">{title}</div>
+                            <div class="content">{content}</div>
+                        </a>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <!-- <p>主题Snippet v1.2.0版本已经上线！欢迎更新~ <br/>
+主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br/>
+<hr/>接受贡献，包括不限于提交问题与需求，修复代码。欢迎Pull Request<br/>支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
+</p> -->
+暂无
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+      <h3 class="title">社交</h3> 
+        <div class="content social">
+            
+	            <a href="//github.com/gavinliu4011" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="git fa fa-git"></i>
+			    </a>
+            
+	            <a href="mailto:gavinliu4011@163.com" rel="external nofollow" title="邮箱" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+			    	<i class="qq fa fa-qq"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="微博" target="_blank">
+			    	<i class="weibo fa fa-weibo"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+			    	<i class="users fa fa-users"></i>
+			    </a>
+            
+	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+			    	<i class="feed fa fa-feed"></i>
+			    </a>
+            
+        </div>
+    </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">分类</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link current" href="/categories/Django/"><i class="fa" aria-hidden="true">Django</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/"><i class="fa" aria-hidden="true">Git</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/"><i class="fa" aria-hidden="true">Hexo</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python基础/"><i class="fa" aria-hidden="true">Python基础</i></a><span class="category-list-count">4</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">五月 2018</i></a><span class="archive-list-count">12</span></li></ul>
+    </div>
+
+
+        
+        
+  <div class="widget">
+    <h3 class="title">标签云</h3>
+    <div class="content tag-cloud">
+        <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/pymysql/" style="font-size: 10px;">pymysql</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分支结构/" style="font-size: 10px;">分支结构</a> <a href="/tags/列表/" style="font-size: 10px;">列表</a> <a href="/tags/变量/" style="font-size: 10px;">变量</a> <a href="/tags/字典/" style="font-size: 10px;">字典</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/循环结构/" style="font-size: 10px;">循环结构</a> <a href="/tags/数据类型/" style="font-size: 10px;">数据类型</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
+    </div>
+  </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.baidu.com" class="fa" target="_blank">个人博客</a>
+        
+            <a href="https://my.csdn.net/jackfrued" class="fa" target="_blank">骆昊博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2018
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+	<script src="/js/search.js?rev=@@hash"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
