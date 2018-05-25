@@ -866,7 +866,7 @@
 <td>zrangebyscore(name, min, max, start=None, num=None, withscores=False)</td>
 <td>返回key为name的zset中score在给定区间的元素</td>
 <td>name:key名 min: 最低score max:最高score start: 起始索引 num: 个数 withscores: 是否带score</td>
-<td>redis.zrangebyscore(‘grade’, 80, 95)</td>
+<td>redis.zrangeby score(‘grade’, 80, 95)</td>
 <td>返回key为grade的zset中score在80和95之间的元素</td>
 <td>[b’Amy’, b’James’]</td>
 </tr>
@@ -890,7 +890,7 @@
 <td>zremrangebyrank(name, min, max)</td>
 <td>删除key为name的zset中排名在给定区间的元素</td>
 <td>name:key名 min: 最低位次 max: 最高位次</td>
-<td>redis.zremrangebyrank(‘grade’, 0, 0)</td>
+<td>redis.zremran gebyrank(‘grade’, 0, 0)</td>
 <td>删除key为grade的zset中排名第一的元素</td>
 <td>1，即删除的元素个数</td>
 </tr>
@@ -898,12 +898,15 @@
 <td>zremrangebyscore(name, min, max)</td>
 <td>删除key为name的zset中score在给定区间的元素</td>
 <td>name:key名 min: 最低score max:最高score</td>
-<td>redis.zremrangebyscore(‘grade’, 80, 90)</td>
+<td>redis.zremran gebyscore (‘grade’, 80, 90)</td>
 <td>删除score在80到90之间的元素</td>
 <td>1，即删除的元素个数</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p>注意：上面代码中由于展示显示不完全，本人做了相应的处理，原本是一个方法名的可能方法名中间会出现空格</p>
+</blockquote>
 <p>以上便是用Python操作Redis的总结了，在后面的项目中会常用到Redis操作，所以我们还是需要掌握一些常用操作。</p>
 
     </div>
