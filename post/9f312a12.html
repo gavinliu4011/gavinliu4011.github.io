@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redis," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="gavinliu's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Redis安装和使用Window 下安装下载地址：https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况选择，这里我们下载 Redis-x64-xxx.zip压缩包到 C 盘，解压后，将文件夹重新命名为 redis。  打开一个 cmd 窗口 使用cd命令切换目录到 C:\redis 运行">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Python操作Redis">
+<meta property="og:url" content="http://gavinliu4011.github.io/post/9f312a12.html">
+<meta property="og:site_name" content="gavinliu&#39;s blog">
+<meta property="og:description" content="Redis安装和使用Window 下安装下载地址：https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况选择，这里我们下载 Redis-x64-xxx.zip压缩包到 C 盘，解压后，将文件夹重新命名为 redis。  打开一个 cmd 窗口 使用cd命令切换目录到 C:\redis 运行">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.runoob.com/wp-content/uploads/2014/11/3B8D633F-14CE-42E3-B174-FCCD48B11FF3.jpg">
+<meta property="og:image" content="http://www.runoob.com/wp-content/uploads/2014/11/redis-install2.jpg">
+<meta property="og:updated_time" content="2018-06-25T07:26:07.615Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Python操作Redis">
+<meta name="twitter:description" content="Redis安装和使用Window 下安装下载地址：https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况选择，这里我们下载 Redis-x64-xxx.zip压缩包到 C 盘，解压后，将文件夹重新命名为 redis。  打开一个 cmd 窗口 使用cd命令切换目录到 C:\redis 运行">
+<meta name="twitter:image" content="http://www.runoob.com/wp-content/uploads/2014/11/3B8D633F-14CE-42E3-B174-FCCD48B11FF3.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gavinliu4011.github.io/post/9f312a12.html"/>
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "cc8b0df7"
+    });
+  daovoice('update');
+  </script>
+
+  <title>用Python操作Redis | gavinliu's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8c62539e2363db36b161b4c0d8ed72e5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/gavinliu4011" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gavinliu's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">刘泰丞的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gavinliu4011.github.io/post/9f312a12.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GavinLiu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gavinliu's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">用Python操作Redis</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-18T03:43:48+08:00">
+                2018-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/post/9f312a12.html" class="leancloud_visitors" data-flag-title="用Python操作Redis">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+		 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,266
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  18
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Redis安装和使用"><a href="#Redis安装和使用" class="headerlink" title="Redis安装和使用"></a>Redis安装和使用</h3><h4 id="Window-下安装"><a href="#Window-下安装" class="headerlink" title="Window 下安装"></a>Window 下安装</h4><p><strong>下载地址：</strong><a href="https://github.com/MSOpenTech/redis/releases" target="_blank" rel="noopener">https://github.com/MSOpenTech/redis/releases</a>。</p>
+<p>Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况选择，这里我们下载 <strong>Redis-x64-xxx.zip</strong>压缩包到 C 盘，解压后，将文件夹重新命名为 <strong>redis</strong>。</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2014/11/3B8D633F-14CE-42E3-B174-FCCD48B11FF3.jpg" alt="img"></p>
+<p>打开一个 <strong>cmd</strong> 窗口 使用cd命令切换目录到 <strong>C:\redis</strong> 运行 <strong>redis-server.exe redis.windows.conf</strong> 。</p>
+<p>如果想方便的话，可以把 redis 的路径加到系统的环境变量里，这样就省得再输路径了，后面的那个 redis.windows.conf 可以省略，如果省略，会启用默认的。输入之后，会显示如下界面：</p>
+<p>这时候另启一个cmd窗口，原来的不要关闭，不然就无法访问服务端了。</p>
+<p>切换到redis目录下运行 <strong>redis-cli.exe -h 127.0.0.1 -p 6379</strong> 。</p>
+<p>设置键值对 <strong>set myKey abc</strong></p>
+<p>取出键值对 <strong>get myKey</strong></p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2014/11/redis-install2.jpg" alt="Redis 安装"></p>
+<hr>
+<h4 id="Linux-下安装"><a href="#Linux-下安装" class="headerlink" title="Linux 下安装"></a>Linux 下安装</h4><p><strong>下载地址：</strong><a href="http://redis.io/download" target="_blank" rel="noopener">http://redis.io/download</a>，下载最新稳定版本。</p>
+<p>本文档使用3.2.11,下载并安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://download.redis.io/releases/redis-3.2.11.tar.gz</span><br><span class="line">$ tar -xvf redis-3.2.11.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> redis-3.2.11</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>安装完成后,我们先改一下redis.conf的配置:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ cp redis.conf ../myredis.conf <span class="comment"># 将文件redis.conf复制到上以及文件夹下并命名为myredis.conf</span></span><br><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ vim myredis.conf</span><br><span class="line"><span class="comment"># redis.conf是一个默认的配置文件。我们可以根据需要使用自己的配置文件。</span></span><br><span class="line"><span class="comment"># 建议修改以下地方:</span></span><br><span class="line"><span class="comment"># 找到bind这个地方并修改成[bind 本机内网地址]</span></span><br><span class="line"><span class="comment"># 再找到requirepass这个地方,这里是修改redis的密码</span></span><br><span class="line"><span class="comment"># 完成上述操作后保存退出</span></span><br><span class="line">$ redis-server myredis.conf</span><br></pre></td></tr></table></figure>
+<p>启动redis服务进程后，就可以使用测试客户端程序redis-cli和redis服务交互了,如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli -h host -p port</span><br><span class="line">$ auth [password] <span class="comment"># 这里输入的密码就是你上面设置的密码,如果没有则跳过此步骤</span></span><br><span class="line">redis 127.0.0.1:6379&gt; ping</span><br><span class="line">PONG</span><br><span class="line">$ redis-cli -h host -p port -a password <span class="comment"># 这个命令也能登录</span></span><br></pre></td></tr></table></figure>
+<h4 id="用Python连接Redis"><a href="#用Python连接Redis" class="headerlink" title="用Python连接Redis"></a>用Python连接Redis</h4><p>当前在本地我已经安装了 Redis 并运行在 9736 端口，密码设置为 123456</p>
+<p>用下面例子连接Redis进行测试:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    config = &#123;</span><br><span class="line">        <span class="string">'host'</span>: <span class="string">'localhost'</span>,</span><br><span class="line">        <span class="string">'port'</span>: <span class="number">9736</span>,</span><br><span class="line">        <span class="string">'db'</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="string">'password'</span>: <span class="string">'123456'</span></span><br><span class="line">    &#125;</span><br><span class="line">    client = redis.Redis(**config)</span><br><span class="line">    <span class="keyword">if</span> client.ping():</span><br><span class="line">        client.set(<span class="string">'name'</span>, <span class="string">'gavinliu'</span>)</span><br><span class="line">        print(client.get(<span class="string">'name'</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>在这里我们使用redis.Redis传入参数连接本地Redis服务,传入的四个参数分别为<code>Redis的地址</code>、<code>运行端口</code>、<code>使用的数据库</code>、<code>密码</code>，我们这里使用的Redis其实是继承了StrictRedis，所以在默认情况下不传这四个参数时，参数值会有默认值分别为localhost、6379、0、None。</p>
+<p>上面运行的结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">b'gavinliu'</span></span><br></pre></td></tr></table></figure>
+<p>在Python中使用Redis其实很方便，Redis的命令(命令详细情况可以参照<a href="http://redisdoc.com/" target="_blank" rel="noopener">Redis命令参考</a>)在Python中都能找到相应的方法，这里引用<a href="https://cuiqingcai.com/" target="_blank" rel="noopener">崔庆才老师</a>对Redis总结介绍一下Key(键)、String(字符串)、Hash(哈希表)、List(列表)、Set(集合)、SortedSet(有序集合)</p>
+<blockquote>
+<p><strong>Key(键)</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exists(name)</td>
+<td>判断一个key是否存在</td>
+<td>name: key名</td>
+<td>redis.exists(‘name’)</td>
+<td>是否存在name这个key</td>
+<td>True</td>
+</tr>
+<tr>
+<td>delete(name)</td>
+<td>删除一个key</td>
+<td>name: key名</td>
+<td>redis.delete(‘name’)</td>
+<td>删除name这个key</td>
+<td>1</td>
+</tr>
+<tr>
+<td>type(name)</td>
+<td>判断key类型</td>
+<td>name: key名</td>
+<td>redis.type(‘name’)</td>
+<td>判断name这个key类型</td>
+<td>b’string’</td>
+</tr>
+<tr>
+<td>keys(pattern)</td>
+<td>获取所有符合规则的key</td>
+<td>pattern: 匹配规则</td>
+<td>redis.keys(‘n*’)</td>
+<td>获取所有以n开头的key</td>
+<td>[b’name’]</td>
+</tr>
+<tr>
+<td>randomkey()</td>
+<td>获取随机的一个key</td>
+<td></td>
+<td>randomkey()</td>
+<td>获取随机的一个key</td>
+<td>b’name’</td>
+</tr>
+<tr>
+<td>rename(src, dst)</td>
+<td>将key重命名</td>
+<td>src: 原key名 dst: 新key名</td>
+<td>redis.rename(‘name’, ‘nickname’)</td>
+<td>将name重命名为nickname</td>
+<td>True</td>
+</tr>
+<tr>
+<td>dbsize()</td>
+<td>获取当前数据库中key的数目</td>
+<td></td>
+<td>dbsize()</td>
+<td>获取当前数据库中key的数目</td>
+<td>100</td>
+</tr>
+<tr>
+<td>expire(name, time)</td>
+<td>设定key的过期时间，单位秒</td>
+<td>name: key名 time: 秒数</td>
+<td>redis.expire(‘name’, 2)</td>
+<td>将name这key的过期时间设置2秒</td>
+<td>True</td>
+</tr>
+<tr>
+<td>ttl(name)</td>
+<td>获取key的过期时间，单位秒，-1为永久不过期</td>
+<td>name: key名</td>
+<td>redis.ttl(‘name’)</td>
+<td>获取name这key的过期时间</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>move(name, db)</td>
+<td>将key移动到其他数据库</td>
+<td>name: key名 db: 数据库代号</td>
+<td>move(‘name’, 2)</td>
+<td>将name移动到2号数据库</td>
+<td>True</td>
+</tr>
+<tr>
+<td>flushdb()</td>
+<td>删除当前选择数据库中的所有key</td>
+<td></td>
+<td>flushdb()</td>
+<td>删除当前选择数据库中的所有key</td>
+<td>True</td>
+</tr>
+<tr>
+<td>flushall()</td>
+<td>删除所有数据库中的所有key</td>
+<td></td>
+<td>flushall()</td>
+<td>删除所有数据库中的所有key</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>String(字符串)</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set(name, value)</td>
+<td>给数据库中key为name的string赋予值value</td>
+<td>name: key名 value: 值</td>
+<td>redis.set(‘name’, ‘Bob’)</td>
+<td>给name这个key的value赋值为Bob</td>
+<td>True</td>
+</tr>
+<tr>
+<td>get(name)</td>
+<td>返回数据库中key为name的string的value</td>
+<td>name: key名</td>
+<td>redis.get(‘name’)</td>
+<td>返回name这个key的value</td>
+<td>b’Bob’</td>
+</tr>
+<tr>
+<td>getset(name, value)</td>
+<td>给数据库中key为name的string赋予值value并返回上次的value</td>
+<td>name: key名 value: 新值</td>
+<td>redis.getset(‘name’, ‘Mike’)</td>
+<td>赋值name为Mike并得到上次的value</td>
+<td>b’Bob’</td>
+</tr>
+<tr>
+<td>mget(keys, *args)</td>
+<td>返回多个key对应的value</td>
+<td>keys: key的列表</td>
+<td>redis.mget([‘name’, ‘nickname’])</td>
+<td>返回name和nickname的value</td>
+<td>[b’Mike’, b’Miker’]</td>
+</tr>
+<tr>
+<td>setnx(name, value)</td>
+<td>如果key不存在才设置value</td>
+<td>name: key名</td>
+<td>redis.setnx(‘newname’, ‘James’)</td>
+<td>如果newname这key不存在则设置值为James</td>
+<td>第一次运行True，第二次False</td>
+</tr>
+<tr>
+<td>setex(name, time, value)</td>
+<td>设置可以对应的值为string类型的value，并指定此键值对应的有效期</td>
+<td>name: key名 time: 有效期 value: 值</td>
+<td>redis.setex(‘name’, 1, ‘James’)</td>
+<td>将name这key的值设为James，有效期1秒</td>
+<td>True</td>
+</tr>
+<tr>
+<td>setrange(name, offset, value)</td>
+<td>设置指定key的value值的子字符串</td>
+<td>name: key名 offset: 偏移量 value: 值</td>
+<td>redis.set(‘name’, ‘Hello’) redis.setrange(‘name’, 6, ‘World’)</td>
+<td>设置name为Hello字符串，并在index为6的位置补World</td>
+<td>11，修改后的字符串长度</td>
+</tr>
+<tr>
+<td>mset(mapping)</td>
+<td>批量赋值</td>
+<td>mapping: 字典</td>
+<td>redis.mset({‘name1’: ‘Durant’, ‘name2’: ‘James’})</td>
+<td>将name1设为Durant，name2设为James</td>
+<td>True</td>
+</tr>
+<tr>
+<td>msetnx(mapping)</td>
+<td>key均不存在时才批量赋值</td>
+<td>mapping: 字典</td>
+<td>redis.msetnx({‘name3’: ‘Smith’, ‘name4’: ‘Curry’})</td>
+<td>在name3和name4均不存在的情况下才设置二者值</td>
+<td>True</td>
+</tr>
+<tr>
+<td>incr(name, amount=1)</td>
+<td>key为name的value增值操作，默认1，key不存在则被创建并设为amount</td>
+<td>name: key名 amount:增长的值</td>
+<td>redis.incr(‘age’, 1)</td>
+<td>age对应的值增1，若不存在则会创建并设置为1</td>
+<td>1，即修改后的值</td>
+</tr>
+<tr>
+<td>decr(name, amount=1)</td>
+<td>key为name的value减值操作，默认1，key不存在则被创建并设置为-amount</td>
+<td>name: key名 amount:减少的值</td>
+<td>redis.decr(‘age’, 1)</td>
+<td>age对应的值减1，若不存在则会创建并设置为-1</td>
+<td>-1，即修改后的值</td>
+</tr>
+<tr>
+<td>append(key, value)</td>
+<td>key为name的string的值附加value</td>
+<td>key: key名</td>
+<td>redis.append(‘nickname’, ‘OK’)</td>
+<td>向key为nickname的值后追加OK</td>
+<td>13，即修改后的字符串长度</td>
+</tr>
+<tr>
+<td>substr(name, start, end=-1)</td>
+<td>返回key为name的string的value的子串</td>
+<td>name: key名 start: 起始索引 end: 终止索引，默认-1截取到末尾</td>
+<td>redis.substr(‘name’, 1, 4)</td>
+<td>返回key为name的值的字符串，截取索引为1-4的字符</td>
+<td>b’ello’</td>
+</tr>
+<tr>
+<td>getrange(key, start, end)</td>
+<td>获取key的value值从start到end的子字符串</td>
+<td>key: key名 start: 起始索引 end: 终止索引</td>
+<td>redis.getrange(‘name’, 1, 4)</td>
+<td>返回key为name的值的字符串，截取索引为1-4的字符</td>
+<td>b’ello’</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Hash(哈希表)</strong></p>
+</blockquote>
+<p>Hash，即哈希。Redis 还提供了哈希表的数据结构，我们可以用name指定一个哈希表的名称，然后表内存储了各个键值对，用法总结如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hset(name, key, value)</td>
+<td>向key为name的hash中添加映射</td>
+<td>name: key名 key: 映射键名 value: 映射键值</td>
+<td>hset(‘price’, ‘cake’, 5)</td>
+<td>向key为price的hash中添加映射关系，cake的值为5</td>
+<td>1，即添加的映射个数</td>
+</tr>
+<tr>
+<td>hsetnx(name, key, value)</td>
+<td>向key为name的hash中添加映射，如果映射键名不存在</td>
+<td>name: key名 key: 映射键名 value: 映射键值</td>
+<td>hsetnx(‘price’, ‘book’, 6)</td>
+<td>向key为price的hash中添加映射关系，book的值为6</td>
+<td>1，即添加的映射个数</td>
+</tr>
+<tr>
+<td>hget(name, key)</td>
+<td>返回key为name的hash中field对应的value</td>
+<td>name: key名 key: 映射键名</td>
+<td>redis.hget(‘price’, ‘cake’)</td>
+<td>获取key为price的hash中键名为cake的value</td>
+<td>5</td>
+</tr>
+<tr>
+<td>hmget(name, keys, *args)</td>
+<td>返回key为name的hash中各个键对应的value</td>
+<td>name: key名 keys: 映射键名列表</td>
+<td>redis.hmget(‘price’, [‘apple’, ‘orange’])</td>
+<td>获取key为price的hash中apple和orange的值</td>
+<td>[b’3’, b’7’]</td>
+</tr>
+<tr>
+<td>hmset(name, mapping)</td>
+<td>向key为name的hash中批量添加映射</td>
+<td>name: key名 mapping: 映射字典</td>
+<td>redis.hmset(‘price’, {‘banana’: 2, ‘pear’: 6})</td>
+<td>向key为price的hash中批量添加映射</td>
+<td>True</td>
+</tr>
+<tr>
+<td>hincrby(name, key, amount=1)</td>
+<td>将key为name的hash中映射的value增加amount</td>
+<td>name: key名 key: 映射键名 amount: 增长量</td>
+<td>redis.hincrby(‘price’, ‘apple’, 3)</td>
+<td>key为price的hash中apple的值增加3</td>
+<td>6，修改后的值</td>
+</tr>
+<tr>
+<td>hexists(name, key)</td>
+<td>key为namehash中是否存在键名为key的映射</td>
+<td>name: key名 key: 映射键名</td>
+<td>redis.hexists(‘price’, ‘banana’)</td>
+<td>key为price的hash中banana的值是否存在</td>
+<td>True</td>
+</tr>
+<tr>
+<td>hdel(name, *keys)</td>
+<td>key为namehash中删除键名为key的映射</td>
+<td>name: key名 key: 映射键名</td>
+<td>redis.hdel(‘price’, ‘banana’)</td>
+<td>从key为price的hash中删除键名为banana的映射</td>
+<td>True</td>
+</tr>
+<tr>
+<td>hlen(name)</td>
+<td>从key为name的hash中获取映射个数</td>
+<td>name: key名</td>
+<td>redis.hlen(‘price’)</td>
+<td>从key为price的hash中获取映射个数</td>
+<td>6</td>
+</tr>
+<tr>
+<td>hkeys(name)</td>
+<td>从key为name的hash中获取所有映射键名</td>
+<td>name: key名</td>
+<td>redis.hkeys(‘price’)</td>
+<td>从key为price的hash中获取所有映射键名</td>
+<td>[b’cake’, b’book’, b’banana’, b’pear’]</td>
+</tr>
+<tr>
+<td>hvals(name)</td>
+<td>从key为name的hash中获取所有映射键值</td>
+<td>name: key名</td>
+<td>redis.hvals(‘price’)</td>
+<td>从key为price的hash中获取所有映射键值</td>
+<td>[b’5’, b’6’, b’2’, b’6’]</td>
+</tr>
+<tr>
+<td>hgetall(name)</td>
+<td>从key为name的hash中获取所有映射键值对</td>
+<td>name: key名</td>
+<td>redis.hgetall(‘price’)</td>
+<td>从key为price的hash中获取所有映射键值对</td>
+<td>{b’cake’: b’5’, b’book’: b’6’, b’orange’: b’7’, b’pear’: b’6’}</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>List(列表)</strong></p>
+</blockquote>
+<p>Redis 还提供了列表存储，列表内的元素可以重复，而且可以从两端存储</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rpush(name, *values)</td>
+<td>在key为name的list尾添加值为value的元素，可以传多个</td>
+<td>name: key名 values: 值</td>
+<td>redis.rpush(‘list’, 1, 2, 3)</td>
+<td>给list这个key的list尾添加1、2、3</td>
+<td>3，list大小</td>
+</tr>
+<tr>
+<td>lpush(name, *values)</td>
+<td>在key为name的list头添加值为value的元素，可以传多个</td>
+<td>name: key名 values: 值</td>
+<td>redis.lpush(‘list’, 0)</td>
+<td>给list这个key的list头添加0</td>
+<td>4，list大小</td>
+</tr>
+<tr>
+<td>llen(name)</td>
+<td>返回key为name的list的长度</td>
+<td>name: key名</td>
+<td>redis.llen(‘list’)</td>
+<td>返回key为list的列表的长度</td>
+<td>4</td>
+</tr>
+<tr>
+<td>lrange(name, start, end)</td>
+<td>返回key为name的list中start至end之间的元素</td>
+<td>name: key名 start: 起始索引 end: 终止索引</td>
+<td>redis.lrange(‘list’, 1, 3)</td>
+<td>返回起始为1终止为3的索引范围对应的list</td>
+<td><code>[b&#39;3&#39;, b&#39;2&#39;, b&#39;1&#39;]</code></td>
+</tr>
+<tr>
+<td>ltrim(name, start, end)</td>
+<td>截取key为name的list，保留索引为start到end的内容</td>
+<td>name:key名 start: 起始索引 end: 终止索引</td>
+<td>ltrim(‘list’, 1, 3)</td>
+<td>保留key为list的索引为1到3的元素</td>
+<td>True</td>
+</tr>
+<tr>
+<td>lindex(name, index)</td>
+<td>返回key为name的list中index位置的元素</td>
+<td>name: key名 index: 索引</td>
+<td>redis.lindex(‘list’, 1)</td>
+<td>返回key为list的列表index为1的元素</td>
+<td>b’2’</td>
+</tr>
+<tr>
+<td>lset(name, index, value)</td>
+<td>给key为name的list中index位置的元素赋值，越界则报错</td>
+<td>name: key名 index: 索引位置 value: 值</td>
+<td>redis.lset(‘list’, 1, 5)</td>
+<td>将key为list的list索引1位置赋值为5</td>
+<td>True</td>
+</tr>
+<tr>
+<td>lrem(name, count, value)</td>
+<td>删除count个key的list中值为value的元素</td>
+<td>name: key名 count: 删除个数 value: 值</td>
+<td>redis.lrem(‘list’, 2, 3)</td>
+<td>将key为list的列表删除2个3</td>
+<td>1，即删除的个数</td>
+</tr>
+<tr>
+<td>lpop(name)</td>
+<td>返回并删除key为name的list中的首元素</td>
+<td>name: key名</td>
+<td>redis.lpop(‘list’)</td>
+<td>返回并删除名为list的list第一个元素</td>
+<td>b’5’</td>
+</tr>
+<tr>
+<td>rpop(name)</td>
+<td>返回并删除key为name的list中的尾元素</td>
+<td>name: key名</td>
+<td>redis.rpop(‘list’)</td>
+<td>返回并删除名为list的list最后一个元素</td>
+<td>b’2’</td>
+</tr>
+<tr>
+<td>blpop(keys, timeout=0)</td>
+<td>返回并删除名称为在keys中的list中的首元素，如果list为空，则会一直阻塞等待</td>
+<td>keys: key列表 timeout: 超时等待时间，0为一直等待</td>
+<td>redis.blpop(‘list’)</td>
+<td>返回并删除名为list的list的第一个元素</td>
+<td>[b’5’]</td>
+</tr>
+<tr>
+<td>brpop(keys, timeout=0)</td>
+<td>返回并删除key为name的list中的尾元素，如果list为空，则会一直阻塞等待</td>
+<td>keys: key列表 timeout: 超时等待时间，0为一直等待</td>
+<td>redis.brpop(‘list’)</td>
+<td>返回并删除名为list的list的最后一个元素</td>
+<td>[b’2’]</td>
+</tr>
+<tr>
+<td>rpoplpush(src, dst)</td>
+<td>返回并删除名称为src的list的尾元素，并将该元素添加到名称为dst的list的头部</td>
+<td>src: 源list的key dst: 目标list的key</td>
+<td>redis.rpoplpush(‘list’, ‘list2’)</td>
+<td>将key为list的list尾元素删除并返回并将其添加到key为list2的list头部</td>
+<td>b’2’</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Set(集合)</strong></p>
+</blockquote>
+<p>Redis 还提供了集合存储，集合中的元素都是不重复的</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sadd(name, *values)</td>
+<td>向key为name的set中添加元素</td>
+<td>name: key名 values: 值，可为多个</td>
+<td>redis.sadd(‘tags’, ‘Book’, ‘Tea’, ‘Coffee’)</td>
+<td>向key为tags的set中添加Book、Tea、Coffee三个内容</td>
+<td>3，即插入的数据个数</td>
+</tr>
+<tr>
+<td>srem(name, *values)</td>
+<td>从key为name的set中删除元素</td>
+<td>name: key名 values: 值，可为多个</td>
+<td>redis.srem(‘tags’, ‘Book’)</td>
+<td>从key为tags的set中删除Book</td>
+<td>1，即删除的数据个数</td>
+</tr>
+<tr>
+<td>spop(name)</td>
+<td>随机返回并删除key为name的set中一个元素</td>
+<td>name: key名</td>
+<td>redis.spop(‘tags’)</td>
+<td>从key为tags的set中随机删除并返回该元素</td>
+<td>b’Tea’</td>
+</tr>
+<tr>
+<td>smove(src, dst, value)</td>
+<td>从src对应的set中移除元素并添加到dst对应的set中</td>
+<td>src: 源set dst: 目标set value: 元素值</td>
+<td>redis.smove(‘tags’, ‘tags2’, ‘Coffee’)</td>
+<td>从key为tags的set中删除元素Coffee并添加到key为tags2的set</td>
+<td>True</td>
+</tr>
+<tr>
+<td>scard(name)</td>
+<td>返回key为name的set的元素个数</td>
+<td>name: key名</td>
+<td>redis.scard(‘tags’)</td>
+<td>获取key为tags的set中元素个数</td>
+<td>3</td>
+</tr>
+<tr>
+<td>sismember(name, value)</td>
+<td>测试member是否是key为name的set的元素</td>
+<td>name:key值</td>
+<td>redis.sismember(‘tags’, ‘Book’)</td>
+<td>判断Book是否为key为tags的set元素</td>
+<td>True</td>
+</tr>
+<tr>
+<td>sinter(keys, *args)</td>
+<td>返回所有给定key的set的交集</td>
+<td>keys: key列表</td>
+<td>redis.sinter([‘tags’, ‘tags2’])</td>
+<td>返回key为tags的set和key为tags2的set的交集</td>
+<td>{b’Coffee’}</td>
+</tr>
+<tr>
+<td>sinterstore(dest, keys, *args)</td>
+<td>求交集并将交集保存到dest的集合</td>
+<td>dest:结果集合 keys:key列表</td>
+<td>redis.sinterstore(‘inttag’, [‘tags’, ‘tags2’])</td>
+<td>求key为tags的set和key为tags2的set的交集并保存为inttag</td>
+<td>1</td>
+</tr>
+<tr>
+<td>sunion(keys, *args)</td>
+<td>返回所有给定key的set的并集</td>
+<td>keys: key列表</td>
+<td>redis.sunion([‘tags’, ‘tags2’])</td>
+<td>返回key为tags的set和key为tags2的set的并集</td>
+<td>{b’Coffee’, b’Book’, b’Pen’}</td>
+</tr>
+<tr>
+<td>sunionstore(dest, keys, *args)</td>
+<td>求并集并将并集保存到dest的集合</td>
+<td>dest:结果集合 keys:key列表</td>
+<td>redis.sunionstore(‘inttag’, [‘tags’, ‘tags2’])</td>
+<td>求key为tags的set和key为tags2的set的并集并保存为inttag</td>
+<td>3</td>
+</tr>
+<tr>
+<td>sdiff(keys, *args)</td>
+<td>返回所有给定key的set的差集</td>
+<td>keys: key列表</td>
+<td>redis.sdiff([‘tags’, ‘tags2’])</td>
+<td>返回key为tags的set和key为tags2的set的差集</td>
+<td>{b’Book’, b’Pen’}</td>
+</tr>
+<tr>
+<td>sdiffstore(dest, keys, *args)</td>
+<td>求差集并将差集保存到dest的集合</td>
+<td>dest:结果集合 keys:key列表</td>
+<td>redis.sdiffstore(‘inttag’, [‘tags’, ‘tags2’])</td>
+<td>求key为tags的set和key为tags2的set的差集并保存为inttag</td>
+<td>3</td>
+</tr>
+<tr>
+<td>smembers(name)</td>
+<td>返回key为name的set的所有元素</td>
+<td>name: key名</td>
+<td>redis.smembers(‘tags’)</td>
+<td>返回key为tags的set的所有元素</td>
+<td>{b’Pen’, b’Book’, b’Coffee’}</td>
+</tr>
+<tr>
+<td>srandmember(name)</td>
+<td>随机返回key为name的set的一个元素，但不删除元素</td>
+<td>name: key值</td>
+<td>redis.srandmember(‘tags’)</td>
+<td>随机返回key为tags的set的一个元素</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SortedSet(有序集合)</strong></p>
+</blockquote>
+<p>有序集合，它相比集合多了一个分数字段，利用它我们可以对集合中的数据进行排序</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zadd(name, <em>args, *</em>kwargs)</td>
+<td>向key为name的zset中添加元素member，score用于排序。如果该元素存在，则更新其顺序</td>
+<td>name: key名 args: 可变参数</td>
+<td>redis.zadd(‘grade’, 100, ‘Bob’, 98, ‘Mike’)</td>
+<td>向key为grade的zset中添加Bob，score为100，添加Mike，score为98</td>
+<td>2，即添加的元素个数</td>
+</tr>
+<tr>
+<td>zrem(name, *values)</td>
+<td>删除key为name的zset中的元素</td>
+<td>name: key名 values: 元素</td>
+<td>redis.zrem(‘grade’, ‘Mike’)</td>
+<td>从key为grade的zset中删除Mike</td>
+<td>1，即删除的元素个数</td>
+</tr>
+<tr>
+<td>zincrby(name, value, amount=1)</td>
+<td>如果在key为name的zset中已经存在元素value，则该元素的score增加amount，否则向该集合中添加该元素，其score的值为amount</td>
+<td>name: key名 value: 元素 amount: 增长的score值</td>
+<td>redis.zincrby(‘grade’, ‘Bob’, -2)</td>
+<td>key为grade的zset中Bob的score减2</td>
+<td>98.0，即修改后的值</td>
+</tr>
+<tr>
+<td>zrank(name, value)</td>
+<td>返回key为name的zset中元素的排名（按score从小到大排序）即下标</td>
+<td>name: key名 value: 元素值</td>
+<td>redis.zrank(‘grade’, ‘Amy’)</td>
+<td>得到key为grade的zset中Amy的排名</td>
+<td>1</td>
+</tr>
+<tr>
+<td>zrevrank(name, value)</td>
+<td>返回key为name的zset中元素的倒数排名（按score从大到小排序）即下标</td>
+<td>name: key名 value: 元素值</td>
+<td>redis.zrevrank(‘grade’, ‘Amy’)</td>
+<td>得到key为grade的zset中Amy的倒数排名</td>
+<td>2</td>
+</tr>
+<tr>
+<td>zrevrange(name, start, end, withscores=False)</td>
+<td>返回key为name的zset（按score从大到小排序）中的index从start到end的所有元素</td>
+<td>name: key值 start: 开始索引 end: 结束索引 withscores: 是否带score</td>
+<td>redis.zrevrange(‘grade’, 0, 3)</td>
+<td>返回key为grade的zset前四名元素</td>
+<td>[b’Bob’, b’Mike’, b’Amy’, b’James’]</td>
+</tr>
+<tr>
+<td>zrangebyscore(name, min, max, start=None, num=None, withscores=False)</td>
+<td>返回key为name的zset中score在给定区间的元素</td>
+<td>name:key名 min: 最低score max:最高score start: 起始索引 num: 个数 withscores: 是否带score</td>
+<td>redis.zrangeby score(‘grade’, 80, 95)</td>
+<td>返回key为grade的zset中score在80和95之间的元素</td>
+<td>[b’Amy’, b’James’]</td>
+</tr>
+<tr>
+<td>zcount(name, min, max)</td>
+<td>返回key为name的zset中score在给定区间的数量</td>
+<td>name:key名 min: 最低score max: 最高score</td>
+<td>redis.zcount(‘grade’, 80, 95)</td>
+<td>返回key为grade的zset中score在80到95的元素个数</td>
+<td>2</td>
+</tr>
+<tr>
+<td>zcard(name)</td>
+<td>返回key为name的zset的元素个数</td>
+<td>name: key名</td>
+<td>redis.zcard(‘grade’)</td>
+<td>获取key为grade的zset中元素个数</td>
+<td>3</td>
+</tr>
+<tr>
+<td>zremrangebyrank(name, min, max)</td>
+<td>删除key为name的zset中排名在给定区间的元素</td>
+<td>name:key名 min: 最低位次 max: 最高位次</td>
+<td>redis.zremran gebyrank(‘grade’, 0, 0)</td>
+<td>删除key为grade的zset中排名第一的元素</td>
+<td>1，即删除的元素个数</td>
+</tr>
+<tr>
+<td>zremrangebyscore(name, min, max)</td>
+<td>删除key为name的zset中score在给定区间的元素</td>
+<td>name:key名 min: 最低score max:最高score</td>
+<td>redis.zremran gebyscore (‘grade’, 80, 90)</td>
+<td>删除score在80到90之间的元素</td>
+<td>1，即删除的元素个数</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：上面代码中由于展示显示不完全，本人做了相应的处理，原本是一个方法名的可能方法名中间会出现空格</p>
+</blockquote>
+<p>以上便是用Python操作Redis的总结了，在后面的项目中会常用到Redis操作，所以我们还是需要掌握一些常用操作。</p>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/post/9f312a12.html">用Python操作Redis</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 GavinLiu 的个人博客">GavinLiu</a></p>
+  <p><span>发布时间:</span>2018年05月17日 - 19:05</p>
+  <p><span>最后更新:</span>2018年06月25日 - 15:06</p>
+  <p><span>原始链接:</span><a href="/post/9f312a12.html" title="用Python操作Redis">http://gavinliu4011.github.io/post/9f312a12.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://gavinliu4011.github.io/post/9f312a12.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请博主吃个鸡腿吧</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="GavinLiu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="GavinLiu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/64b3833f.html" rel="next" title="Python3.x 连接MySQL数据库">
+                <i class="fa fa-chevron-left"></i> Python3.x 连接MySQL数据库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/e8c9ba97.html" rel="prev" title="Django(一)">
+                Django(一) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2154292" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="GavinLiu" />
+            
+              <p class="site-author-name" itemprop="name">GavinLiu</p>
+              <p class="site-description motion-element" itemprop="description">刘泰丞的个人网站，记录生活的瞬间，分享学习的心得，感悟生活，留住感动</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gavinliu4011" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/jackfrued" title="骆昊博客" target="_blank">骆昊博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zoie1996.github.io/" title="Zoie博客" target="_blank">Zoie博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://threereyed.github.io/" title="露灵博客" target="_blank">露灵博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://alexyanglong.github.io/" title="AlexYang博客" target="_blank">AlexYang博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://simonzhao88.github.io/" title="Simonzhao博客" target="_blank">Simonzhao博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis安装和使用"><span class="nav-number">1.</span> <span class="nav-text">Redis安装和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Window-下安装"><span class="nav-number">1.1.</span> <span class="nav-text">Window 下安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-下安装"><span class="nav-number">1.2.</span> <span class="nav-text">Linux 下安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用Python连接Redis"><span class="nav-number">1.3.</span> <span class="nav-text">用Python连接Redis</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GavinLiu</span>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共18.6k字</span>
+</div>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Jyyv0zlVl9qFNLkwwjKwlDhD-gzGzoHsz", "dOnLXYcOXKVDypUky50GxgAN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: -30px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: 40px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/wanko.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- ҳ����С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
