@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gavinliu4011.github.io/post/2116a065.html</loc>
+    
+    <lastmod>2018-06-25T12:39:29.873Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://gavinliu4011.github.io/about/index.html</loc>
     
     <lastmod>2018-06-25T07:42:34.942Z</lastmod>
@@ -86,13 +93,6 @@
   </url>
   
   <url>
-    <loc>http://gavinliu4011.github.io/post/2116a065.html</loc>
-    
-    <lastmod>2018-06-25T07:24:07.340Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://gavinliu4011.github.io/post/e8c9ba97.html</loc>
     
     <lastmod>2018-06-25T07:23:58.991Z</lastmod>
@@ -107,14 +107,14 @@
   </url>
   
   <url>
-    <loc>http://gavinliu4011.github.io/categories/index.html</loc>
+    <loc>http://gavinliu4011.github.io/tags/index.html</loc>
     
     <lastmod>2018-02-02T12:39:17.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://gavinliu4011.github.io/tags/index.html</loc>
+    <loc>http://gavinliu4011.github.io/categories/index.html</loc>
     
     <lastmod>2018-02-02T12:39:17.000Z</lastmod>
     

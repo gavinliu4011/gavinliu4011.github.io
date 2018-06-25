@@ -3,6 +3,26 @@
 
 
     
+  <url>
+    <loc>http://gavinliu4011.github.io/post/2116a065.html</loc>
+    <lastmod>2018-06-25T12:39:29.873Z</lastmod>
+    <data>
+        <display>
+        <title>Django(二)之模型</title>
+        <pubTime>2018-05-26T16:48:12.000Z</pubTime>
+        
+        <tag>Django</tag>
+         
+         
+           
+             
+              <breadCrumb title="Django" url="http://gavinliu4011.github.io/categories/Django/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://gavinliu4011.github.io/post/5e13db2f.html</loc>
@@ -244,26 +264,6 @@
            
              
               <breadCrumb title="Hexo" url="http://gavinliu4011.github.io/categories/Hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://gavinliu4011.github.io/post/2116a065.html</loc>
-    <lastmod>2018-06-25T07:24:07.340Z</lastmod>
-    <data>
-        <display>
-        <title>Django(二)之模型</title>
-        <pubTime>2018-05-26T16:48:12.000Z</pubTime>
-        
-        <tag>Django</tag>
-         
-         
-           
-             
-              <breadCrumb title="Django" url="http://gavinliu4011.github.io/categories/Django/"/>
           
         </display>
     </data>
