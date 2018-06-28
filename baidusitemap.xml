@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>http://gavinliu4011.github.io/post/d3c89889.html</loc>
+    <lastmod>2018-06-28T09:06:05.009Z</lastmod>
+    <data>
+        <display>
+        <title>Python之进程</title>
+        <pubTime>2018-01-04T16:41:46.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>进程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python进程" url="http://gavinliu4011.github.io/categories/Python%E8%BF%9B%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://gavinliu4011.github.io/post/11a0df73.html</loc>
-    <lastmod>2018-06-27T11:44:32.792Z</lastmod>
+    <lastmod>2018-06-27T11:46:06.485Z</lastmod>
     <data>
         <display>
         <title>Django之中间件</title>
