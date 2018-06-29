@@ -110,7 +110,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://gavinliu4011.github.io/img/process/20180629162519.png">
 <meta property="og:image" content="http://gavinliu4011.github.io/img/process/20180629163404.png">
-<meta property="og:updated_time" content="2018-06-29T09:39:17.481Z">
+<meta property="og:updated_time" content="2018-06-29T09:49:36.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python进程同步之锁">
 <meta name="twitter:description" content="锁 —— multiprocess.Lock通过刚刚的学习，我们千方百计实现了程序的异步，让多个任务可以同时在几个进程中并发处理，他们之间的运行没有顺序，一旦开启也不受我们控制。尽管并发编程让我们能更加充分的利用IO资源，但是也给我们带来了新的问题。 当多个进程使用同一份数据资源的时候，就会引发数据安全或顺序混乱问题。 接下来我们以模拟抢票为例，来看看数据安全的重要性。  先看看不使用锁保护的多进">
@@ -447,7 +447,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  996
+                  1,033
                 </span>
               
 
@@ -502,6 +502,8 @@
 <p>1、效率高（多个进程共享一块内存的数据）</p>
 <p>2、帮我们处理好锁问题。这就是mutiprocessing模块为我们提供的基于消息的IPC通信机制：队列和管道。<br>队列和管道都是将数据存放于内存中<br>队列又是基于（管道+锁）实现的，可以让我们从复杂的锁问题中解脱出来，<br>我们应该尽量避免使用共享数据，尽可能使用消息传递和队列，避免处理复杂的同步和锁问题，而且在进程数目增多时，往往可以获得更好的可获展性。</p>
 </blockquote>
+<p>参考资料：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://www.cnblogs.com/Eva-J/articles/8253549.html</span><br><span class="line">http://www.cnblogs.com/linhaifeng/articles/6817679.html</span><br><span class="line">https://www.jianshu.com/p/1200fd49b583</span><br><span class="line">https://www.jianshu.com/p/aed6067eeac9</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -624,18 +626,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/58b02bea.html" rel="next" title="Python进程间通信之队列">
-                <i class="fa fa-chevron-left"></i> Python进程间通信之队列
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/b132932.html" rel="prev" title="Hexo">
-                Hexo <i class="fa fa-chevron-right"></i>
+              <a href="/post/58b02bea.html" rel="prev" title="Python进程间通信之队列">
+                Python进程间通信之队列 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -878,7 +876,7 @@ var jiathis_config={
   <span class="author" itemprop="copyrightHolder">GavinLiu</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共31.9k字</span>
+  <span class="post-count">博客全站共32.0k字</span>
 </div>
   
 </div>
