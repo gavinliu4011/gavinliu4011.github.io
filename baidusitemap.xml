@@ -4,8 +4,56 @@
 
     
   <url>
+    <loc>http://gavinliu4011.github.io/post/58b02bea.html</loc>
+    <lastmod>2018-06-29T09:38:07.912Z</lastmod>
+    <data>
+        <display>
+        <title>Python进程间通信之队列</title>
+        <pubTime>2018-01-04T16:41:46.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>进程通信</tag>
+         
+        <tag>队列</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python进程" url="http://gavinliu4011.github.io/categories/Python%E8%BF%9B%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gavinliu4011.github.io/post/779a7de2.html</loc>
+    <lastmod>2018-06-29T09:34:35.456Z</lastmod>
+    <data>
+        <display>
+        <title>Python进程同步之锁</title>
+        <pubTime>2018-01-04T16:41:46.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>进程同步</tag>
+         
+        <tag>进程锁</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python进程" url="http://gavinliu4011.github.io/categories/Python%E8%BF%9B%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://gavinliu4011.github.io/post/d3c89889.html</loc>
-    <lastmod>2018-06-28T09:06:05.009Z</lastmod>
+    <lastmod>2018-06-29T09:29:21.013Z</lastmod>
     <data>
         <display>
         <title>Python之进程</title>
