@@ -469,9 +469,9 @@
          
         <tag>线程</tag>
          
-        <tag>信号量</tag>
-         
         <tag>队列</tag>
+         
+        <tag>信号量</tag>
          
          
            
@@ -629,9 +629,9 @@
         
         <tag>Python</tag>
          
-        <tag>队列</tag>
-         
         <tag>进程通信</tag>
+         
+        <tag>队列</tag>
          
          
            
